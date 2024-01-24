@@ -1,10 +1,10 @@
 <?php
 
-namespace Agenciafmd\Admix\UI\Console;
+namespace Agenciafmd\Ui\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class UIUpdateCommand extends Command
+class UiUpdateCommand extends Command
 {
     protected $signature = 'admix:ui-update {--tag=dev : Versão do tabler que será instalada}';
 

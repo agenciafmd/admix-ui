@@ -7,7 +7,6 @@ interface ILPOptionDropdowns {
     months: boolean;
     years: boolean | string;
 }
-
 interface ILPOptionButtonText {
     apply: string;
     cancel: string;
@@ -15,13 +14,11 @@ interface ILPOptionButtonText {
     nextMonth: string;
     reset: string;
 }
-
 interface ILPOptionTooltip {
     one: string;
     other: string;
     many?: string;
 }
-
 export interface ILPConfiguration {
     element: HTMLElement | HTMLInputElement;
     elementEnd?: HTMLElement | HTMLInputElement | null;
@@ -81,5 +78,4 @@ export interface ILPConfiguration {
         firstTabIndex?: number;
     };
 }
-
 export {};

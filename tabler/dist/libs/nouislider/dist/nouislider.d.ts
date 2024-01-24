@@ -36,16 +36,13 @@ interface CssClasses {
     valueLarge: string;
     valueSub: string;
 }
-
 export interface PartialFormatter {
     to: (value: number) => string | number;
     from?: (value: string) => number | false;
 }
-
 export interface Formatter extends PartialFormatter {
     from: (value: string) => number | false;
 }
-
 export declare enum PipsMode {
     Range = "range",
     Steps = "steps",
@@ -53,63 +50,51 @@ export declare enum PipsMode {
     Count = "count",
     Values = "values"
 }
-
 export declare enum PipsType {
     None = -1,
     NoValue = 0,
     LargeValue = 1,
     SmallValue = 2
 }
-
 declare type WrappedSubRange = [number] | [number, number];
 declare type SubRange = number | WrappedSubRange;
-
 interface Range {
     min: SubRange;
     max: SubRange;
-
     [key: `${number}%`]: SubRange;
 }
-
 interface BasePips {
     mode: PipsMode;
     density?: number;
     filter?: PipsFilter;
     format?: PartialFormatter;
 }
-
 interface PositionsPips extends BasePips {
     mode: PipsMode.Positions;
     values: number[];
     stepped?: boolean;
 }
-
 interface ValuesPips extends BasePips {
     mode: PipsMode.Values;
     values: number[];
     stepped?: boolean;
 }
-
 interface CountPips extends BasePips {
     mode: PipsMode.Count;
     values: number;
     stepped?: boolean;
 }
-
 interface StepsPips extends BasePips {
     mode: PipsMode.Steps;
 }
-
 interface RangePips extends BasePips {
     mode: PipsMode.Range;
 }
-
 declare type Pips = PositionsPips | ValuesPips | CountPips | StepsPips | RangePips;
 declare type StartValues = string | number | (string | number)[];
 declare type HandleAttributes = {
     [key: string]: string;
 };
-
 interface UpdatableOptions {
     range?: Range;
     start?: StartValues;
@@ -123,7 +108,6 @@ interface UpdatableOptions {
     tooltips?: boolean | PartialFormatter | (boolean | PartialFormatter)[];
     animate?: boolean;
 }
-
 export interface Options extends UpdatableOptions {
     range: Range;
     connect?: "lower" | "upper" | boolean | boolean[];
@@ -141,7 +125,6 @@ export interface Options extends UpdatableOptions {
     animationDuration?: number;
     handleAttributes?: HandleAttributes[];
 }
-
 export interface API {
     destroy: () => void;
     steps: () => NextStepsForHandle[];
@@ -151,6 +134,8 @@ export interface API {
     set: (input: number | string | (number | string)[], fireSetEvent?: boolean, exactInput?: boolean) => void;
     setHandle: (handleNumber: number, value: number | string, fireSetEvent?: boolean, exactInput?: boolean) => void;
     reset: (fireSetEvent?: boolean) => void;
+    disable: (handleNumber?: number) => void;
+    enable: (handleNumber?: number) => void;
     options: Options;
     updateOptions: (optionsToUpdate: UpdatableOptions, fireSetEvent: boolean) => void;
     target: HTMLElement;
@@ -164,28 +149,23 @@ export interface API {
     };
     pips: (grid: Pips) => HTMLElement;
 }
-
 interface TargetElement extends HTMLElement {
     noUiSlider?: API;
 }
-
 interface NearByStep {
     startValue: number;
     step: number | false;
     highestStep: number;
 }
-
 interface NearBySteps {
     stepBefore: NearByStep;
     thisStep: NearByStep;
     stepAfter: NearByStep;
 }
-
 declare type GetResult = number | string | (string | number)[];
 declare type NextStepsForHandle = [number | false | null, number | false | null];
 declare type PipsFilter = (value: number, type: PipsType) => PipsType;
 declare type EventCallback = (this: API, values: (number | string)[], handleNumber: number, unencoded: number[], tap: boolean, locations: number[], slider: API) => void;
-
 declare class Spectrum {
     xPct: number[];
     xVal: number[];
@@ -193,40 +173,25 @@ declare class Spectrum {
     xNumSteps: (number | false)[];
     protected xHighestCompleteStep: number[];
     protected snap: boolean;
-
     constructor(entry: Range, snap: boolean, singleStep: number);
-
     getDistance(value: number): number[];
-
     getAbsoluteDistance(value: number, distances: number[] | null, direction: boolean): number;
-
     toStepping(value: number): number;
-
     fromStepping(value: number): number;
-
     getStep(value: number): number;
-
     getDefaultStep(value: number, isDown: boolean, size: number): number;
-
     getNearbySteps(value: number): NearBySteps;
-
     countStepDecimals(): number;
-
     hasNoSize(): boolean;
-
     convert(value: number): number;
-
     private handleEntryPoint;
     private handleStepPoint;
 }
-
 declare const cssClasses: CssClasses;
-
 declare function initialize(target: TargetElement, originalOptions: Options): API;
-
-export {TargetElement as target};
-export {initialize as create};
-export {cssClasses};
+export { TargetElement as target };
+export { initialize as create };
+export { cssClasses };
 declare const _default: {
     __spectrum: typeof Spectrum;
     cssClasses: CssClasses;

@@ -1,8 +1,8 @@
 {
     "namespaces": [
         {
-            "namespace": "agenciafmd/admix-ui",
-            "path": "src/resources/views"
+            "namespace": "admix-ui",
+            "path": "resources/views"
         }
     ]
 }

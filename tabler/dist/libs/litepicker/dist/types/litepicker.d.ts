@@ -5,11 +5,8 @@ export declare class Litepicker extends Calendar {
     preventClick: boolean;
     protected triggerElement: any;
     protected backdrop: any;
-
     constructor(options: ILPConfiguration);
-
     protected scrollToDate(el: any): void;
-
     private bindEvents;
     private updateInput;
     private isSamePicker;

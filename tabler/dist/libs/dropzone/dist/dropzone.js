@@ -2,40 +2,34 @@ var $6mU8w$swchelpers = require("@swc/helpers");
 var $6mU8w$justextend = require("just-extend");
 
 function $parcel$interopDefault(a) {
-    return a && a.__esModule ? a.default : a;
+  return a && a.__esModule ? a.default : a;
 }
-
 function $parcel$defineInteropFlag(a) {
-    Object.defineProperty(a, '__esModule', {value: true, configurable: true});
+  Object.defineProperty(a, '__esModule', {value: true, configurable: true});
 }
-
 function $parcel$export(e, n, v, s) {
-    Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
+  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
 }
 
 $parcel$defineInteropFlag(module.exports);
 
-$parcel$export(module.exports, "default", function () {
-    return $a601ff30f483e917$export$2e2bcd8739ae039;
-});
-$parcel$export(module.exports, "Dropzone", function () {
-    return $a601ff30f483e917$export$2e2bcd8739ae039;
-});
+$parcel$export(module.exports, "default", function () { return $a601ff30f483e917$export$2e2bcd8739ae039; });
+$parcel$export(module.exports, "Dropzone", function () { return $a601ff30f483e917$export$2e2bcd8739ae039; });
 
 
-var $b1d17cfb1d15c36a$export$2e2bcd8739ae039 = /*#__PURE__*/ function () {
+
+var $b1d17cfb1d15c36a$export$2e2bcd8739ae039 = /*#__PURE__*/ function() {
     "use strict";
-
     function $b1d17cfb1d15c36a$export$2e2bcd8739ae039() {
         $6mU8w$swchelpers.classCallCheck(this, $b1d17cfb1d15c36a$export$2e2bcd8739ae039);
     }
-
     $6mU8w$swchelpers.createClass($b1d17cfb1d15c36a$export$2e2bcd8739ae039, [
         {
             // Add an event listener for given event
             key: "on",
             value: function on(event, fn) {
-                this._callbacks = this._callbacks || {};
+                this._callbacks = this._callbacks || {
+                };
                 // Create namespace for this event
                 if (!this._callbacks[event]) this._callbacks[event] = [];
                 this._callbacks[event].push(fn);
@@ -45,26 +39,27 @@ var $b1d17cfb1d15c36a$export$2e2bcd8739ae039 = /*#__PURE__*/ function () {
         {
             key: "emit",
             value: function emit(event) {
-                for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                for(var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++){
                     args[_key - 1] = arguments[_key];
                 }
-                this._callbacks = this._callbacks || {};
+                this._callbacks = this._callbacks || {
+                };
                 var callbacks = this._callbacks[event];
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 if (callbacks) try {
-                    for (var _iterator = callbacks[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = callbacks[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var callback = _step.value;
                         callback.apply(this, args);
                     }
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -102,7 +97,8 @@ var $b1d17cfb1d15c36a$export$2e2bcd8739ae039 = /*#__PURE__*/ function () {
             key: "off",
             value: function off(event, fn) {
                 if (!this._callbacks || arguments.length === 0) {
-                    this._callbacks = {};
+                    this._callbacks = {
+                    };
                     return this;
                 }
                 // specific event
@@ -114,7 +110,7 @@ var $b1d17cfb1d15c36a$export$2e2bcd8739ae039 = /*#__PURE__*/ function () {
                     return this;
                 }
                 // remove specific handler
-                for (var i = 0; i < callbacks.length; i++) {
+                for(var i = 0; i < callbacks.length; i++){
                     var callback = callbacks[i];
                     if (callback === fn) {
                         callbacks.splice(i, 1);
@@ -129,261 +125,262 @@ var $b1d17cfb1d15c36a$export$2e2bcd8739ae039 = /*#__PURE__*/ function () {
 }();
 
 
+
 var $69c61888cc1f4c57$exports = {};
 $69c61888cc1f4c57$exports = "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-image\"><img data-dz-thumbnail=\"\"></div>\n  <div class=\"dz-details\">\n    <div class=\"dz-size\"><span data-dz-size=\"\"></span></div>\n    <div class=\"dz-filename\"><span data-dz-name=\"\"></span></div>\n  </div>\n  <div class=\"dz-progress\">\n    <span class=\"dz-upload\" data-dz-uploadprogress=\"\"></span>\n  </div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage=\"\"></span></div>\n  <div class=\"dz-success-mark\">\n    <svg width=\"54\" height=\"54\" viewBox=\"0 0 54 54\" fill=\"white\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path d=\"M10.2071 29.7929L14.2929 25.7071C14.6834 25.3166 15.3166 25.3166 15.7071 25.7071L21.2929 31.2929C21.6834 31.6834 22.3166 31.6834 22.7071 31.2929L38.2929 15.7071C38.6834 15.3166 39.3166 15.3166 39.7071 15.7071L43.7929 19.7929C44.1834 20.1834 44.1834 20.8166 43.7929 21.2071L22.7071 42.2929C22.3166 42.6834 21.6834 42.6834 21.2929 42.2929L10.2071 31.2071C9.81658 30.8166 9.81658 30.1834 10.2071 29.7929Z\"></path>\n    </svg>\n  </div>\n  <div class=\"dz-error-mark\">\n    <svg width=\"54\" height=\"54\" viewBox=\"0 0 54 54\" fill=\"white\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path d=\"M26.2929 20.2929L19.2071 13.2071C18.8166 12.8166 18.1834 12.8166 17.7929 13.2071L13.2071 17.7929C12.8166 18.1834 12.8166 18.8166 13.2071 19.2071L20.2929 26.2929C20.6834 26.6834 20.6834 27.3166 20.2929 27.7071L13.2071 34.7929C12.8166 35.1834 12.8166 35.8166 13.2071 36.2071L17.7929 40.7929C18.1834 41.1834 18.8166 41.1834 19.2071 40.7929L26.2929 33.7071C26.6834 33.3166 27.3166 33.3166 27.7071 33.7071L34.7929 40.7929C35.1834 41.1834 35.8166 41.1834 36.2071 40.7929L40.7929 36.2071C41.1834 35.8166 41.1834 35.1834 40.7929 34.7929L33.7071 27.7071C33.3166 27.3166 33.3166 26.6834 33.7071 26.2929L40.7929 19.2071C41.1834 18.8166 41.1834 18.1834 40.7929 17.7929L36.2071 13.2071C35.8166 12.8166 35.1834 12.8166 34.7929 13.2071L27.7071 20.2929C27.3166 20.6834 26.6834 20.6834 26.2929 20.2929Z\"></path>\n    </svg>\n  </div>\n</div>\n";
 
 
 var $b657c03155fc27e2$var$defaultOptions = {
     /**
-     * Has to be specified on elements other than form (or when the form doesn't
-     * have an `action` attribute).
-     *
-     * You can also provide a function that will be called with `files` and
-     * `dataBlocks`  and must return the url as string.
-     */ url: null,
+   * Has to be specified on elements other than form (or when the form doesn't
+   * have an `action` attribute).
+   *
+   * You can also provide a function that will be called with `files` and
+   * `dataBlocks`  and must return the url as string.
+   */ url: null,
     /**
-     * Can be changed to `"put"` if necessary. You can also provide a function
-     * that will be called with `files` and must return the method (since `v3.12.0`).
-     */ method: "post",
+   * Can be changed to `"put"` if necessary. You can also provide a function
+   * that will be called with `files` and must return the method (since `v3.12.0`).
+   */ method: "post",
     /**
-     * Will be set on the XHRequest.
-     */ withCredentials: false,
+   * Will be set on the XHRequest.
+   */ withCredentials: false,
     /**
-     * The timeout for the XHR requests in milliseconds (since `v4.4.0`).
-     * If set to null or 0, no timeout is going to be set.
-     */ timeout: null,
+   * The timeout for the XHR requests in milliseconds (since `v4.4.0`).
+   * If set to null or 0, no timeout is going to be set.
+   */ timeout: null,
     /**
-     * How many file uploads to process in parallel (See the
-     * Enqueuing file uploads documentation section for more info)
-     */ parallelUploads: 2,
+   * How many file uploads to process in parallel (See the
+   * Enqueuing file uploads documentation section for more info)
+   */ parallelUploads: 2,
     /**
-     * Whether to send multiple files in one request. If
-     * this it set to true, then the fallback file input element will
-     * have the `multiple` attribute as well. This option will
-     * also trigger additional events (like `processingmultiple`). See the events
-     * documentation section for more information.
-     */ uploadMultiple: false,
+   * Whether to send multiple files in one request. If
+   * this it set to true, then the fallback file input element will
+   * have the `multiple` attribute as well. This option will
+   * also trigger additional events (like `processingmultiple`). See the events
+   * documentation section for more information.
+   */ uploadMultiple: false,
     /**
-     * Whether you want files to be uploaded in chunks to your server. This can't be
-     * used in combination with `uploadMultiple`.
-     *
-     * See [chunksUploaded](#config-chunksUploaded) for the callback to finalise an upload.
-     */ chunking: false,
+   * Whether you want files to be uploaded in chunks to your server. This can't be
+   * used in combination with `uploadMultiple`.
+   *
+   * See [chunksUploaded](#config-chunksUploaded) for the callback to finalise an upload.
+   */ chunking: false,
     /**
-     * If `chunking` is enabled, this defines whether **every** file should be chunked,
-     * even if the file size is below chunkSize. This means, that the additional chunk
-     * form data will be submitted and the `chunksUploaded` callback will be invoked.
-     */ forceChunking: false,
+   * If `chunking` is enabled, this defines whether **every** file should be chunked,
+   * even if the file size is below chunkSize. This means, that the additional chunk
+   * form data will be submitted and the `chunksUploaded` callback will be invoked.
+   */ forceChunking: false,
     /**
-     * If `chunking` is `true`, then this defines the chunk size in bytes.
-     */ chunkSize: 2097152,
+   * If `chunking` is `true`, then this defines the chunk size in bytes.
+   */ chunkSize: 2097152,
     /**
-     * If `true`, the individual chunks of a file are being uploaded simultaneously.
-     */ parallelChunkUploads: false,
+   * If `true`, the individual chunks of a file are being uploaded simultaneously.
+   */ parallelChunkUploads: false,
     /**
-     * Whether a chunk should be retried if it fails.
-     */ retryChunks: false,
+   * Whether a chunk should be retried if it fails.
+   */ retryChunks: false,
     /**
-     * If `retryChunks` is true, how many times should it be retried.
-     */ retryChunksLimit: 3,
+   * If `retryChunks` is true, how many times should it be retried.
+   */ retryChunksLimit: 3,
     /**
-     * The maximum filesize (in MiB) that is allowed to be uploaded.
-     */ maxFilesize: 256,
+   * The maximum filesize (in MiB) that is allowed to be uploaded.
+   */ maxFilesize: 256,
     /**
-     * The name of the file param that gets transferred.
-     * **NOTE**: If you have the option  `uploadMultiple` set to `true`, then
-     * Dropzone will append `[]` to the name.
-     */ paramName: "file",
+   * The name of the file param that gets transferred.
+   * **NOTE**: If you have the option  `uploadMultiple` set to `true`, then
+   * Dropzone will append `[]` to the name.
+   */ paramName: "file",
     /**
-     * Whether thumbnails for images should be generated
-     */ createImageThumbnails: true,
+   * Whether thumbnails for images should be generated
+   */ createImageThumbnails: true,
     /**
-     * In MB. When the filename exceeds this limit, the thumbnail will not be generated.
-     */ maxThumbnailFilesize: 10,
+   * In MB. When the filename exceeds this limit, the thumbnail will not be generated.
+   */ maxThumbnailFilesize: 10,
     /**
-     * If `null`, the ratio of the image will be used to calculate it.
-     */ thumbnailWidth: 120,
+   * If `null`, the ratio of the image will be used to calculate it.
+   */ thumbnailWidth: 120,
     /**
-     * The same as `thumbnailWidth`. If both are null, images will not be resized.
-     */ thumbnailHeight: 120,
+   * The same as `thumbnailWidth`. If both are null, images will not be resized.
+   */ thumbnailHeight: 120,
     /**
-     * How the images should be scaled down in case both, `thumbnailWidth` and `thumbnailHeight` are provided.
-     * Can be either `contain` or `crop`.
-     */ thumbnailMethod: "crop",
+   * How the images should be scaled down in case both, `thumbnailWidth` and `thumbnailHeight` are provided.
+   * Can be either `contain` or `crop`.
+   */ thumbnailMethod: "crop",
     /**
-     * If set, images will be resized to these dimensions before being **uploaded**.
-     * If only one, `resizeWidth` **or** `resizeHeight` is provided, the original aspect
-     * ratio of the file will be preserved.
-     *
-     * The `options.transformFile` function uses these options, so if the `transformFile` function
-     * is overridden, these options don't do anything.
-     */ resizeWidth: null,
+   * If set, images will be resized to these dimensions before being **uploaded**.
+   * If only one, `resizeWidth` **or** `resizeHeight` is provided, the original aspect
+   * ratio of the file will be preserved.
+   *
+   * The `options.transformFile` function uses these options, so if the `transformFile` function
+   * is overridden, these options don't do anything.
+   */ resizeWidth: null,
     /**
-     * See `resizeWidth`.
-     */ resizeHeight: null,
+   * See `resizeWidth`.
+   */ resizeHeight: null,
     /**
-     * The mime type of the resized image (before it gets uploaded to the server).
-     * If `null` the original mime type will be used. To force jpeg, for example, use `image/jpeg`.
-     * See `resizeWidth` for more information.
-     */ resizeMimeType: null,
+   * The mime type of the resized image (before it gets uploaded to the server).
+   * If `null` the original mime type will be used. To force jpeg, for example, use `image/jpeg`.
+   * See `resizeWidth` for more information.
+   */ resizeMimeType: null,
     /**
-     * The quality of the resized images. See `resizeWidth`.
-     */ resizeQuality: 0.8,
+   * The quality of the resized images. See `resizeWidth`.
+   */ resizeQuality: 0.8,
     /**
-     * How the images should be scaled down in case both, `resizeWidth` and `resizeHeight` are provided.
-     * Can be either `contain` or `crop`.
-     */ resizeMethod: "contain",
+   * How the images should be scaled down in case both, `resizeWidth` and `resizeHeight` are provided.
+   * Can be either `contain` or `crop`.
+   */ resizeMethod: "contain",
     /**
-     * The base that is used to calculate the **displayed** filesize. You can
-     * change this to 1024 if you would rather display kibibytes, mebibytes,
-     * etc... 1024 is technically incorrect, because `1024 bytes` are `1 kibibyte`
-     * not `1 kilobyte`. You can change this to `1024` if you don't care about
-     * validity.
-     */ filesizeBase: 1000,
+   * The base that is used to calculate the **displayed** filesize. You can
+   * change this to 1024 if you would rather display kibibytes, mebibytes,
+   * etc... 1024 is technically incorrect, because `1024 bytes` are `1 kibibyte`
+   * not `1 kilobyte`. You can change this to `1024` if you don't care about
+   * validity.
+   */ filesizeBase: 1000,
     /**
-     * If not `null` defines how many files this Dropzone handles. If it exceeds,
-     * the event `maxfilesexceeded` will be called. The dropzone element gets the
-     * class `dz-max-files-reached` accordingly so you can provide visual
-     * feedback.
-     */ maxFiles: null,
+   * If not `null` defines how many files this Dropzone handles. If it exceeds,
+   * the event `maxfilesexceeded` will be called. The dropzone element gets the
+   * class `dz-max-files-reached` accordingly so you can provide visual
+   * feedback.
+   */ maxFiles: null,
     /**
-     * An optional object to send additional headers to the server. Eg:
-     * `{ "My-Awesome-Header": "header value" }`
-     */ headers: null,
+   * An optional object to send additional headers to the server. Eg:
+   * `{ "My-Awesome-Header": "header value" }`
+   */ headers: null,
     /**
-     * Should the default headers be set or not?
-     * Accept: application/json <- for requesting json response
-     * Cache-Control: no-cache <- Request shouldnt be cached
-     * X-Requested-With: XMLHttpRequest <- We sent the request via XMLHttpRequest
-     */ defaultHeaders: true,
+   * Should the default headers be set or not?
+   * Accept: application/json <- for requesting json response
+   * Cache-Control: no-cache <- Request shouldnt be cached
+   * X-Requested-With: XMLHttpRequest <- We sent the request via XMLHttpRequest
+   */ defaultHeaders: true,
     /**
-     * If `true`, the dropzone element itself will be clickable, if `false`
-     * nothing will be clickable.
-     *
-     * You can also pass an HTML element, a CSS selector (for multiple elements)
-     * or an array of those. In that case, all of those elements will trigger an
-     * upload when clicked.
-     */ clickable: true,
+   * If `true`, the dropzone element itself will be clickable, if `false`
+   * nothing will be clickable.
+   *
+   * You can also pass an HTML element, a CSS selector (for multiple elements)
+   * or an array of those. In that case, all of those elements will trigger an
+   * upload when clicked.
+   */ clickable: true,
     /**
-     * Whether hidden files in directories should be ignored.
-     */ ignoreHiddenFiles: true,
+   * Whether hidden files in directories should be ignored.
+   */ ignoreHiddenFiles: true,
     /**
-     * The default implementation of `accept` checks the file's mime type or
-     * extension against this list. This is a comma separated list of mime
-     * types or file extensions.
-     *
-     * Eg.: `image/*,application/pdf,.psd`
-     *
-     * If the Dropzone is `clickable` this option will also be used as
-     * [`accept`](https://developer.mozilla.org/en-US/docs/HTML/Element/input#attr-accept)
-     * parameter on the hidden file input as well.
-     */ acceptedFiles: null,
+   * The default implementation of `accept` checks the file's mime type or
+   * extension against this list. This is a comma separated list of mime
+   * types or file extensions.
+   *
+   * Eg.: `image/*,application/pdf,.psd`
+   *
+   * If the Dropzone is `clickable` this option will also be used as
+   * [`accept`](https://developer.mozilla.org/en-US/docs/HTML/Element/input#attr-accept)
+   * parameter on the hidden file input as well.
+   */ acceptedFiles: null,
     /**
-     * **Deprecated!**
-     * Use acceptedFiles instead.
-     */ acceptedMimeTypes: null,
+   * **Deprecated!**
+   * Use acceptedFiles instead.
+   */ acceptedMimeTypes: null,
     /**
-     * If false, files will be added to the queue but the queue will not be
-     * processed automatically.
-     * This can be useful if you need some additional user input before sending
-     * files (or if you want want all files sent at once).
-     * If you're ready to send the file simply call `myDropzone.processQueue()`.
-     *
-     * See the [enqueuing file uploads](#enqueuing-file-uploads) documentation
-     * section for more information.
-     */ autoProcessQueue: true,
+   * If false, files will be added to the queue but the queue will not be
+   * processed automatically.
+   * This can be useful if you need some additional user input before sending
+   * files (or if you want want all files sent at once).
+   * If you're ready to send the file simply call `myDropzone.processQueue()`.
+   *
+   * See the [enqueuing file uploads](#enqueuing-file-uploads) documentation
+   * section for more information.
+   */ autoProcessQueue: true,
     /**
-     * If false, files added to the dropzone will not be queued by default.
-     * You'll have to call `enqueueFile(file)` manually.
-     */ autoQueue: true,
+   * If false, files added to the dropzone will not be queued by default.
+   * You'll have to call `enqueueFile(file)` manually.
+   */ autoQueue: true,
     /**
-     * If `true`, this will add a link to every file preview to remove or cancel (if
-     * already uploading) the file. The `dictCancelUpload`, `dictCancelUploadConfirmation`
-     * and `dictRemoveFile` options are used for the wording.
-     */ addRemoveLinks: false,
+   * If `true`, this will add a link to every file preview to remove or cancel (if
+   * already uploading) the file. The `dictCancelUpload`, `dictCancelUploadConfirmation`
+   * and `dictRemoveFile` options are used for the wording.
+   */ addRemoveLinks: false,
     /**
-     * Defines where to display the file previews – if `null` the
-     * Dropzone element itself is used. Can be a plain `HTMLElement` or a CSS
-     * selector. The element should have the `dropzone-previews` class so
-     * the previews are displayed properly.
-     */ previewsContainer: null,
+   * Defines where to display the file previews – if `null` the
+   * Dropzone element itself is used. Can be a plain `HTMLElement` or a CSS
+   * selector. The element should have the `dropzone-previews` class so
+   * the previews are displayed properly.
+   */ previewsContainer: null,
     /**
-     * Set this to `true` if you don't want previews to be shown.
-     */ disablePreviews: false,
+   * Set this to `true` if you don't want previews to be shown.
+   */ disablePreviews: false,
     /**
-     * This is the element the hidden input field (which is used when clicking on the
-     * dropzone to trigger file selection) will be appended to. This might
-     * be important in case you use frameworks to switch the content of your page.
-     *
-     * Can be a selector string, or an element directly.
-     */ hiddenInputContainer: "body",
+   * This is the element the hidden input field (which is used when clicking on the
+   * dropzone to trigger file selection) will be appended to. This might
+   * be important in case you use frameworks to switch the content of your page.
+   *
+   * Can be a selector string, or an element directly.
+   */ hiddenInputContainer: "body",
     /**
-     * If null, no capture type will be specified
-     * If camera, mobile devices will skip the file selection and choose camera
-     * If microphone, mobile devices will skip the file selection and choose the microphone
-     * If camcorder, mobile devices will skip the file selection and choose the camera in video mode
-     * On apple devices multiple must be set to false.  AcceptedFiles may need to
-     * be set to an appropriate mime type (e.g. "image/*", "audio/*", or "video/*").
-     */ capture: null,
+   * If null, no capture type will be specified
+   * If camera, mobile devices will skip the file selection and choose camera
+   * If microphone, mobile devices will skip the file selection and choose the microphone
+   * If camcorder, mobile devices will skip the file selection and choose the camera in video mode
+   * On apple devices multiple must be set to false.  AcceptedFiles may need to
+   * be set to an appropriate mime type (e.g. "image/*", "audio/*", or "video/*").
+   */ capture: null,
     /**
-     * **Deprecated**. Use `renameFile` instead.
-     */ renameFilename: null,
+   * **Deprecated**. Use `renameFile` instead.
+   */ renameFilename: null,
     /**
-     * A function that is invoked before the file is uploaded to the server and renames the file.
-     * This function gets the `File` as argument and can use the `file.name`. The actual name of the
-     * file that gets used during the upload can be accessed through `file.upload.filename`.
-     */ renameFile: null,
+   * A function that is invoked before the file is uploaded to the server and renames the file.
+   * This function gets the `File` as argument and can use the `file.name`. The actual name of the
+   * file that gets used during the upload can be accessed through `file.upload.filename`.
+   */ renameFile: null,
     /**
-     * If `true` the fallback will be forced. This is very useful to test your server
-     * implementations first and make sure that everything works as
-     * expected without dropzone if you experience problems, and to test
-     * how your fallbacks will look.
-     */ forceFallback: false,
+   * If `true` the fallback will be forced. This is very useful to test your server
+   * implementations first and make sure that everything works as
+   * expected without dropzone if you experience problems, and to test
+   * how your fallbacks will look.
+   */ forceFallback: false,
     /**
-     * The text used before any files are dropped.
-     */ dictDefaultMessage: "Drop files here to upload",
+   * The text used before any files are dropped.
+   */ dictDefaultMessage: "Drop files here to upload",
     /**
-     * The text that replaces the default message text it the browser is not supported.
-     */ dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
+   * The text that replaces the default message text it the browser is not supported.
+   */ dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
     /**
-     * The text that will be added before the fallback form.
-     * If you provide a  fallback element yourself, or if this option is `null` this will
-     * be ignored.
-     */ dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
+   * The text that will be added before the fallback form.
+   * If you provide a  fallback element yourself, or if this option is `null` this will
+   * be ignored.
+   */ dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
     /**
-     * If the filesize is too big.
-     * `{{filesize}}` and `{{maxFilesize}}` will be replaced with the respective configuration values.
-     */ dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
+   * If the filesize is too big.
+   * `{{filesize}}` and `{{maxFilesize}}` will be replaced with the respective configuration values.
+   */ dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
     /**
-     * If the file doesn't match the file type.
-     */ dictInvalidFileType: "You can't upload files of this type.",
+   * If the file doesn't match the file type.
+   */ dictInvalidFileType: "You can't upload files of this type.",
     /**
-     * If the server response was invalid.
-     * `{{statusCode}}` will be replaced with the servers status code.
-     */ dictResponseError: "Server responded with {{statusCode}} code.",
+   * If the server response was invalid.
+   * `{{statusCode}}` will be replaced with the servers status code.
+   */ dictResponseError: "Server responded with {{statusCode}} code.",
     /**
-     * If `addRemoveLinks` is true, the text to be used for the cancel upload link.
-     */ dictCancelUpload: "Cancel upload",
+   * If `addRemoveLinks` is true, the text to be used for the cancel upload link.
+   */ dictCancelUpload: "Cancel upload",
     /**
-     * The text that is displayed if an upload was manually canceled
-     */ dictUploadCanceled: "Upload canceled.",
+   * The text that is displayed if an upload was manually canceled
+   */ dictUploadCanceled: "Upload canceled.",
     /**
-     * If `addRemoveLinks` is true, the text to be used for confirmation when cancelling upload.
-     */ dictCancelUploadConfirmation: "Are you sure you want to cancel this upload?",
+   * If `addRemoveLinks` is true, the text to be used for confirmation when cancelling upload.
+   */ dictCancelUploadConfirmation: "Are you sure you want to cancel this upload?",
     /**
-     * If `addRemoveLinks` is true, the text to be used to remove a file.
-     */ dictRemoveFile: "Remove file",
+   * If `addRemoveLinks` is true, the text to be used to remove a file.
+   */ dictRemoveFile: "Remove file",
     /**
-     * If this is not null, then the user will be prompted before removing a file.
-     */ dictRemoveFileConfirmation: null,
+   * If this is not null, then the user will be prompted before removing a file.
+   */ dictRemoveFileConfirmation: null,
     /**
-     * Displayed if `maxFiles` is st and exceeded.
-     * The string `{{maxFiles}}` will be replaced by the configuration value.
-     */ dictMaxFilesExceeded: "You can not upload any more files.",
+   * Displayed if `maxFiles` is st and exceeded.
+   * The string `{{maxFiles}}` will be replaced by the configuration value.
+   */ dictMaxFilesExceeded: "You can not upload any more files.",
     /**
-     * Allows you to translate the different units. Starting with `tb` for terabytes and going down to
-     * `b` for bytes.
-     */ dictFileSizeUnits: {
+   * Allows you to translate the different units. Starting with `tb` for terabytes and going down to
+   * `b` for bytes.
+   */ dictFileSizeUnits: {
         tb: "TB",
         gb: "GB",
         mb: "MB",
@@ -391,20 +388,20 @@ var $b657c03155fc27e2$var$defaultOptions = {
         b: "b"
     },
     /**
-     * Called when dropzone initialized
-     * You can add event listeners here
-     */ init: function () {
+   * Called when dropzone initialized
+   * You can add event listeners here
+   */ init: function() {
     },
     /**
-     * Can be an **object** of additional parameters to transfer to the server, **or** a `Function`
-     * that gets invoked with the `files`, `xhr` and, if it's a chunked upload, `chunk` arguments. In case
-     * of a function, this needs to return a map.
-     *
-     * The default implementation does nothing for normal uploads, but adds relevant information for
-     * chunked uploads.
-     *
-     * This is the same as adding hidden input fields in the form element.
-     */ params: function (files, xhr, chunk) {
+   * Can be an **object** of additional parameters to transfer to the server, **or** a `Function`
+   * that gets invoked with the `files`, `xhr` and, if it's a chunked upload, `chunk` arguments. In case
+   * of a function, this needs to return a map.
+   *
+   * The default implementation does nothing for normal uploads, but adds relevant information for
+   * chunked uploads.
+   *
+   * This is the same as adding hidden input fields in the form element.
+   */ params: function(files, xhr, chunk) {
         if (chunk) return {
             dzuuid: chunk.file.upload.uuid,
             dzchunkindex: chunk.index,
@@ -415,41 +412,41 @@ var $b657c03155fc27e2$var$defaultOptions = {
         };
     },
     /**
-     * A function that gets a [file](https://developer.mozilla.org/en-US/docs/DOM/File)
-     * and a `done` function as parameters.
-     *
-     * If the done function is invoked without arguments, the file is "accepted" and will
-     * be processed. If you pass an error message, the file is rejected, and the error
-     * message will be displayed.
-     * This function will not be called if the file is too big or doesn't match the mime types.
-     */ accept: function (file, done) {
+   * A function that gets a [file](https://developer.mozilla.org/en-US/docs/DOM/File)
+   * and a `done` function as parameters.
+   *
+   * If the done function is invoked without arguments, the file is "accepted" and will
+   * be processed. If you pass an error message, the file is rejected, and the error
+   * message will be displayed.
+   * This function will not be called if the file is too big or doesn't match the mime types.
+   */ accept: function(file, done) {
         return done();
     },
     /**
-     * The callback that will be invoked when all chunks have been uploaded for a file.
-     * It gets the file for which the chunks have been uploaded as the first parameter,
-     * and the `done` function as second. `done()` needs to be invoked when everything
-     * needed to finish the upload process is done.
-     */ chunksUploaded: function chunksUploaded(file, done) {
+   * The callback that will be invoked when all chunks have been uploaded for a file.
+   * It gets the file for which the chunks have been uploaded as the first parameter,
+   * and the `done` function as second. `done()` needs to be invoked when everything
+   * needed to finish the upload process is done.
+   */ chunksUploaded: function chunksUploaded(file, done) {
         done();
     },
     /**
-     * Sends the file as binary blob in body instead of form data.
-     * If this is set, the `params` option will be ignored.
-     * It's an error to set this to `true` along with `uploadMultiple` since
-     * multiple files cannot be in a single binary body.
-     */ binaryBody: false,
+   * Sends the file as binary blob in body instead of form data.
+   * If this is set, the `params` option will be ignored.
+   * It's an error to set this to `true` along with `uploadMultiple` since
+   * multiple files cannot be in a single binary body.
+   */ binaryBody: false,
     /**
-     * Gets called when the browser is not supported.
-     * The default implementation shows the fallback input field and adds
-     * a text.
-     */ fallback: function () {
+   * Gets called when the browser is not supported.
+   * The default implementation shows the fallback input field and adds
+   * a text.
+   */ fallback: function() {
         // This code should pass in IE7... :(
         var messageElement;
         this.element.className = "".concat(this.element.className, " dz-browser-not-supported");
         var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
         try {
-            for (var _iterator = this.element.getElementsByTagName("div")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for(var _iterator = this.element.getElementsByTagName("div")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                 var child = _step.value;
                 if (/(^| )dz-message($| )/.test(child.className)) {
                     messageElement = child;
@@ -460,12 +457,12 @@ var $b657c03155fc27e2$var$defaultOptions = {
         } catch (err) {
             _didIteratorError = true;
             _iteratorError = err;
-        } finally {
+        } finally{
             try {
                 if (!_iteratorNormalCompletion && _iterator.return != null) {
                     _iterator.return();
                 }
-            } finally {
+            } finally{
                 if (_didIteratorError) {
                     throw _iteratorError;
                 }
@@ -483,17 +480,17 @@ var $b657c03155fc27e2$var$defaultOptions = {
         return this.element.appendChild(this.getFallbackForm());
     },
     /**
-     * Gets called to calculate the thumbnail dimensions.
-     *
-     * It gets `file`, `width` and `height` (both may be `null`) as parameters and must return an object containing:
-     *
-     *  - `srcWidth` & `srcHeight` (required)
-     *  - `trgWidth` & `trgHeight` (required)
-     *  - `srcX` & `srcY` (optional, default `0`)
-     *  - `trgX` & `trgY` (optional, default `0`)
-     *
-     * Those values are going to be used by `ctx.drawImage()`.
-     */ resize: function (file, width, height, resizeMethod) {
+   * Gets called to calculate the thumbnail dimensions.
+   *
+   * It gets `file`, `width` and `height` (both may be `null`) as parameters and must return an object containing:
+   *
+   *  - `srcWidth` & `srcHeight` (required)
+   *  - `trgWidth` & `trgHeight` (required)
+   *  - `srcX` & `srcY` (optional, default `0`)
+   *  - `trgX` & `trgY` (optional, default `0`)
+   *
+   * Those values are going to be used by `ctx.drawImage()`.
+   */ resize: function(file, width, height, resizeMethod) {
         var info = {
             srcX: 0,
             srcY: 0,
@@ -534,31 +531,31 @@ var $b657c03155fc27e2$var$defaultOptions = {
         return info;
     },
     /**
-     * Can be used to transform the file (for example, resize an image if necessary).
-     *
-     * The default implementation uses `resizeWidth` and `resizeHeight` (if provided) and resizes
-     * images according to those dimensions.
-     *
-     * Gets the `file` as the first parameter, and a `done()` function as the second, that needs
-     * to be invoked with the file when the transformation is done.
-     */ transformFile: function (file, done) {
+   * Can be used to transform the file (for example, resize an image if necessary).
+   *
+   * The default implementation uses `resizeWidth` and `resizeHeight` (if provided) and resizes
+   * images according to those dimensions.
+   *
+   * Gets the `file` as the first parameter, and a `done()` function as the second, that needs
+   * to be invoked with the file when the transformation is done.
+   */ transformFile: function(file, done) {
         if ((this.options.resizeWidth || this.options.resizeHeight) && file.type.match(/image.*/)) return this.resizeImage(file, this.options.resizeWidth, this.options.resizeHeight, this.options.resizeMethod, done);
         else return done(file);
     },
     /**
-     * A string that contains the template used for each dropped
-     * file. Change it to fulfill your needs but make sure to properly
-     * provide all elements.
-     *
-     * If you want to use an actual HTML element instead of providing a String
-     * as a config option, you could create a div with the id `tpl`,
-     * put the template inside it and provide the element like this:
-     *
-     *     document
-     *       .querySelector('#tpl')
-     *       .innerHTML
-     *
-     */ previewTemplate: (/*@__PURE__*/$parcel$interopDefault($69c61888cc1f4c57$exports)),
+   * A string that contains the template used for each dropped
+   * file. Change it to fulfill your needs but make sure to properly
+   * provide all elements.
+   *
+   * If you want to use an actual HTML element instead of providing a String
+   * as a config option, you could create a div with the id `tpl`,
+   * put the template inside it and provide the element like this:
+   *
+   *     document
+   *       .querySelector('#tpl')
+   *       .innerHTML
+   *
+   */ previewTemplate: (/*@__PURE__*/$parcel$interopDefault($69c61888cc1f4c57$exports)),
     /*
    Those functions register themselves to the events on init and handle all
    the user interface specific stuff. Overwriting them won't break the upload
@@ -567,33 +564,33 @@ var $b657c03155fc27e2$var$defaultOptions = {
    want to add an additional event handler, register it on the dropzone object
    and don't overwrite those options.
    */ // Those are self explanatory and simply concern the DragnDrop.
-    drop: function (e) {
+    drop: function(e) {
         return this.element.classList.remove("dz-drag-hover");
     },
-    dragstart: function (e) {
+    dragstart: function(e) {
     },
-    dragend: function (e) {
+    dragend: function(e) {
         return this.element.classList.remove("dz-drag-hover");
     },
-    dragenter: function (e) {
+    dragenter: function(e) {
         return this.element.classList.add("dz-drag-hover");
     },
-    dragover: function (e) {
+    dragover: function(e) {
         return this.element.classList.add("dz-drag-hover");
     },
-    dragleave: function (e) {
+    dragleave: function(e) {
         return this.element.classList.remove("dz-drag-hover");
     },
-    paste: function (e) {
+    paste: function(e) {
     },
     // Called whenever there are no files left in the dropzone anymore, and the
     // dropzone should be displayed as if in the initial state.
-    reset: function () {
+    reset: function() {
         return this.element.classList.remove("dz-started");
     },
     // Called when a file is added to the queue
     // Receives `file`
-    addedfile: function (file) {
+    addedfile: function(file) {
         if (this.element === this.previewsContainer) this.element.classList.add("dz-started");
         if (this.previewsContainer && !this.options.disablePreviews) {
             var _this = this;
@@ -602,19 +599,19 @@ var $b657c03155fc27e2$var$defaultOptions = {
             this.previewsContainer.appendChild(file.previewElement);
             var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
             try {
-                for (var _iterator = file.previewElement.querySelectorAll("[data-dz-name]")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for(var _iterator = file.previewElement.querySelectorAll("[data-dz-name]")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                     var node = _step.value;
                     node.textContent = file.name;
                 }
             } catch (err) {
                 _didIteratorError = true;
                 _iteratorError = err;
-            } finally {
+            } finally{
                 try {
                     if (!_iteratorNormalCompletion && _iterator.return != null) {
                         _iterator.return();
                     }
-                } finally {
+                } finally{
                     if (_didIteratorError) {
                         throw _iteratorError;
                     }
@@ -622,19 +619,19 @@ var $b657c03155fc27e2$var$defaultOptions = {
             }
             var _iteratorNormalCompletion1 = true, _didIteratorError1 = false, _iteratorError1 = undefined;
             try {
-                for (var _iterator1 = file.previewElement.querySelectorAll("[data-dz-size]")[Symbol.iterator](), _step1; !(_iteratorNormalCompletion1 = (_step1 = _iterator1.next()).done); _iteratorNormalCompletion1 = true) {
+                for(var _iterator1 = file.previewElement.querySelectorAll("[data-dz-size]")[Symbol.iterator](), _step1; !(_iteratorNormalCompletion1 = (_step1 = _iterator1.next()).done); _iteratorNormalCompletion1 = true){
                     node = _step1.value;
                     node.innerHTML = this.filesize(file.size);
                 }
             } catch (err) {
                 _didIteratorError1 = true;
                 _iteratorError1 = err;
-            } finally {
+            } finally{
                 try {
                     if (!_iteratorNormalCompletion1 && _iterator1.return != null) {
                         _iterator1.return();
                     }
-                } finally {
+                } finally{
                     if (_didIteratorError1) {
                         throw _iteratorError1;
                     }
@@ -644,16 +641,16 @@ var $b657c03155fc27e2$var$defaultOptions = {
                 file._removeLink = $a601ff30f483e917$export$2e2bcd8739ae039.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\" data-dz-remove>".concat(this.options.dictRemoveFile, "</a>"));
                 file.previewElement.appendChild(file._removeLink);
             }
-            var removeFileEvent = function (e) {
+            var removeFileEvent = function(e) {
                 var _this1 = _this;
                 e.preventDefault();
                 e.stopPropagation();
-                if (file.status === $a601ff30f483e917$export$2e2bcd8739ae039.UPLOADING) return $a601ff30f483e917$export$2e2bcd8739ae039.confirm(_this.options.dictCancelUploadConfirmation, function () {
+                if (file.status === $a601ff30f483e917$export$2e2bcd8739ae039.UPLOADING) return $a601ff30f483e917$export$2e2bcd8739ae039.confirm(_this.options.dictCancelUploadConfirmation, function() {
                     return _this1.removeFile(file);
                 });
                 else {
                     var _this2 = _this;
-                    if (_this.options.dictRemoveFileConfirmation) return $a601ff30f483e917$export$2e2bcd8739ae039.confirm(_this.options.dictRemoveFileConfirmation, function () {
+                    if (_this.options.dictRemoveFileConfirmation) return $a601ff30f483e917$export$2e2bcd8739ae039.confirm(_this.options.dictRemoveFileConfirmation, function() {
                         return _this2.removeFile(file);
                     });
                     else return _this.removeFile(file);
@@ -661,19 +658,19 @@ var $b657c03155fc27e2$var$defaultOptions = {
             };
             var _iteratorNormalCompletion2 = true, _didIteratorError2 = false, _iteratorError2 = undefined;
             try {
-                for (var _iterator2 = file.previewElement.querySelectorAll("[data-dz-remove]")[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                for(var _iterator2 = file.previewElement.querySelectorAll("[data-dz-remove]")[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true){
                     var removeLink = _step2.value;
                     removeLink.addEventListener("click", removeFileEvent);
                 }
             } catch (err) {
                 _didIteratorError2 = true;
                 _iteratorError2 = err;
-            } finally {
+            } finally{
                 try {
                     if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
                         _iterator2.return();
                     }
-                } finally {
+                } finally{
                     if (_didIteratorError2) {
                         throw _iteratorError2;
                     }
@@ -682,18 +679,18 @@ var $b657c03155fc27e2$var$defaultOptions = {
         }
     },
     // Called whenever a file is removed.
-    removedfile: function (file) {
+    removedfile: function(file) {
         if (file.previewElement != null && file.previewElement.parentNode != null) file.previewElement.parentNode.removeChild(file.previewElement);
         return this._updateMaxFilesReachedClass();
     },
     // Called when a thumbnail has been generated
     // Receives `file` and `dataUrl`
-    thumbnail: function (file, dataUrl) {
+    thumbnail: function(file, dataUrl) {
         if (file.previewElement) {
             file.previewElement.classList.remove("dz-file-preview");
             var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
             try {
-                for (var _iterator = file.previewElement.querySelectorAll("[data-dz-thumbnail]")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for(var _iterator = file.previewElement.querySelectorAll("[data-dz-thumbnail]")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                     var thumbnailElement = _step.value;
                     thumbnailElement.alt = file.name;
                     thumbnailElement.src = dataUrl;
@@ -701,43 +698,43 @@ var $b657c03155fc27e2$var$defaultOptions = {
             } catch (err) {
                 _didIteratorError = true;
                 _iteratorError = err;
-            } finally {
+            } finally{
                 try {
                     if (!_iteratorNormalCompletion && _iterator.return != null) {
                         _iterator.return();
                     }
-                } finally {
+                } finally{
                     if (_didIteratorError) {
                         throw _iteratorError;
                     }
                 }
             }
-            return setTimeout(function () {
+            return setTimeout(function() {
                 return file.previewElement.classList.add("dz-image-preview");
             }, 1);
         }
     },
     // Called whenever an error occurs
     // Receives `file` and `message`
-    error: function (file, message) {
+    error: function(file, message) {
         if (file.previewElement) {
             file.previewElement.classList.add("dz-error");
             if (typeof message !== "string" && message.error) message = message.error;
             var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
             try {
-                for (var _iterator = file.previewElement.querySelectorAll("[data-dz-errormessage]")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for(var _iterator = file.previewElement.querySelectorAll("[data-dz-errormessage]")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                     var node = _step.value;
                     node.textContent = message;
                 }
             } catch (err) {
                 _didIteratorError = true;
                 _iteratorError = err;
-            } finally {
+            } finally{
                 try {
                     if (!_iteratorNormalCompletion && _iterator.return != null) {
                         _iterator.return();
                     }
-                } finally {
+                } finally{
                     if (_didIteratorError) {
                         throw _iteratorError;
                     }
@@ -745,38 +742,38 @@ var $b657c03155fc27e2$var$defaultOptions = {
             }
         }
     },
-    errormultiple: function () {
+    errormultiple: function() {
     },
     // Called when a file gets processed. Since there is a cue, not all added
     // files are processed immediately.
     // Receives `file`
-    processing: function (file) {
+    processing: function(file) {
         if (file.previewElement) {
             file.previewElement.classList.add("dz-processing");
             if (file._removeLink) return file._removeLink.innerHTML = this.options.dictCancelUpload;
         }
     },
-    processingmultiple: function () {
+    processingmultiple: function() {
     },
     // Called whenever the upload progress gets updated.
     // Receives `file`, `progress` (percentage 0-100) and `bytesSent`.
     // To get the total number of bytes of the file, use `file.size`
-    uploadprogress: function (file, progress, bytesSent) {
+    uploadprogress: function(file, progress, bytesSent) {
         var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
         if (file.previewElement) try {
-            for (var _iterator = file.previewElement.querySelectorAll("[data-dz-uploadprogress]")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for(var _iterator = file.previewElement.querySelectorAll("[data-dz-uploadprogress]")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                 var node = _step.value;
                 node.nodeName === "PROGRESS" ? node.value = progress : node.style.width = "".concat(progress, "%");
             }
         } catch (err) {
             _didIteratorError = true;
             _iteratorError = err;
-        } finally {
+        } finally{
             try {
                 if (!_iteratorNormalCompletion && _iterator.return != null) {
                     _iterator.return();
                 }
-            } finally {
+            } finally{
                 if (_didIteratorError) {
                     throw _iteratorError;
                 }
@@ -785,52 +782,51 @@ var $b657c03155fc27e2$var$defaultOptions = {
     },
     // Called whenever the total upload progress gets updated.
     // Called with totalUploadProgress (0-100), totalBytes and totalBytesSent
-    totaluploadprogress: function () {
+    totaluploadprogress: function() {
     },
     // Called just before the file is sent. Gets the `xhr` object as second
     // parameter, so you can modify it (for example to add a CSRF token) and a
     // `formData` object to add additional information.
-    sending: function () {
+    sending: function() {
     },
-    sendingmultiple: function () {
+    sendingmultiple: function() {
     },
     // When the complete upload is finished and successful
     // Receives `file`
-    success: function (file) {
+    success: function(file) {
         if (file.previewElement) return file.previewElement.classList.add("dz-success");
     },
-    successmultiple: function () {
+    successmultiple: function() {
     },
     // When the upload is canceled.
-    canceled: function (file) {
+    canceled: function(file) {
         return this.emit("error", file, this.options.dictUploadCanceled);
     },
-    canceledmultiple: function () {
+    canceledmultiple: function() {
     },
     // When the upload is finished, either with success or an error.
     // Receives `file`
-    complete: function (file) {
+    complete: function(file) {
         if (file._removeLink) file._removeLink.innerHTML = this.options.dictRemoveFile;
         if (file.previewElement) return file.previewElement.classList.add("dz-complete");
     },
-    completemultiple: function () {
+    completemultiple: function() {
     },
-    maxfilesexceeded: function () {
+    maxfilesexceeded: function() {
     },
-    maxfilesreached: function () {
+    maxfilesreached: function() {
     },
-    queuecomplete: function () {
+    queuecomplete: function() {
     },
-    addedfiles: function () {
+    addedfiles: function() {
     }
 };
 var $b657c03155fc27e2$export$2e2bcd8739ae039 = $b657c03155fc27e2$var$defaultOptions;
 
 
-var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) {
+var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function(Emitter) {
     "use strict";
     $6mU8w$swchelpers.inherits($a601ff30f483e917$export$2e2bcd8739ae039, Emitter);
-
     function $a601ff30f483e917$export$2e2bcd8739ae039(el, options) {
         $6mU8w$swchelpers.classCallCheck(this, $a601ff30f483e917$export$2e2bcd8739ae039);
         var _this;
@@ -848,8 +844,11 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
         $a601ff30f483e917$export$2e2bcd8739ae039.instances.push($6mU8w$swchelpers.assertThisInitialized(_this));
         // Put the dropzone inside the element itself.
         _this.element.dropzone = $6mU8w$swchelpers.assertThisInitialized(_this);
-        var elementOptions = (left = $a601ff30f483e917$export$2e2bcd8739ae039.optionsForElement(_this.element)) != null ? left : {};
-        _this.options = $parcel$interopDefault($6mU8w$justextend)(true, {}, $b657c03155fc27e2$export$2e2bcd8739ae039, elementOptions, options != null ? options : {});
+        var elementOptions = (left = $a601ff30f483e917$export$2e2bcd8739ae039.optionsForElement(_this.element)) != null ? left : {
+        };
+        _this.options = $parcel$interopDefault($6mU8w$justextend)(true, {
+        }, $b657c03155fc27e2$export$2e2bcd8739ae039, elementOptions, options != null ? options : {
+        });
         _this.options.previewTemplate = _this.options.previewTemplate.replace(/\n*/g, "");
         // If the browser failed, just call the fallback and leave
         if (_this.options.forceFallback || !$a601ff30f483e917$export$2e2bcd8739ae039.isBrowserSupported()) return $6mU8w$swchelpers.possibleConstructorReturn(_this, _this.options.fallback.call($6mU8w$swchelpers.assertThisInitialized(_this)));
@@ -865,12 +864,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             delete _this.options.acceptedMimeTypes;
         }
         // Backwards compatibility
-        if (_this.options.renameFilename != null) _this.options.renameFile = function (file) {
+        if (_this.options.renameFilename != null) _this.options.renameFile = function(file) {
             return _this.options.renameFilename.call($6mU8w$swchelpers.assertThisInitialized(_this), file.name, file);
         };
         if (typeof _this.options.method === "string") _this.options.method = _this.options.method.toUpperCase();
         if ((fallback = _this.getExistingFallback()) && fallback.parentNode) // Remove the fallback
-            fallback.parentNode.removeChild(fallback);
+        fallback.parentNode.removeChild(fallback);
         // Display previews in the previewsContainer element or the Dropzone element unless explicitly set to false
         if (_this.options.previewsContainer !== false) {
             if (_this.options.previewsContainer) _this.previewsContainer = $a601ff30f483e917$export$2e2bcd8739ae039.getElement(_this.options.previewsContainer, "previewsContainer");
@@ -885,15 +884,14 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
         _this.init();
         return _this;
     }
-
     $6mU8w$swchelpers.createClass($a601ff30f483e917$export$2e2bcd8739ae039, [
         {
             // Returns all files that have been accepted
             key: "getAcceptedFiles",
             value: function getAcceptedFiles() {
-                return this.files.filter(function (file) {
+                return this.files.filter(function(file) {
                     return file.accepted;
-                }).map(function (file) {
+                }).map(function(file) {
                     return file;
                 });
             }
@@ -903,9 +901,9 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             // Not sure when that's going to be useful, but added for completeness.
             key: "getRejectedFiles",
             value: function getRejectedFiles() {
-                return this.files.filter(function (file) {
+                return this.files.filter(function(file) {
                     return !file.accepted;
-                }).map(function (file) {
+                }).map(function(file) {
                     return file;
                 });
             }
@@ -913,9 +911,9 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
         {
             key: "getFilesWithStatus",
             value: function getFilesWithStatus(status) {
-                return this.files.filter(function (file) {
+                return this.files.filter(function(file) {
                     return file.status === status;
-                }).map(function (file) {
+                }).map(function(file) {
                     return file;
                 });
             }
@@ -943,9 +941,9 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             // Files that are either queued or uploading
             key: "getActiveFiles",
             value: function getActiveFiles() {
-                return this.files.filter(function (file) {
+                return this.files.filter(function(file) {
                     return file.status === $a601ff30f483e917$export$2e2bcd8739ae039.UPLOADING || file.status === $a601ff30f483e917$export$2e2bcd8739ae039.QUEUED;
-                }).map(function (file) {
+                }).map(function(file) {
                     return file;
                 });
             }
@@ -955,14 +953,13 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             // can (and should) setup event listeners inside this function.
             key: "init",
             value: function init() {
-                var _this12 = this, _this1 = this, _this2 = this, _this3 = this, _this4 = this, _this5 = this,
-                    _this6 = this, _this7 = this, _this8 = this, _this9 = this, _this10 = this;
+                var _this12 = this, _this1 = this, _this2 = this, _this3 = this, _this4 = this, _this5 = this, _this6 = this, _this7 = this, _this8 = this, _this9 = this, _this10 = this;
                 // In case it isn't set already
                 if (this.element.tagName === "form") this.element.setAttribute("enctype", "multipart/form-data");
                 if (this.element.classList.contains("dropzone") && !this.element.querySelector(".dz-message")) this.element.appendChild($a601ff30f483e917$export$2e2bcd8739ae039.createElement("<div class=\"dz-default dz-message\"><button class=\"dz-button\" type=\"button\">".concat(this.options.dictDefaultMessage, "</button></div>")));
                 if (this.clickableElements.length) {
                     var _this = this;
-                    var setupHiddenFileInput = function () {
+                    var setupHiddenFileInput = function() {
                         var _this11 = _this;
                         if (_this.hiddenFileInput) _this.hiddenFileInput.parentNode.removeChild(_this.hiddenFileInput);
                         _this.hiddenFileInput = document.createElement("input");
@@ -982,23 +979,23 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                         _this.hiddenFileInput.style.height = "0";
                         _this.hiddenFileInput.style.width = "0";
                         $a601ff30f483e917$export$2e2bcd8739ae039.getElement(_this.options.hiddenInputContainer, "hiddenInputContainer").appendChild(_this.hiddenFileInput);
-                        _this.hiddenFileInput.addEventListener("change", function () {
+                        _this.hiddenFileInput.addEventListener("change", function() {
                             var _hiddenFileInput = _this11.hiddenFileInput, files = _hiddenFileInput.files;
                             var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                             if (files.length) try {
-                                for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                                     var file = _step.value;
                                     _this11.addFile(file);
                                 }
                             } catch (err) {
                                 _didIteratorError = true;
                                 _iteratorError = err;
-                            } finally {
+                            } finally{
                                 try {
                                     if (!_iteratorNormalCompletion && _iterator.return != null) {
                                         _iterator.return();
                                     }
-                                } finally {
+                                } finally{
                                     if (_didIteratorError) {
                                         throw _iteratorError;
                                     }
@@ -1016,48 +1013,48 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     // Setup all event listeners on the Dropzone object itself.
                     // They're not in @setupEventListeners() because they shouldn't be removed
                     // again when the dropzone gets disabled.
-                    for (var _iterator = this.events[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = this.events[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var eventName = _step.value;
                         this.on(eventName, this.options[eventName]);
                     }
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
                     }
                 }
-                this.on("uploadprogress", function () {
+                this.on("uploadprogress", function() {
                     return _this12.updateTotalUploadProgress();
                 });
-                this.on("removedfile", function () {
+                this.on("removedfile", function() {
                     return _this1.updateTotalUploadProgress();
                 });
-                this.on("canceled", function (file) {
+                this.on("canceled", function(file) {
                     return _this2.emit("complete", file);
                 });
                 // Emit a `queuecomplete` event if all files finished uploading.
-                this.on("complete", function (file) {
+                this.on("complete", function(file) {
                     var _this11 = _this3;
                     if (_this3.getAddedFiles().length === 0 && _this3.getUploadingFiles().length === 0 && _this3.getQueuedFiles().length === 0) // This needs to be deferred so that `queuecomplete` really triggers after `complete`
-                        return setTimeout(function () {
-                            return _this11.emit("queuecomplete");
-                        }, 0);
+                    return setTimeout(function() {
+                        return _this11.emit("queuecomplete");
+                    }, 0);
                 });
                 var containsFiles = function containsFiles(e) {
                     if (e.dataTransfer.types) // Because e.dataTransfer.types is an Object in
-                        // IE, we need to iterate like this instead of
-                        // using e.dataTransfer.types.some()
-                        for (var i = 0; i < e.dataTransfer.types.length; i++) {
-                            if (e.dataTransfer.types[i] === "Files") return true;
-                        }
+                    // IE, we need to iterate like this instead of
+                    // using e.dataTransfer.types.some()
+                    for(var i = 0; i < e.dataTransfer.types.length; i++){
+                        if (e.dataTransfer.types[i] === "Files") return true;
+                    }
                     return false;
                 };
                 var noPropagation = function noPropagation(e) {
@@ -1074,14 +1071,14 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     {
                         element: this.element,
                         events: {
-                            dragstart: function (e) {
+                            dragstart: function(e) {
                                 return _this4.emit("dragstart", e);
                             },
-                            dragenter: function (e) {
+                            dragenter: function(e) {
                                 noPropagation(e);
                                 return _this5.emit("dragenter", e);
                             },
-                            dragover: function (e) {
+                            dragover: function(e) {
                                 // Makes it possible to drag files from chrome's download bar
                                 // http://stackoverflow.com/questions/19526430/drag-and-drop-file-uploads-from-chrome-downloads-bar
                                 // Try is required to prevent bug in Internet Explorer 11 (SCRIPT65535 exception)
@@ -1094,25 +1091,25 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                                 noPropagation(e);
                                 return _this6.emit("dragover", e);
                             },
-                            dragleave: function (e) {
+                            dragleave: function(e) {
                                 return _this7.emit("dragleave", e);
                             },
-                            drop: function (e) {
+                            drop: function(e) {
                                 noPropagation(e);
                                 return _this8.drop(e);
                             },
-                            dragend: function (e) {
+                            dragend: function(e) {
                                 return _this9.emit("dragend", e);
                             }
                         }
-                    },
+                    }, 
                 ];
-                this.clickableElements.forEach(function (clickableElement) {
+                this.clickableElements.forEach(function(clickableElement) {
                     var _this11 = _this10;
                     return _this10.listeners.push({
                         element: clickableElement,
                         events: {
-                            click: function (evt) {
+                            click: function(evt) {
                                 // Only the actual dropzone or the message element should trigger file selection
                                 if (clickableElement !== _this11.element || evt.target === _this11.element || $a601ff30f483e917$export$2e2bcd8739ae039.elementInside(evt.target, _this11.element.querySelector(".dz-message"))) _this11.hiddenFileInput.click(); // Forward the click
                                 return true;
@@ -1148,7 +1145,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 if (activeFiles.length) {
                     var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                     try {
-                        for (var _iterator = this.getActiveFiles()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        for(var _iterator = this.getActiveFiles()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                             var file = _step.value;
                             totalBytesSent += file.upload.bytesSent;
                             totalBytes += file.upload.total;
@@ -1156,12 +1153,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     } catch (err) {
                         _didIteratorError = true;
                         _iteratorError = err;
-                    } finally {
+                    } finally{
                         try {
                             if (!_iteratorNormalCompletion && _iterator.return != null) {
                                 _iterator.return();
                             }
-                        } finally {
+                        } finally{
                             if (_didIteratorError) {
                                 throw _iteratorError;
                             }
@@ -1223,19 +1220,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 var getFallback = function getFallback(elements) {
                     var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                     try {
-                        for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        for(var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                             var el = _step.value;
                             if (/(^| )fallback($| )/.test(el.className)) return el;
                         }
                     } catch (err) {
                         _didIteratorError = true;
                         _iteratorError = err;
-                    } finally {
+                    } finally{
                         try {
                             if (!_iteratorNormalCompletion && _iterator.return != null) {
                                 _iterator.return();
                             }
-                        } finally {
+                        } finally{
                             if (_didIteratorError) {
                                 throw _iteratorError;
                             }
@@ -1244,10 +1241,10 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 };
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
-                    for (var _iterator = [
+                    for(var _iterator = [
                         "div",
                         "form"
-                    ][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    ][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var tagName = _step.value;
                         var fallback;
                         if (fallback = getFallback(this.element.getElementsByTagName(tagName))) return fallback;
@@ -1255,12 +1252,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -1272,10 +1269,10 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             // Activates all listeners stored in @listeners
             key: "setupEventListeners",
             value: function setupEventListeners() {
-                return this.listeners.map(function (elementListeners) {
-                    return (function () {
+                return this.listeners.map(function(elementListeners) {
+                    return (function() {
                         var result = [];
-                        for (var event in elementListeners.events) {
+                        for(var event in elementListeners.events){
                             var listener = elementListeners.events[event];
                             result.push(elementListeners.element.addEventListener(event, listener, false));
                         }
@@ -1288,10 +1285,10 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             // Deactivates all listeners stored in @listeners
             key: "removeEventListeners",
             value: function removeEventListeners() {
-                return this.listeners.map(function (elementListeners) {
-                    return (function () {
+                return this.listeners.map(function(elementListeners) {
+                    return (function() {
                         var result = [];
-                        for (var event in elementListeners.events) {
+                        for(var event in elementListeners.events){
                             var listener = elementListeners.events[event];
                             result.push(elementListeners.element.removeEventListener(event, listener, false));
                         }
@@ -1305,12 +1302,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             key: "disable",
             value: function disable() {
                 var _this = this;
-                this.clickableElements.forEach(function (element) {
+                this.clickableElements.forEach(function(element) {
                     return element.classList.remove("dz-clickable");
                 });
                 this.removeEventListeners();
                 this.disabled = true;
-                return this.files.map(function (file) {
+                return this.files.map(function(file) {
                     return _this.cancelUpload(file);
                 });
             }
@@ -1319,7 +1316,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             key: "enable",
             value: function enable() {
                 delete this.disabled;
-                this.clickableElements.forEach(function (element) {
+                this.clickableElements.forEach(function(element) {
                     return element.classList.add("dz-clickable");
                 });
                 return this.setupEventListeners();
@@ -1339,7 +1336,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                         "kb",
                         "b"
                     ];
-                    for (var i = 0; i < units.length; i++) {
+                    for(var i = 0; i < units.length; i++){
                         var unit = units[i];
                         var cutoff = Math.pow(this.options.filesizeBase, 4 - i) / 10;
                         if (size >= cutoff) {
@@ -1371,12 +1368,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 // Convert the FileList to an Array
                 // This is necessary for IE11
                 var files = [];
-                for (var i = 0; i < e.dataTransfer.files.length; i++) files[i] = e.dataTransfer.files[i];
+                for(var i = 0; i < e.dataTransfer.files.length; i++)files[i] = e.dataTransfer.files[i];
                 // Even if it's a folder, files.length will contain the folders.
                 if (files.length) {
                     var _dataTransfer = e.dataTransfer, items = _dataTransfer.items;
                     if (items && items.length && items[0].webkitGetAsEntry != null) // The browser supports dropping of folders, so handle items instead of files
-                        this._addFilesFromItems(items);
+                    this._addFilesFromItems(items);
                     else this.handleFiles(files);
                 }
                 this.emit("addedfiles", files);
@@ -1385,7 +1382,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
         {
             key: "paste",
             value: function paste(e) {
-                if ($a601ff30f483e917$var$__guard__(e != null ? e.clipboardData : undefined, function (x) {
+                if ($a601ff30f483e917$var$__guard__(e != null ? e.clipboardData : undefined, function(x) {
                     return x.items;
                 }) == null) return;
                 this.emit("paste", e);
@@ -1398,19 +1395,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             value: function handleFiles(files) {
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
-                    for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var file = _step.value;
                         this.addFile(file);
                     }
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -1424,17 +1421,17 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             key: "_addFilesFromItems",
             value: function _addFilesFromItems(items) {
                 var _this = this;
-                return (function () {
+                return (function() {
                     var result = [];
                     var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                     try {
-                        for (var _iterator = items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        for(var _iterator = items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                             var item = _step.value;
                             var entry;
                             if (item.webkitGetAsEntry != null && (entry = item.webkitGetAsEntry())) {
                                 if (entry.isFile) result.push(_this.addFile(item.getAsFile()));
                                 else if (entry.isDirectory) // Append all files from that directory to files
-                                    result.push(_this._addFilesFromDirectory(entry, entry.name));
+                                result.push(_this._addFilesFromDirectory(entry, entry.name));
                                 else result.push(undefined);
                             } else if (item.getAsFile != null) {
                                 if (item.kind == null || item.kind === "file") result.push(_this.addFile(item.getAsFile()));
@@ -1444,12 +1441,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     } catch (err) {
                         _didIteratorError = true;
                         _iteratorError = err;
-                    } finally {
+                    } finally{
                         try {
                             if (!_iteratorNormalCompletion && _iterator.return != null) {
                                 _iterator.return();
                             }
-                        } finally {
+                        } finally{
                             if (_didIteratorError) {
                                 throw _iteratorError;
                             }
@@ -1465,21 +1462,21 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             value: function _addFilesFromDirectory(directory, path) {
                 var _this = this;
                 var dirReader = directory.createReader();
-                var errorHandler = function (error) {
-                    return $a601ff30f483e917$var$__guardMethod__(console, "log", function (o) {
+                var errorHandler = function(error) {
+                    return $a601ff30f483e917$var$__guardMethod__(console, "log", function(o) {
                         return o.log(error);
                     });
                 };
-                var readEntries = function () {
+                var readEntries = function() {
                     var _this1 = _this;
-                    return dirReader.readEntries(function (entries) {
+                    return dirReader.readEntries(function(entries) {
                         if (entries.length > 0) {
                             var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                             try {
-                                for (var _iterator = entries[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                for(var _iterator = entries[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                                     var entry = _step.value;
                                     var _this2 = _this1;
-                                    if (entry.isFile) entry.file(function (file) {
+                                    if (entry.isFile) entry.file(function(file) {
                                         if (_this2.options.ignoreHiddenFiles && file.name.substring(0, 1) === ".") return;
                                         file.fullPath = "".concat(path, "/").concat(file.name);
                                         return _this2.addFile(file);
@@ -1489,12 +1486,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                             } catch (err) {
                                 _didIteratorError = true;
                                 _iteratorError = err;
-                            } finally {
+                            } finally{
                                 try {
                                     if (!_iteratorNormalCompletion && _iterator.return != null) {
                                         _iterator.return();
                                     }
-                                } finally {
+                                } finally{
                                     if (_didIteratorError) {
                                         throw _iteratorError;
                                     }
@@ -1545,7 +1542,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 file.status = $a601ff30f483e917$export$2e2bcd8739ae039.ADDED;
                 this.emit("addedfile", file);
                 this._enqueueThumbnail(file);
-                this.accept(file, function (error) {
+                this.accept(file, function(error) {
                     if (error) {
                         file.accepted = false;
                         _this._errorProcessing([
@@ -1554,7 +1551,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     } else {
                         file.accepted = true;
                         if (_this.options.autoQueue) _this.enqueueFile(file);
-                        // Will set .accepted = true
+                         // Will set .accepted = true
                     }
                     _this._updateMaxFilesReachedClass();
                 });
@@ -1566,19 +1563,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             value: function enqueueFiles(files) {
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
-                    for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var file = _step.value;
                         this.enqueueFile(file);
                     }
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -1593,7 +1590,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 if (file.status === $a601ff30f483e917$export$2e2bcd8739ae039.ADDED && file.accepted === true) {
                     var _this = this;
                     file.status = $a601ff30f483e917$export$2e2bcd8739ae039.QUEUED;
-                    if (this.options.autoProcessQueue) return setTimeout(function () {
+                    if (this.options.autoProcessQueue) return setTimeout(function() {
                         return _this.processQueue();
                     }, 0); // Deferring the call
                 } else throw new Error("This file can't be queued because it has already been processed or was rejected.");
@@ -1605,7 +1602,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 if (this.options.createImageThumbnails && file.type.match(/image.*/) && file.size <= this.options.maxThumbnailFilesize * 1048576) {
                     var _this = this;
                     this._thumbnailQueue.push(file);
-                    return setTimeout(function () {
+                    return setTimeout(function() {
                         return _this._processThumbnailQueue();
                     }, 0); // Deferring the call
                 }
@@ -1618,7 +1615,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 if (this._processingThumbnail || this._thumbnailQueue.length === 0) return;
                 this._processingThumbnail = true;
                 var file = this._thumbnailQueue.shift();
-                return this.createThumbnail(file, this.options.thumbnailWidth, this.options.thumbnailHeight, this.options.thumbnailMethod, true, function (dataUrl) {
+                return this.createThumbnail(file, this.options.thumbnailWidth, this.options.thumbnailHeight, this.options.thumbnailMethod, true, function(dataUrl) {
                     _this.emit("thumbnail", file, dataUrl);
                     _this._processingThumbnail = false;
                     return _this._processThumbnailQueue();
@@ -1643,19 +1640,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 if (cancelIfNecessary == null) cancelIfNecessary = false;
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
-                    for (var _iterator = this.files.slice()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = this.files.slice()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var file = _step.value;
                         if (file.status !== $a601ff30f483e917$export$2e2bcd8739ae039.UPLOADING || cancelIfNecessary) this.removeFile(file);
                     }
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -1671,15 +1668,15 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             key: "resizeImage",
             value: function resizeImage(file, width, height, resizeMethod, callback) {
                 var _this = this;
-                return this.createThumbnail(file, width, height, resizeMethod, true, function (dataUrl, canvas) {
+                return this.createThumbnail(file, width, height, resizeMethod, true, function(dataUrl, canvas) {
                     if (canvas == null) // The image has not been resized
-                        return callback(file);
+                    return callback(file);
                     else {
                         var _options = _this.options, resizeMimeType = _options.resizeMimeType;
                         if (resizeMimeType == null) resizeMimeType = file.type;
                         var resizedDataURL = canvas.toDataURL(resizeMimeType, _this.options.resizeQuality);
                         if (resizeMimeType === "image/jpeg" || resizeMimeType === "image/jpg") // Now add the original EXIF information
-                            resizedDataURL = $a601ff30f483e917$var$ExifRestore.restore(file.dataURL, resizedDataURL);
+                        resizedDataURL = $a601ff30f483e917$var$ExifRestore.restore(file.dataURL, resizedDataURL);
                         return callback($a601ff30f483e917$export$2e2bcd8739ae039.dataURItoBlob(resizedDataURL));
                     }
                 });
@@ -1690,7 +1687,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             value: function createThumbnail(file, width, height, resizeMethod, fixOrientation, callback) {
                 var _this = this;
                 var fileReader = new FileReader();
-                fileReader.onload = function () {
+                fileReader.onload = function() {
                     file.dataURL = fileReader.result;
                     // Don't bother creating a thumbnail for SVG images since they're vector
                     if (file.type === "image/svg+xml") {
@@ -1719,7 +1716,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     if (callback) callback();
                 } else {
                     var _this = this;
-                    var onDone = function (thumbnail) {
+                    var onDone = function(thumbnail) {
                         _this.emit("thumbnail", mockFile, thumbnail);
                         if (callback) callback();
                     };
@@ -1738,17 +1735,17 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 if (crossOrigin) img.crossOrigin = crossOrigin;
                 // fixOrientation is not needed anymore with browsers handling imageOrientation
                 fixOrientation = getComputedStyle(document.body)["imageOrientation"] == "from-image" ? false : fixOrientation;
-                img.onload = function () {
+                img.onload = function() {
                     var _this1 = _this;
-                    var loadExif = function (callback) {
+                    var loadExif = function(callback) {
                         return callback(1);
                     };
-                    if (typeof EXIF !== "undefined" && EXIF !== null && fixOrientation) loadExif = function (callback) {
-                        return EXIF.getData(img, function () {
+                    if (typeof EXIF !== "undefined" && EXIF !== null && fixOrientation) loadExif = function(callback) {
+                        return EXIF.getData(img, function() {
                             return callback(EXIF.getTag(this, "Orientation"));
                         });
                     };
-                    return loadExif(function (orientation) {
+                    return loadExif(function(orientation) {
                         file.width = img.width;
                         file.height = img.height;
                         var resizeInfo = _this1.options.resize.call(_this1, file, width, height, resizeMethod);
@@ -1760,7 +1757,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                             canvas.width = resizeInfo.trgHeight;
                             canvas.height = resizeInfo.trgWidth;
                         }
-                        switch (orientation) {
+                        switch(orientation){
                             case 2:
                                 // horizontal flip
                                 ctx.translate(canvas.width, 0);
@@ -1820,10 +1817,10 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 var queuedFiles = this.getQueuedFiles();
                 if (!(queuedFiles.length > 0)) return;
                 if (this.options.uploadMultiple) // The files should be uploaded in one request
-                    return this.processFiles(queuedFiles.slice(0, parallelUploads - processingLength));
-                else while (i < parallelUploads) {
+                return this.processFiles(queuedFiles.slice(0, parallelUploads - processingLength));
+                else while(i < parallelUploads){
                     if (!queuedFiles.length) return;
-                    // Nothing left to process
+                     // Nothing left to process
                     this.processFile(queuedFiles.shift());
                     i++;
                 }
@@ -1844,7 +1841,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             value: function processFiles(files) {
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
-                    for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var file = _step.value;
                         file.processing = true; // Backwards compatibility
                         file.status = $a601ff30f483e917$export$2e2bcd8739ae039.UPLOADING;
@@ -1853,12 +1850,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -1872,9 +1869,9 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             key: "_getFilesWithXhr",
             value: function _getFilesWithXhr(xhr) {
                 var files;
-                return files = this.files.filter(function (file) {
+                return files = this.files.filter(function(file) {
                     return file.xhr === xhr;
-                }).map(function (file) {
+                }).map(function(file) {
                     return file;
                 });
             }
@@ -1890,19 +1887,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     var groupedFiles = this._getFilesWithXhr(file.xhr);
                     var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                     try {
-                        for (var _iterator = groupedFiles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        for(var _iterator = groupedFiles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                             var groupedFile = _step.value;
                             groupedFile.status = $a601ff30f483e917$export$2e2bcd8739ae039.CANCELED;
                         }
                     } catch (err) {
                         _didIteratorError = true;
                         _iteratorError = err;
-                    } finally {
+                    } finally{
                         try {
                             if (!_iteratorNormalCompletion && _iterator.return != null) {
                                 _iterator.return();
                             }
-                        } finally {
+                        } finally{
                             if (_didIteratorError) {
                                 throw _iteratorError;
                             }
@@ -1911,19 +1908,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     if (typeof file.xhr !== "undefined") file.xhr.abort();
                     var _iteratorNormalCompletion1 = true, _didIteratorError1 = false, _iteratorError1 = undefined;
                     try {
-                        for (var _iterator1 = groupedFiles[Symbol.iterator](), _step1; !(_iteratorNormalCompletion1 = (_step1 = _iterator1.next()).done); _iteratorNormalCompletion1 = true) {
+                        for(var _iterator1 = groupedFiles[Symbol.iterator](), _step1; !(_iteratorNormalCompletion1 = (_step1 = _iterator1.next()).done); _iteratorNormalCompletion1 = true){
                             var groupedFile = _step1.value;
                             this.emit("canceled", groupedFile);
                         }
                     } catch (err) {
                         _didIteratorError1 = true;
                         _iteratorError1 = err;
-                    } finally {
+                    } finally{
                         try {
                             if (!_iteratorNormalCompletion1 && _iterator1.return != null) {
                                 _iterator1.return();
                             }
-                        } finally {
+                        } finally{
                             if (_didIteratorError1) {
                                 throw _iteratorError1;
                             }
@@ -1943,7 +1940,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
         {
             key: "resolveOption",
             value: function resolveOption(option) {
-                for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                for(var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++){
                     args[_key - 1] = arguments[_key];
                 }
                 if (typeof option === "function") return option.apply(this, args);
@@ -1962,7 +1959,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             key: "uploadFiles",
             value: function uploadFiles(files) {
                 var _this = this;
-                this._transformFiles(files, function (transformedFiles) {
+                this._transformFiles(files, function(transformedFiles) {
                     if (_this.options.chunking) {
                         // Chunking is not allowed to be used with `uploadMultiple` so we know
                         // that there is only __one__file.
@@ -1979,10 +1976,10 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                         var transformedFile = transformedFiles[0];
                         var startedChunkCount = 0;
                         file.upload.chunks = [];
-                        var handleNextChunk = function () {
+                        var handleNextChunk = function() {
                             var chunkIndex = 0;
                             // Find the next item in file.upload.chunks that is not defined yet.
-                            while (file.upload.chunks[chunkIndex] !== undefined) chunkIndex++;
+                            while(file.upload.chunks[chunkIndex] !== undefined)chunkIndex++;
                             // This means, that all chunks have already been started.
                             if (chunkIndex >= file.upload.totalChunkCount) return;
                             startedChunkCount++;
@@ -2006,7 +2003,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                                 dataBlock
                             ]);
                         };
-                        file.upload.finishedChunkUpload = function (chunk, response) {
+                        file.upload.finishedChunkUpload = function(chunk, response) {
                             var _this5 = _this4;
                             var allFinished = true;
                             chunk.status = $a601ff30f483e917$export$2e2bcd8739ae039.SUCCESS;
@@ -2016,19 +2013,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                             chunk.responseHeaders = chunk.xhr.getAllResponseHeaders();
                             // Leaving this reference to xhr will cause memory leaks.
                             chunk.xhr = null;
-                            for (var i = 0; i < file.upload.totalChunkCount; i++) {
+                            for(var i = 0; i < file.upload.totalChunkCount; i++){
                                 if (file.upload.chunks[i] === undefined) return handleNextChunk();
                                 if (file.upload.chunks[i].status !== $a601ff30f483e917$export$2e2bcd8739ae039.SUCCESS) allFinished = false;
                             }
-                            if (allFinished) _this4.options.chunksUploaded(file, function () {
+                            if (allFinished) _this4.options.chunksUploaded(file, function() {
                                 _this5._finished(files, response, null);
                             });
                         };
-                        if (_this.options.parallelChunkUploads) for (var i = 0; i < file.upload.totalChunkCount; i++) handleNextChunk();
+                        if (_this.options.parallelChunkUploads) for(var i = 0; i < file.upload.totalChunkCount; i++)handleNextChunk();
                         else handleNextChunk();
                     } else {
                         var dataBlocks = [];
-                        for (var i = 0; i < files.length; i++) dataBlocks[i] = {
+                        for(var i = 0; i < files.length; i++)dataBlocks[i] = {
                             name: _this._getParamName(i),
                             data: transformedFiles[i],
                             filename: files[i].upload.filename
@@ -2042,7 +2039,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             /// Returns the right chunk for given file and xhr
             key: "_getChunk",
             value: function _getChunk(file, xhr) {
-                for (var i = 0; i < file.upload.totalChunkCount; i++) {
+                for(var i = 0; i < file.upload.totalChunkCount; i++){
                     if (file.upload.chunks[i] !== undefined && file.upload.chunks[i].xhr === xhr) return file.upload.chunks[i];
                 }
             }
@@ -2060,27 +2057,27 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
                     // Put the xhr object in the file objects to be able to reference it later.
-                    for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var file = _step.value;
                         file.xhr = xhr;
                     }
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
                     }
                 }
                 if (files[0].upload.chunked) // Put the xhr object in the right chunk object, so it can be associated
-                    // later, and found with _getChunk.
-                    files[0].upload.chunks[dataBlocks[0].chunkIndex].xhr = xhr;
+                // later, and found with _getChunk.
+                files[0].upload.chunks[dataBlocks[0].chunkIndex].xhr = xhr;
                 var method = this.resolveOption(this.options.method, files, dataBlocks);
                 var url = this.resolveOption(this.options.url, files, dataBlocks);
                 xhr.open(method, url, true);
@@ -2089,28 +2086,29 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 if (timeout) xhr.timeout = this.resolveOption(this.options.timeout, files);
                 // Has to be after `.open()`. See https://github.com/enyo/dropzone/issues/179
                 xhr.withCredentials = !!this.options.withCredentials;
-                xhr.onload = function (e) {
+                xhr.onload = function(e) {
                     _this._finishedUploading(files, xhr, e);
                 };
-                xhr.ontimeout = function () {
+                xhr.ontimeout = function() {
                     _this7._handleUploadError(files, xhr, "Request timedout after ".concat(_this7.options.timeout / 1000, " seconds"));
                 };
-                xhr.onerror = function () {
+                xhr.onerror = function() {
                     _this8._handleUploadError(files, xhr);
                 };
                 // Some browsers do not have the .upload property
                 var progressObj = xhr.upload != null ? xhr.upload : xhr;
-                progressObj.onprogress = function (e) {
+                progressObj.onprogress = function(e) {
                     return _this9._updateFilesUploadProgress(files, xhr, e);
                 };
                 var headers = this.options.defaultHeaders ? {
                     Accept: "application/json",
                     "Cache-Control": "no-cache",
                     "X-Requested-With": "XMLHttpRequest"
-                } : {};
+                } : {
+                };
                 if (this.options.binaryBody) headers["Content-Type"] = files[0].type;
                 if (this.options.headers) $parcel$interopDefault($6mU8w$justextend)(headers, this.options.headers);
-                for (var headerName in headers) {
+                for(var headerName in headers){
                     var headerValue = headers[headerName];
                     if (headerValue) xhr.setRequestHeader(headerName, headerValue);
                 }
@@ -2119,19 +2117,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     try {
                         // Since the file is going to be sent as binary body, it doesn't make
                         // any sense to generate `FormData` for it.
-                        for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                             var file = _step.value;
                             this.emit("sending", file, xhr);
                         }
                     } catch (err) {
                         _didIteratorError = true;
                         _iteratorError = err;
-                    } finally {
+                    } finally{
                         try {
                             if (!_iteratorNormalCompletion && _iterator.return != null) {
                                 _iterator.return();
                             }
-                        } finally {
+                        } finally{
                             if (_didIteratorError) {
                                 throw _iteratorError;
                             }
@@ -2145,31 +2143,31 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     if (this.options.params) {
                         var additionalParams = this.options.params;
                         if (typeof additionalParams === "function") additionalParams = additionalParams.call(this, files, xhr, files[0].upload.chunked ? this._getChunk(files[0], xhr) : null);
-                        for (var key in additionalParams) {
+                        for(var key in additionalParams){
                             var value = additionalParams[key];
                             if (Array.isArray(value)) // The additional parameter contains an array,
-                                // so lets iterate over it to attach each value
-                                // individually.
-                                for (var i = 0; i < value.length; i++) formData.append(key, value[i]);
+                            // so lets iterate over it to attach each value
+                            // individually.
+                            for(var i = 0; i < value.length; i++)formData.append(key, value[i]);
                             else formData.append(key, value);
                         }
                     }
                     var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                     try {
                         // Let the user add additional data if necessary
-                        for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                             var file = _step.value;
                             this.emit("sending", file, xhr, formData);
                         }
                     } catch (err) {
                         _didIteratorError = true;
                         _iteratorError = err;
-                    } finally {
+                    } finally{
                         try {
                             if (!_iteratorNormalCompletion && _iterator.return != null) {
                                 _iterator.return();
                             }
-                        } finally {
+                        } finally{
                             if (_didIteratorError) {
                                 throw _iteratorError;
                             }
@@ -2179,7 +2177,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     this._addFormElementData(formData);
                     // Finally add the files
                     // Has to be last because some servers (eg: S3) expect the file to be the last parameter
-                    for (var i = 0; i < dataBlocks.length; i++) {
+                    for(var i = 0; i < dataBlocks.length; i++){
                         var dataBlock = dataBlocks[i];
                         formData.append(dataBlock.name, dataBlock.data, dataBlock.filename);
                     }
@@ -2191,8 +2189,8 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             // Transforms all files with this.options.transformFile and invokes done with the transformed files when done.
             key: "_transformFiles",
             value: function _transformFiles(files, done) {
-                var _this = this, _loop = function (i) {
-                    _this.options.transformFile.call(_this, files[i], function (transformedFile) {
+                var _this = this, _loop = function(i) {
+                    _this.options.transformFile.call(_this, files[i], function(transformedFile) {
                         transformedFiles[i] = transformedFile;
                         if (++doneCounter === files.length) done(transformedFiles);
                     });
@@ -2200,7 +2198,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 var transformedFiles = [];
                 // Clumsy way of handling asynchronous calls, until I get to add a proper Future library.
                 var doneCounter = 0;
-                for (var i = 0; i < files.length; i++) _loop(i);
+                for(var i = 0; i < files.length; i++)_loop(i);
             }
         },
         {
@@ -2210,7 +2208,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 // Take care of other input elements
                 if (this.element.tagName === "FORM") try {
-                    for (var _iterator = this.element.querySelectorAll("input, textarea, select, button")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = this.element.querySelectorAll("input, textarea, select, button")[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var input = _step.value;
                         var inputName = input.getAttribute("name");
                         var inputType = input.getAttribute("type");
@@ -2221,19 +2219,19 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                             var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                             try {
                                 // Possibly multiple values
-                                for (var _iterator = input.options[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                for(var _iterator = input.options[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                                     var option = _step.value;
                                     if (option.selected) formData.append(inputName, option.value);
                                 }
                             } catch (err) {
                                 _didIteratorError = true;
                                 _iteratorError = err;
-                            } finally {
+                            } finally{
                                 try {
                                     if (!_iteratorNormalCompletion && _iterator.return != null) {
                                         _iterator.return();
                                     }
-                                } finally {
+                                } finally{
                                     if (_didIteratorError) {
                                         throw _iteratorError;
                                     }
@@ -2244,12 +2242,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -2265,7 +2263,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 if (!files[0].upload.chunked) try {
                     // Handle file uploads without chunking
-                    for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var file = _step.value;
                         if (file.upload.total && file.upload.bytesSent && file.upload.bytesSent == file.upload.total) continue;
                         if (e) {
@@ -2282,12 +2280,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -2314,7 +2312,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     file.upload.progress = 0;
                     file.upload.total = 0;
                     file.upload.bytesSent = 0;
-                    for (var i = 0; i < file.upload.totalChunkCount; i++) if (file.upload.chunks[i] && typeof file.upload.chunks[i].progress !== "undefined") {
+                    for(var i = 0; i < file.upload.totalChunkCount; i++)if (file.upload.chunks[i] && typeof file.upload.chunks[i].progress !== "undefined") {
                         file.upload.progress += file.upload.chunks[i].progress;
                         file.upload.total += file.upload.chunks[i].total;
                         file.upload.bytesSent += file.upload.chunks[i].bytesSent;
@@ -2385,7 +2383,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             value: function _finished(files, responseText, e) {
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
-                    for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var file = _step.value;
                         file.status = $a601ff30f483e917$export$2e2bcd8739ae039.SUCCESS;
                         this.emit("success", file, responseText, e);
@@ -2394,12 +2392,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -2419,7 +2417,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
             value: function _errorProcessing(files, message, xhr) {
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
-                    for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var file = _step.value;
                         file.status = $a601ff30f483e917$export$2e2bcd8739ae039.ERROR;
                         this.emit("error", file, message, xhr);
@@ -2428,12 +2426,12 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -2459,8 +2457,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
 
      dropzone.on("dragEnter", function() { });
 
-     */
-                this.prototype.events = [
+     */ this.prototype.events = [
                     "drop",
                     "dragstart",
                     "dragend",
@@ -2488,7 +2485,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
                     "reset",
                     "maxfilesexceeded",
                     "maxfilesreached",
-                    "queuecomplete",
+                    "queuecomplete", 
                 ];
                 this.prototype._thumbnailQueue = [];
                 this.prototype._processingThumbnail = false;
@@ -2497,7 +2494,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function (Emitter) 
         {
             key: "uuidv4",
             value: function uuidv4() {
-                return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+                return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
                     var r = Math.random() * 16 | 0, v = c === "x" ? r : r & 3 | 8;
                     return v.toString(16);
                 });
@@ -2517,9 +2514,10 @@ $a601ff30f483e917$export$2e2bcd8739ae039.initClass();
 // And in html:
 //
 //     <form action="/upload" id="my-dropzone-element-id" class="dropzone"></form>
-$a601ff30f483e917$export$2e2bcd8739ae039.options = {};
+$a601ff30f483e917$export$2e2bcd8739ae039.options = {
+};
 // Returns the options for an element or undefined if none available.
-$a601ff30f483e917$export$2e2bcd8739ae039.optionsForElement = function (element) {
+$a601ff30f483e917$export$2e2bcd8739ae039.optionsForElement = function(element) {
     // Get the `Dropzone.options.elementId` for this element if it exists
     if (element.getAttribute("id")) return $a601ff30f483e917$export$2e2bcd8739ae039.options[$a601ff30f483e917$var$camelize(element.getAttribute("id"))];
     else return undefined;
@@ -2527,24 +2525,24 @@ $a601ff30f483e917$export$2e2bcd8739ae039.optionsForElement = function (element) 
 // Holds a list of all dropzone instances
 $a601ff30f483e917$export$2e2bcd8739ae039.instances = [];
 // Returns the dropzone for given element if any
-$a601ff30f483e917$export$2e2bcd8739ae039.forElement = function (element) {
+$a601ff30f483e917$export$2e2bcd8739ae039.forElement = function(element) {
     if (typeof element === "string") element = document.querySelector(element);
     if ((element != null ? element.dropzone : undefined) == null) throw new Error("No Dropzone found for given element. This is probably because you're trying to access it before Dropzone had the time to initialize. Use the `init` option to setup any additional observers on your Dropzone.");
     return element.dropzone;
 };
 // Looks for all .dropzone elements and creates a dropzone for them
-$a601ff30f483e917$export$2e2bcd8739ae039.discover = function () {
+$a601ff30f483e917$export$2e2bcd8739ae039.discover = function() {
     var dropzones;
     if (document.querySelectorAll) dropzones = document.querySelectorAll(".dropzone");
     else {
         dropzones = [];
         // IE :(
-        var checkElements = function (elements) {
-            return (function () {
+        var checkElements = function(elements) {
+            return (function() {
                 var result = [];
                 var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
                 try {
-                    for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for(var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                         var el = _step.value;
                         if (/(^| )dropzone($| )/.test(el.className)) result.push(dropzones.push(el));
                         else result.push(undefined);
@@ -2552,12 +2550,12 @@ $a601ff30f483e917$export$2e2bcd8739ae039.discover = function () {
                 } catch (err) {
                     _didIteratorError = true;
                     _iteratorError = err;
-                } finally {
+                } finally{
                     try {
                         if (!_iteratorNormalCompletion && _iterator.return != null) {
                             _iterator.return();
                         }
-                    } finally {
+                    } finally{
                         if (_didIteratorError) {
                             throw _iteratorError;
                         }
@@ -2569,11 +2567,11 @@ $a601ff30f483e917$export$2e2bcd8739ae039.discover = function () {
         checkElements(document.getElementsByTagName("div"));
         checkElements(document.getElementsByTagName("form"));
     }
-    return (function () {
+    return (function() {
         var result = [];
         var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
         try {
-            for (var _iterator = dropzones[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for(var _iterator = dropzones[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                 var dropzone = _step.value;
                 // Create a dropzone unless auto discover has been disabled for specific element
                 if ($a601ff30f483e917$export$2e2bcd8739ae039.optionsForElement(dropzone) !== false) result.push(new $a601ff30f483e917$export$2e2bcd8739ae039(dropzone));
@@ -2582,12 +2580,12 @@ $a601ff30f483e917$export$2e2bcd8739ae039.discover = function () {
         } catch (err) {
             _didIteratorError = true;
             _iteratorError = err;
-        } finally {
+        } finally{
             try {
                 if (!_iteratorNormalCompletion && _iterator.return != null) {
                     _iterator.return();
                 }
-            } finally {
+            } finally{
                 if (_didIteratorError) {
                     throw _iteratorError;
                 }
@@ -2608,21 +2606,21 @@ $a601ff30f483e917$export$2e2bcd8739ae039.discover = function () {
 // incorrectly **
 $a601ff30f483e917$export$2e2bcd8739ae039.blockedBrowsers = [
     // The mac os and windows phone version of opera 12 seems to have a problem with the File drag'n'drop API.
-    /opera.*(Macintosh|Windows Phone).*version\/12/i,
+    /opera.*(Macintosh|Windows Phone).*version\/12/i, 
 ];
 // Checks if the browser is supported
-$a601ff30f483e917$export$2e2bcd8739ae039.isBrowserSupported = function () {
+$a601ff30f483e917$export$2e2bcd8739ae039.isBrowserSupported = function() {
     var capableBrowser = true;
     if (window.File && window.FileReader && window.FileList && window.Blob && window.FormData && document.querySelector) {
         if (!("classList" in document.createElement("a"))) capableBrowser = false;
         else {
             if ($a601ff30f483e917$export$2e2bcd8739ae039.blacklistedBrowsers !== undefined) // Since this has been renamed, this makes sure we don't break older
-                // configuration.
-                $a601ff30f483e917$export$2e2bcd8739ae039.blockedBrowsers = $a601ff30f483e917$export$2e2bcd8739ae039.blacklistedBrowsers;
+            // configuration.
+            $a601ff30f483e917$export$2e2bcd8739ae039.blockedBrowsers = $a601ff30f483e917$export$2e2bcd8739ae039.blacklistedBrowsers;
             var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
             try {
                 // The browser supports the API, but may be blocked.
-                for (var _iterator = $a601ff30f483e917$export$2e2bcd8739ae039.blockedBrowsers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for(var _iterator = $a601ff30f483e917$export$2e2bcd8739ae039.blockedBrowsers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                     var regex = _step.value;
                     if (regex.test(navigator.userAgent)) {
                         capableBrowser = false;
@@ -2632,12 +2630,12 @@ $a601ff30f483e917$export$2e2bcd8739ae039.isBrowserSupported = function () {
             } catch (err) {
                 _didIteratorError = true;
                 _iteratorError = err;
-            } finally {
+            } finally{
                 try {
                     if (!_iteratorNormalCompletion && _iterator.return != null) {
                         _iterator.return();
                     }
-                } finally {
+                } finally{
                     if (_didIteratorError) {
                         throw _iteratorError;
                     }
@@ -2647,7 +2645,7 @@ $a601ff30f483e917$export$2e2bcd8739ae039.isBrowserSupported = function () {
     } else capableBrowser = false;
     return capableBrowser;
 };
-$a601ff30f483e917$export$2e2bcd8739ae039.dataURItoBlob = function (dataURI) {
+$a601ff30f483e917$export$2e2bcd8739ae039.dataURItoBlob = function(dataURI) {
     // convert base64 to raw binary data held in a string
     // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
     var byteString = atob(dataURI.split(",")[1]);
@@ -2656,7 +2654,7 @@ $a601ff30f483e917$export$2e2bcd8739ae039.dataURItoBlob = function (dataURI) {
     // write the bytes of the string to an ArrayBuffer
     var ab = new ArrayBuffer(byteString.length);
     var ia = new Uint8Array(ab);
-    for (var i = 0, end = byteString.length, asc = 0 <= end; asc ? i <= end : i >= end; asc ? i++ : i--) ia[i] = byteString.charCodeAt(i);
+    for(var i = 0, end = byteString.length, asc = 0 <= end; asc ? i <= end : i >= end; asc ? i++ : i--)ia[i] = byteString.charCodeAt(i);
     // write the ArrayBuffer to a blob
     return new Blob([
         ab
@@ -2665,61 +2663,61 @@ $a601ff30f483e917$export$2e2bcd8739ae039.dataURItoBlob = function (dataURI) {
     });
 };
 // Returns an array without the rejected item
-var $a601ff30f483e917$var$without = function (list, rejectedItem) {
-    return list.filter(function (item) {
+var $a601ff30f483e917$var$without = function(list, rejectedItem) {
+    return list.filter(function(item) {
         return item !== rejectedItem;
-    }).map(function (item) {
+    }).map(function(item) {
         return item;
     });
 };
 // abc-def_ghi -> abcDefGhi
-var $a601ff30f483e917$var$camelize = function (str) {
-    return str.replace(/[\-_](\w)/g, function (match) {
+var $a601ff30f483e917$var$camelize = function(str) {
+    return str.replace(/[\-_](\w)/g, function(match) {
         return match.charAt(1).toUpperCase();
     });
 };
 // Creates an element from string
-$a601ff30f483e917$export$2e2bcd8739ae039.createElement = function (string) {
+$a601ff30f483e917$export$2e2bcd8739ae039.createElement = function(string) {
     var div = document.createElement("div");
     div.innerHTML = string;
     return div.childNodes[0];
 };
 // Tests if given element is inside (or simply is) the container
-$a601ff30f483e917$export$2e2bcd8739ae039.elementInside = function (element, container) {
+$a601ff30f483e917$export$2e2bcd8739ae039.elementInside = function(element, container) {
     if (element === container) return true;
-    // Coffeescript doesn't support do/while loops
-    while (element = element.parentNode) {
+     // Coffeescript doesn't support do/while loops
+    while(element = element.parentNode){
         if (element === container) return true;
     }
     return false;
 };
-$a601ff30f483e917$export$2e2bcd8739ae039.getElement = function (el, name) {
+$a601ff30f483e917$export$2e2bcd8739ae039.getElement = function(el, name) {
     var element;
     if (typeof el === "string") element = document.querySelector(el);
     else if (el.nodeType != null) element = el;
     if (element == null) throw new Error("Invalid `".concat(name, "` option provided. Please provide a CSS selector or a plain HTML element."));
     return element;
 };
-$a601ff30f483e917$export$2e2bcd8739ae039.getElements = function (els, name) {
+$a601ff30f483e917$export$2e2bcd8739ae039.getElements = function(els, name) {
     var el, elements;
     if (els instanceof Array) {
         elements = [];
         try {
             var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
             try {
-                for (var _iterator = els[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for(var _iterator = els[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                     el = _step.value;
                     elements.push(this.getElement(el, name));
                 }
             } catch (err) {
                 _didIteratorError = true;
                 _iteratorError = err;
-            } finally {
+            } finally{
                 try {
                     if (!_iteratorNormalCompletion && _iterator.return != null) {
                         _iterator.return();
                     }
-                } finally {
+                } finally{
                     if (_didIteratorError) {
                         throw _iteratorError;
                     }
@@ -2732,19 +2730,19 @@ $a601ff30f483e917$export$2e2bcd8739ae039.getElements = function (els, name) {
         elements = [];
         var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
         try {
-            for (var _iterator = document.querySelectorAll(els)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for(var _iterator = document.querySelectorAll(els)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
                 el = _step.value;
                 elements.push(el);
             }
         } catch (err) {
             _didIteratorError = true;
             _iteratorError = err;
-        } finally {
+        } finally{
             try {
                 if (!_iteratorNormalCompletion && _iterator.return != null) {
                     _iterator.return();
                 }
-            } finally {
+            } finally{
                 if (_didIteratorError) {
                     throw _iteratorError;
                 }
@@ -2760,22 +2758,22 @@ $a601ff30f483e917$export$2e2bcd8739ae039.getElements = function (els, name) {
 //
 // The default implementation just uses `window.confirm` and then calls the
 // appropriate callback.
-$a601ff30f483e917$export$2e2bcd8739ae039.confirm = function (question, accepted, rejected) {
+$a601ff30f483e917$export$2e2bcd8739ae039.confirm = function(question, accepted, rejected) {
     if (window.confirm(question)) return accepted();
     else if (rejected != null) return rejected();
 };
 // Validates the mime type like this:
 //
 // https://developer.mozilla.org/en-US/docs/HTML/Element/input#attr-accept
-$a601ff30f483e917$export$2e2bcd8739ae039.isValidFile = function (file, acceptedFiles) {
+$a601ff30f483e917$export$2e2bcd8739ae039.isValidFile = function(file, acceptedFiles) {
     if (!acceptedFiles) return true;
-    // If there are no accepted mime types, it's OK
+     // If there are no accepted mime types, it's OK
     acceptedFiles = acceptedFiles.split(",");
     var mimeType = file.type;
     var baseMimeType = mimeType.replace(/\/.*$/, "");
     var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
     try {
-        for (var _iterator = acceptedFiles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        for(var _iterator = acceptedFiles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
             var validType = _step.value;
             validType = validType.trim();
             if (validType.charAt(0) === ".") {
@@ -2790,12 +2788,12 @@ $a601ff30f483e917$export$2e2bcd8739ae039.isValidFile = function (file, acceptedF
     } catch (err) {
         _didIteratorError = true;
         _iteratorError = err;
-    } finally {
+    } finally{
         try {
             if (!_iteratorNormalCompletion && _iterator.return != null) {
                 _iterator.return();
             }
-        } finally {
+        } finally{
             if (_didIteratorError) {
                 throw _iteratorError;
             }
@@ -2804,8 +2802,8 @@ $a601ff30f483e917$export$2e2bcd8739ae039.isValidFile = function (file, acceptedF
     return false;
 };
 // Augment jQuery
-if (typeof jQuery !== "undefined" && jQuery !== null) jQuery.fn.dropzone = function (options) {
-    return this.each(function () {
+if (typeof jQuery !== "undefined" && jQuery !== null) jQuery.fn.dropzone = function(options) {
+    return this.each(function() {
         return new $a601ff30f483e917$export$2e2bcd8739ae039(this, options);
     });
 };
@@ -2842,7 +2840,7 @@ var $a601ff30f483e917$var$detectVerticalSquash = function $a601ff30f483e917$var$
     var sy = 0;
     var ey = ih;
     var py = ih;
-    while (py > sy) {
+    while(py > sy){
         var alpha = data[(py - 1) * 4 + 3];
         if (alpha === 0) ey = py;
         else sy = py;
@@ -2861,13 +2859,11 @@ var $a601ff30f483e917$var$drawImageIOSFix = function $a601ff30f483e917$var$drawI
 var $a601ff30f483e917$var$ExifRestore = // Based on MinifyJpeg
 // Source: http://www.perry.cz/files/ExifRestorer.js
 // http://elicon.blog57.fc2.com/blog-entry-206.html
-    /*#__PURE__*/ function () {
+/*#__PURE__*/ function() {
     "use strict";
-
     function $a601ff30f483e917$var$ExifRestore() {
         $6mU8w$swchelpers.classCallCheck(this, $a601ff30f483e917$var$ExifRestore);
     }
-
     $6mU8w$swchelpers.createClass($a601ff30f483e917$var$ExifRestore, null, [
         {
             key: "initClass",
@@ -2887,7 +2883,7 @@ var $a601ff30f483e917$var$ExifRestore = // Based on MinifyJpeg
                 var enc3 = undefined;
                 var enc4 = "";
                 var i = 0;
-                while (true) {
+                while(true){
                     chr1 = input[i++];
                     chr2 = input[i++];
                     chr3 = input[i++];
@@ -2929,7 +2925,7 @@ var $a601ff30f483e917$var$ExifRestore = // Based on MinifyJpeg
             value: function getExifArray(segments) {
                 var seg = undefined;
                 var x = 0;
-                while (x < segments.length) {
+                while(x < segments.length){
                     seg = segments[x];
                     if (seg[0] === 255 & seg[1] === 225) return seg;
                     x++;
@@ -2956,7 +2952,7 @@ var $a601ff30f483e917$var$ExifRestore = // Based on MinifyJpeg
             value: function slice2Segments(rawImageArray) {
                 var head = 0;
                 var segments = [];
-                while (true) {
+                while(true){
                     var length;
                     if (rawImageArray[head] === 255 & rawImageArray[head + 1] === 218) break;
                     if (rawImageArray[head] === 255 & rawImageArray[head + 1] === 216) head += 2;
@@ -2989,7 +2985,7 @@ var $a601ff30f483e917$var$ExifRestore = // Based on MinifyJpeg
                 var base64test = /[^A-Za-z0-9\+\/\=]/g;
                 if (base64test.exec(input)) console.warn("There were invalid base64 characters in the input text.\nValid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\nExpect errors in decoding.");
                 input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-                while (true) {
+                while(true){
                     enc1 = this.KEY_STR.indexOf(input.charAt(i++));
                     enc2 = this.KEY_STR.indexOf(input.charAt(i++));
                     enc3 = this.KEY_STR.indexOf(input.charAt(i++));
@@ -3033,12 +3029,12 @@ var $a601ff30f483e917$var$contentLoaded = function $a601ff30f483e917$var$content
     var add = doc.addEventListener ? "addEventListener" : "attachEvent";
     var rem = doc.addEventListener ? "removeEventListener" : "detachEvent";
     var pre = doc.addEventListener ? "" : "on";
-    var init = function (e) {
+    var init = function(e) {
         if (e.type === "readystatechange" && doc.readyState !== "complete") return;
         (e.type === "load" ? win : doc)[rem](pre + e.type, init, false);
         if (!done && (done = true)) return fn.call(win, e.type || e);
     };
-    var poll = function () {
+    var poll = function() {
         try {
             root.doScroll("left");
         } catch (e) {
@@ -3060,11 +3056,9 @@ var $a601ff30f483e917$var$contentLoaded = function $a601ff30f483e917$var$content
         return win[add](pre + "load", init, false);
     }
 };
-
 function $a601ff30f483e917$var$__guard__(value, transform) {
     return typeof value !== "undefined" && value !== null ? transform(value) : undefined;
 }
-
 function $a601ff30f483e917$var$__guardMethod__(obj, methodName, transform) {
     if (typeof obj !== "undefined" && obj !== null && typeof obj[methodName] === "function") return transform(obj, methodName);
     else return undefined;

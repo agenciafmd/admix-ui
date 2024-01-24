@@ -1,10 +1,10 @@
 <?php
 
-namespace Agenciafmd\Admix\UI\Console;
+namespace Agenciafmd\Ui\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class UIPublishCommand extends Command
+class UiPublishCommand extends Command
 {
     protected $signature = 'admix:ui-publish';
 
