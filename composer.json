@@ -14,10 +14,16 @@
     "require": {
         "laravel/framework": "^11.0"
     },
+    "require-dev": {
+        "laravel/pint": "^1.0"
+    },
     "autoload": {
         "psr-4": {
             "Agenciafmd\\Ui\\": "src/"
         }
+    },
+    "scripts": {
+        "pint": "vendor/bin/pint -v"
     },
     "extra": {
         "laravel": {
@@ -25,5 +31,6 @@
                 "Agenciafmd\\Ui\\Providers\\UiServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev"
 }

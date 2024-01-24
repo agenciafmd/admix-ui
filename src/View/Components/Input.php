@@ -13,8 +13,7 @@ class Input extends Component
         public string $name = '',
         public string $label = '',
         public string $hint = '',
-    )
-    {
+    ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
             ->limit(5, '')

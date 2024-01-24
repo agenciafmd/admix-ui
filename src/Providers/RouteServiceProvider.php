@@ -9,7 +9,7 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->routes(function () {
+        $this->routes(static function () {
             Route::middleware('web')
                 ->group(__DIR__ . '/../../routes/web.php');
         });

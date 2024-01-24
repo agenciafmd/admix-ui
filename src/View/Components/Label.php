@@ -9,8 +9,8 @@ use Illuminate\View\Component;
 class Label extends Component
 {
     public function __construct(
-        public string $for = '')
-    {
+        public string $for = '',
+    ) {
     }
 
     public function render(): string|View
