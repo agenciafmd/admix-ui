@@ -24,7 +24,7 @@ class Input extends Component
     {
         return <<<'HTML'
             @if($label)
-                <x-label for="{{ $name . $uuid }}">
+                <x-label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
                     {{ str($label)->ucfirst() }}
                 </x-label>
             @endif
