@@ -1,3 +1,5 @@
 tabler/*
 !tabler/dist
 /.idea
+composer.lock
+vendor
