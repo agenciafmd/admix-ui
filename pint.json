@@ -11,6 +11,7 @@
         "no_useless_concat_operator": true,
         "return_assignment": true,
         "simple_to_complex_string_variable": true,
-        "static_lambda": true
+        "static_lambda": true,
+        "unary_operator_spaces": false
     }
 }

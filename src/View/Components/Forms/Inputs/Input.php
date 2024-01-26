@@ -1,6 +1,6 @@
 <?php
 
-namespace Agenciafmd\Ui\View\Components;
+namespace Agenciafmd\Ui\View\Components\Forms\Inputs;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\View\Component;
@@ -24,9 +24,9 @@ class Input extends Component
     {
         return <<<'HTML'
             @if($label)
-                <x-label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                    {{ str($label)->ucfirst() }}
-                </x-label>
+                <x-form.label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
+                    {{ str($label)->lower()->ucfirst() }}
+                </x-form.label>
             @endif
             <input wire:model="{{ $name }}" {{ $attributes->merge([
                                     'type' => 'text',
@@ -37,8 +37,8 @@ class Input extends Component
                             ])
                         }}
                     />
-            <x-error field="{{ $name }}"/>
-            <x-hint message="{{ $hint }}"/>
+            <x-form.error field="{{ $name }}"/>
+            <x-form.hint message="{{ $hint }}"/>
         HTML;
     }
 }

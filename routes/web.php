@@ -12,6 +12,21 @@ if (!app()->environment(['production'])) {
         }
 
         $content = Blade::render($mdContent);
+
+        // skipa o trim num bloco de código
+        $lines = explode("\n", $content);
+        $trim = true;
+        foreach ($lines as $key => $line) {
+            $trimmed = trim($line);
+
+            if (str($trimmed)->startsWith('```')) {
+                $trim = !$trim;
+            }
+
+            $lines[$key] = $trim ? trim($line) : $line;
+        }
+        $content = implode("\n", $lines);
+
         $view['markdown'] = str($content)
             ->markdown()
             ->toString();

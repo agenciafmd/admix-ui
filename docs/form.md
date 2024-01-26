@@ -1,16 +1,24 @@
 # Formulário
 
+## Form
+
+@demo
+<x-form>
+    <x-form.input name="name" label="Nome" required/>
+</x-form>
+@enddemo
+
 ## Input
 
 @demo
 <div class="mb-3">
-    <x-input name="name"/>
+    <x-form.input name="name"/>
 </div>
 <div class="mb-3">
-    <x-input name="name" label="Nome" required/>
+    <x-form.input name="name" label="Nome" required/>
 </div>
 <div class="mb-3">
-    <x-input name="name" label="Nome" hint="Preencha com seu nome completo"/>
+    <x-form.input name="name" label="Nome" hint="Preencha com seu nome completo"/>
 </div>
 @enddemo
 
@@ -18,13 +26,13 @@
 
 ```blade
 <div class="mb-3">
-    <x-input name="name"/>
+    <x-form.input name="name"/>
 </div>
 <div class="mb-3">
-    <x-input name="name" label="Nome" required/>
+    <x-form.input name="name" label="Nome" required/>
 </div>
 <div class="mb-3">
-    <x-input name="name" label="Nome" hint="Preencha com seu nome completo"/>
+    <x-form.input name="name" label="Nome" hint="Preencha com seu nome completo"/>
 </div>
 ```
 

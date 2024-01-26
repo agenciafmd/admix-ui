@@ -1,6 +1,6 @@
 <?php
 
-namespace Agenciafmd\Ui\View\Components;
+namespace Agenciafmd\Ui\View\Components\Forms;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -17,11 +17,7 @@ class Hint extends Component
         return <<<'HTML'
             @if(!$slot->isEmpty() || $message)
                 <small {{ $attributes->class(['form-hint']) }}>
-                    @if($slot->isEmpty())
-                        {{ $fallback }}
-                    @else
-                        {{ $slot }}
-                    @endif
+                    {{ ($slot->isEmpty()) ? $fallback : $slot }}
                 </small>
             @endif
         HTML;

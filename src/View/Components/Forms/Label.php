@@ -1,9 +1,8 @@
 <?php
 
-namespace Agenciafmd\Ui\View\Components;
+namespace Agenciafmd\Ui\View\Components\Forms;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 class Label extends Component
@@ -16,19 +15,15 @@ class Label extends Component
     public function render(): string|View
     {
         return <<<'HTML'
-            <label for="{{ $for }}" {{ $attributes->class(['form-label']) }}>
-                @if($slot->isEmpty())
-                    {{ $fallback }}
-                @else
-                    {{ $slot }}
-                @endif
+            <label {{ $attributes->merge(['for' => $for])->class(['form-label']) }}>
+                {{ ($slot->isEmpty()) ? $fallback : $slot }}
             </label>
         HTML;
     }
 
     public function fallback(): string
     {
-        return Str::of($this->for)
+        return str($this->for)
             ->ucfirst()
             ->replace('_', ' ');
     }
