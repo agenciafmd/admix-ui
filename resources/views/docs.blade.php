@@ -27,6 +27,18 @@
             background: unset;
         }
     </style>
+
+    <style>
+        .card-title .card-subtitle {
+            margin-left: 0;
+        }
+
+        .card-subtitle {
+            margin-bottom: .5rem;
+        }
+    </style>
+
+    @stack('styles')
 </head>
 <body>
 <script>
@@ -319,5 +331,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://unpkg.com/highlightjs-blade/dist/blade.min.js"></script>
 <script>hljs.highlightAll();</script>
+
+@stack('scripts')
 </body>
 </html>
