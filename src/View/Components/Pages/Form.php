@@ -25,36 +25,34 @@ class Form extends Component
                         {{ $headerActions }}
                     </x-slot:actions>
                 </x-page.header>
-                <div class="page-body">
-                    <div class="container-xl">
-                        <x-form>
-                            <div class="card">
-                                <div class="row g-0">
-                                    <div class="col-12 col-md-8 border-end">
-                                        <div class="card-body">
-                                            {{ $slot }}
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4 d-flex flex-column">
-                                        <div class="card-body">
-                                            {{ $complement }}
-                                        </div>
-                                    </div>
+                <x-page.body>
+                    <x-form>
+                        <x-card>
+                            <div class="row g-0">
+                                <div class="col-12 col-md-8 border-end">
+                                    <x-card.body>
+                                        {{ $slot }}
+                                    </x-card.body>
                                 </div>
-                                <div class="card-footer bg-transparent mt-auto">
-                                    <div class="btn-list justify-content-end">
-                                        @if($actions)
-                                            {{ $actions }}
-                                        @else
-                                            <x-btn/>
-                                            <x-btn.primary/>
-                                        @endif
-                                    </div>
+                                <div class="col-12 col-md-4 d-flex flex-column">
+                                    <x-card.body>
+                                        {{ $complement }}
+                                    </x-card.body>
                                 </div>
                             </div>
-                        </x-form>
-                    </div>
-                </div>
+                            <x-card.footer>
+                                <div class="d-flex">
+                                    @if($actions)
+                                        {{ $actions }}
+                                    @else
+                                        <x-btn.link/>
+                                        <x-btn.primary class="ms-auto"/>
+                                    @endif
+                                </div>
+                            </x-card.footer>
+                        </x-card>
+                    </x-form>
+                </x-page.body>
             </div>
         HTML;
     }

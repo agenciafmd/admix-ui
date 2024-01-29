@@ -68,6 +68,7 @@ class BladeServiceProvider extends ServiceProvider
         $prefix = config('admix-ui.prefix');
 
         Blade::component($prefix . 'btn', Components\Buttons\Button::class);
+        Blade::component($prefix . 'btn.link', Components\Buttons\Link::class);
         Blade::component($prefix . 'btn.primary', Components\Buttons\Primary::class);
         Blade::component($prefix . 'card.body', Components\Card\Body::class);
         Blade::component($prefix . 'card', Components\Card\Card::class);
@@ -81,6 +82,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.plaintext', Components\Forms\Inputs\Plaintext::class);
         Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
         Blade::component($prefix . 'form.label', Components\Forms\Label::class);
+        Blade::component($prefix . 'page.body', Components\Pages\Body::class);
         Blade::component($prefix . 'page.form', Components\Pages\Form::class);
         Blade::component($prefix . 'page.header', Components\Pages\Header::class);
     }
