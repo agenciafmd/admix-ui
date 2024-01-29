@@ -8,6 +8,17 @@
 </x-form>
 @enddemo
 
+@verbatim
+
+```blade
+<x-form>
+    <x-form.input name="name" label="Nome" required/>
+</x-form>
+```
+
+@endverbatim
+
+
 ## Input
 
 @demo
