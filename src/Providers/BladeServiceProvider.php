@@ -51,7 +51,7 @@ class BladeServiceProvider extends ServiceProvider
             </div>
         </div>
     </div>
-</div>            
+</div>
             ')
                 ->squish()
                 ->toString();
@@ -68,22 +68,15 @@ class BladeServiceProvider extends ServiceProvider
         $prefix = config('admix-ui.prefix');
 
         Blade::component($prefix . 'btn', Components\Buttons\Button::class);
-        Blade::component($prefix . 'btn.link', Components\Buttons\Link::class);
         Blade::component($prefix . 'btn.primary', Components\Buttons\Primary::class);
-        Blade::component($prefix . 'card.body', Components\Card\Body::class);
-        Blade::component($prefix . 'card', Components\Card\Card::class);
-        Blade::component($prefix . 'card.footer', Components\Card\Footer::class);
-        Blade::component($prefix . 'card.header', Components\Card\Header::class);
-        Blade::component($prefix . 'card.subtitle', Components\Card\Subtitle::class);
-        Blade::component($prefix . 'card.title', Components\Card\Title::class);
         Blade::component($prefix . 'form.error', Components\Forms\Error::class);
         Blade::component($prefix . 'form', Components\Forms\Form::class);
         Blade::component($prefix . 'form.hint', Components\Forms\Hint::class);
         Blade::component($prefix . 'form.plaintext', Components\Forms\Inputs\Plaintext::class);
         Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
         Blade::component($prefix . 'form.label', Components\Forms\Label::class);
-        Blade::component($prefix . 'page.body', Components\Pages\Body::class);
         Blade::component($prefix . 'page.form', Components\Pages\Form::class);
         Blade::component($prefix . 'page.header', Components\Pages\Header::class);
+        Blade::component($prefix . 'form.textarea', Components\Forms\Inputs\Textarea::class);
     }
 }
