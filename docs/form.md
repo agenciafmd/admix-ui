@@ -117,13 +117,13 @@
 
 @demo
 <div class="mb-3">
-    <x-form.radio name="radio1[]" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+    <x-form.radio name="radio1[]" :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']"/>
 </div>
 <div class="mb-3">
-    <x-form.radio name="radio2[]" label="Radio Button" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+    <x-form.radio name="radio2[]" label="Radio Button" :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']" required/>
 </div>
 <div class="mb-3">
-    <x-form.radio name="radio3[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+    <x-form.radio name="radio3[]" label="Radio Button" hint="Selecione uma opção" :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']"/>
 </div>
 @enddemo
 
@@ -131,13 +131,13 @@
 
 ```blade
 <div class="mb-3">
-    <x-form.radio name="radio1[]" :values="[One' => 'One', 'Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+    <x-form.radio name="radio1[]" :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']"/>
 </div>
 <div class="mb-3">    
-    <x-form.radio name="radio2[]" label="Radio Button" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+    <x-form.radio name="radio2[]" label="Radio Button" :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']" required/>
 </div>
 <div class="mb-3">    
-    <x-form.radio name="radio3[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+    <x-form.radio name="radio3[]" label="Radio Button" hint="Selecione uma opção" :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']"/>
 </div>
 ```
 
@@ -147,13 +147,13 @@
 
 @demo
 <div class="mb-3">
-    <x-form.radio name="inlineradio1[]" inline :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+    <x-form.radio name="inlineradio1[]" inline :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']"/>
 </div>
 <div class="mb-3">
-    <x-form.radio name="inlineradio2[]" inline label="Inline Radio Button" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+    <x-form.radio name="inlineradio2[]" inline label="Inline Radio Button" :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']" required/>
 </div>
 <div class="mb-3">
-    <x-form.radio name="inlineradio3[]" inline label="Inline Radio Button" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+    <x-form.radio name="inlineradio3[]" inline label="Inline Radio Button" hint="Selecione uma opção" :values="['Option 1' => 'Option 1','Option 2' => 'Option 2', 'Option 3' => 'Option 3', 'Option 4' => 'Option 4']"/>
 </div>
 @enddemo
 
@@ -168,6 +168,67 @@
 </div>
 <div class="mb-3">    
     <x-form.radio name="inlineradio3[]" inline label="Inline Radio" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+```
+
+@endverbatim
+
+
+## Checkboxes
+
+@demo
+<div class="mb-3">
+    <x-form.checkbox name="checkbox1[]" :values="['Checkbox input' => 'Checkbox input', 'Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']"/>
+</div>
+<div class="mb-3">
+    <x-form.checkbox name="checkbox2[]" label="Checkbox" :values="['Checkbox input' => 'Checkbox input', 'Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']" required/>
+</div>
+<div class="mb-3">
+    <x-form.checkbox name="checkbox3[]" label="Checkbox" hint="Selecione uma opção" :values="['Checkbox input' => 'Checkbox input', 'Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']"/>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">
+    <x-form.checkbox name="checkbox1[]" :values="['Checkbox input' => 'Checkbox input', 'Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']"/>
+</div>
+<div class="mb-3">    
+    <x-form.checkbox name="checkbox2[]" label="Checkbox" :values="['Checkbox input' => 'Checkbox input','Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']" required/>
+</div>
+<div class="mb-3">    
+    <x-form.checkbox name="checkbox3[]" label="Checkbox" hint="Selecione uma opção" :values="['Checkbox input' => 'Checkbox input','Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']"/>
+</div>
+```
+
+@endverbatim
+
+## Inline Checkboxes
+
+@demo
+<div class="mb-3">
+    <x-form.checkbox name="inlinecheckbox1[]" inline :values="['Checkbox input' => 'Checkbox input','Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']"/>
+</div>
+<div class="mb-3">
+    <x-form.checkbox name="inlinecheckbox2[]" inline label="Inline Checkbox" :values="['Checkbox input' => 'Checkbox input','Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']" required/>
+</div>
+<div class="mb-3">
+    <x-form.checkbox name="inlinecheckbox3[]" inline label="Inline Checkbox" hint="Selecione uma opção" :values="['Checkbox input' => 'Checkbox input','Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']"/>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">
+    <x-form.radio name="inlinecheckbox1[]" inline :values="['Checkbox input' => 'Checkbox input','Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']"/>
+</div>
+<div class="mb-3">
+    <x-form.checkbox name="inlinecheckbox2[]" inline label="Inline Checkbox" :values="['Checkbox input' => 'Checkbox input','Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']" required/>
+</div>
+<div class="mb-3">    
+    <x-form.checkbox name="inlinecheckbox3[]" inline label="Inline Checkbox" hint="Selecione uma opção" :values="['Checkbox input' => 'Checkbox input','Disabled checkbox' => 'Disabled checkbox', 'Checked checkbox' => 'Checked checkbox']"/>
 </div>
 ```
 

@@ -5,7 +5,7 @@ namespace Agenciafmd\Ui\View\Components\Forms\Inputs;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\Component;
 
-class Radio extends Component
+class Checkbox extends Component
 {
     public string $uuid;
 
@@ -32,7 +32,7 @@ class Radio extends Component
             @endif
             @foreach($values as $key => $value)
                 <label class="form-check @if($inline) form-check-inline @endif">
-                    <input type="radio" @if($loop->first) checked @endif @if($loop->last) disabled @endif name="{{ $name }}" wire:model="{{ $name }}" {{ $attributes->merge([
+                    <input type="checkbox" @if($value == 'Disabled checkbox') disabled @endif @if($value == 'Checked checkbox') checked @endif name="{{ $name }}" wire:model="{{ $name }}" {{ $attributes->merge([
                                     'id' => $name . $uuid,
                                     'value' => $key,
                                 ])->class([

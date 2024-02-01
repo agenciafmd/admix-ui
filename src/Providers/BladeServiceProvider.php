@@ -80,5 +80,6 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.textarea', Components\Forms\Inputs\Textarea::class);
         Blade::component($prefix . 'form.select', Components\Forms\Inputs\Select::class);
         Blade::component($prefix . 'form.radio', Components\Forms\Inputs\Radio::class);
+        Blade::component($prefix . 'form.checkbox', Components\Forms\Inputs\Checkbox::class);
     }
 }
