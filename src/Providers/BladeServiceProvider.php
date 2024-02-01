@@ -81,5 +81,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.select', Components\Forms\Inputs\Select::class);
         Blade::component($prefix . 'form.radio', Components\Forms\Inputs\Radio::class);
         Blade::component($prefix . 'form.checkbox', Components\Forms\Inputs\Checkbox::class);
+        Blade::component($prefix . 'form.toggle', Components\Forms\Inputs\Toggle::class);
+        Blade::component($prefix . 'form.toggle-notification', Components\Forms\Inputs\ToggleNotification::class);
     }
 }

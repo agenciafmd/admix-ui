@@ -263,4 +263,68 @@
 
 @endverbatim
 
+## Toggle Switches
 
+@demo
+<div class="mb-3">
+    <x-form.toggle name="toggle1[]" :values="[['value' => 'Toggle input', 'name' => 'Toggle input'], ['value' => 'Disabled toggle', 'name' => 'Disabled toggle'], ['value' => 'Checked toggle', 'name' => 'Checked toggle']]"/>
+</div>
+<div class="mb-3">
+    <x-form.toggle name="toggle2[]" label="Toggle Switch" :values="[['value' => 'Toggle input', 'name' => 'Toggle input'], ['value' => 'Disabled toggle', 'name' => 'Disabled toggle'], ['value' => 'Checked toggle', 'name' => 'Checked toggle']]" required/>
+</div>
+<div class="mb-3">
+    <x-form.toggle name="toggle3[]" label="Toggle Switch" hint="Selecione uma opção" :values="[['value' => 'Toggle input', 'name' => 'Toggle input'], ['value' => 'Disabled toggle', 'name' => 'Disabled toggle'], ['value' => 'Checked toggle', 'name' => 'Checked toggle']]"/>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">
+    <x-form.toggle name="toggle1[]" :values="[['value' => 'Toggle input', 'name' => 'Toggle input'], ['value' => 'Disabled toggle', 'name' => 'Disabled toggle'], ['value' => 'Checked toggle', 'name' => 'Checked toggle']]"/>
+</div>
+<div class="mb-3">    
+    <x-form.toggle name="toggle2[]" label="Toggle Switch" :values="[['value' => 'Toggle input', 'name' => 'Toggle input'], ['value' => 'Disabled toggle', 'name' => 'Disabled toggle'], ['value' => 'Checked toggle', 'name' => 'Checked toggle']]" required/>
+</div>
+<div class="mb-3">    
+    <x-form.toggle name="toggle3[]" label="Toggle Switch" hint="Selecione uma opção" :values="[['value' => 'Toggle input', 'name' => 'Toggle input'], ['value' => 'Disabled toggle', 'name' => 'Disabled toggle'], ['value' => 'Checked toggle', 'name' => 'Checked toggle']]"/>
+</div>
+```
+
+@endverbatim
+
+## Single Switch
+
+@demo
+<div class="mb-3">
+    <x-form.toggle name="singletoggle" label="Single Switch" hint="Selecione a opção" :values="[['value' => 'I agree with terms and conditions', 'name' => 'I agree with terms and conditions']]"/>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">    
+    <x-form.toggle name="singletoggle" label="Single Switch" hint="Selecione a opção" :values="[['value' => 'I agree with terms and conditions', 'name' => 'I agree with terms and conditions']]"/>
+</div>
+```
+
+@endverbatim
+
+## Notification
+
+@demo
+<div class="mb-3">
+    <x-form.toggle-notification name="togglenotification[]" label="Notification" :values="[['value' => 'Push Notifications', 'name' => 'Push Notifications'], ['value' => 'SMS Notifications', 'name' => 'SMS Notifications'], ['value' => 'Email Notifications', 'name' => 'Email Notifications']]"/>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">
+    <x-form.toggle-notification name="togglenotification[]" label="Notification" :values="[['value' => 'Push Notifications', 'name' => 'Push Notifications'], ['value' => 'SMS Notifications', 'name' => 'SMS Notifications'], ['value' => 'Email Notifications', 'name' => 'Email Notifications']]"/>
+</div>
+```
+
+@endverbatim
