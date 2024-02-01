@@ -32,9 +32,9 @@ class Checkbox extends Component
             @endif
             @foreach($values as $key => $value)
                 <label class="form-check @if($inline) form-check-inline @endif">
-                    <input type="checkbox" @if($value == 'Disabled checkbox') disabled @endif @if($value == 'Checked checkbox') checked @endif name="{{ $name }}" wire:model="{{ $name }}" {{ $attributes->merge([
+                    <input type="checkbox" @if($value['value'] == 'Disabled checkbox') disabled @endif @if($value['value'] == 'Checked checkbox') checked @endif name="{{ $name }}" wire:model="{{ $name }}" {{ $attributes->merge([
                                     'id' => $name . $uuid,
-                                    'value' => $key,
+                                    'value' => $value['value'],
                                 ])->class([
                                     'form-check-input',
                                     'is-invalid' => $errors->has($name),
@@ -42,8 +42,13 @@ class Checkbox extends Component
                         }}
                     />
                     <span class="form-check-label" for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                        {{ str($value)->lower()->ucfirst() }}
+                        {{ str($value['value'])->lower()->ucfirst() }}
                     </span>
+                    @if(array_key_exists('description',$value))
+                        <span class="form-check-description">
+                            {{ str($value['description'])->lower()->ucfirst() }}
+                        </span>
+                    @endif
                 </label>
             @endforeach
             <x-form.error field="{{ $name }}"/>
