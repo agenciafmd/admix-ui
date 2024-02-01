@@ -27,7 +27,7 @@ if (!app()->environment(['production'])) {
         }
         $content = implode("\n", $lines);
         // solução provisória para skipar a quebra da tag textarea ocorrida no markdown
-        $view['markdown'] = str_replace('fmdtextarea','textarea',str($content)
+        $view['markdown'] = str_replace('fmdtextarea', 'textarea', str($content)
             ->markdown()
             ->toString());
 
