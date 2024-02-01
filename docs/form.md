@@ -11,7 +11,13 @@
         <x-form.textarea name="message" label="Mensagem" hint="Max 1000 chars" rows="15" cols="50" maxlength="1000" placeholder="Mensagem..." required/>
     </div>
     <div class="mb-3">    
-    <x-form.select name="select" label="Select" :values="['' => '-', 'One' => 'One','Two' => 'Two', 'Three' => 'Three']" hint="Selecione uma opção" required/>
+        <x-form.select name="select" label="Select" :values="['' => '-', 'One' => 'One','Two' => 'Two', 'Three' => 'Three']" hint="Selecione uma opção" required/>
+    </div>
+    <div class="mb-3">    
+        <x-form.radio name="radio[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+    </div>
+    <div class="mb-3">    
+        <x-form.radio name="radio[]" label="Radio Button" inline hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
     </div>
 </x-form>
 @enddemo
@@ -107,3 +113,62 @@
 
 @endverbatim
 
+## Radios
+
+@demo
+<div class="mb-3">
+    <x-form.radio name="radio1[]" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+<div class="mb-3">
+    <x-form.radio name="radio2[]" label="Radio Button" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+</div>
+<div class="mb-3">
+    <x-form.radio name="radio3[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">
+    <x-form.radio name="radio1[]" :values="[One' => 'One', 'Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+<div class="mb-3">    
+    <x-form.radio name="radio2[]" label="Radio Button" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+</div>
+<div class="mb-3">    
+    <x-form.radio name="radio3[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+```
+
+@endverbatim
+
+## Inline Radios
+
+@demo
+<div class="mb-3">
+    <x-form.radio name="inlineradio1[]" inline :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+<div class="mb-3">
+    <x-form.radio name="inlineradio2[]" inline label="Inline Radio Button" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+</div>
+<div class="mb-3">
+    <x-form.radio name="inlineradio3[]" inline label="Inline Radio Button" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">
+    <x-form.radio name="inlineradio1[]" inline :values="['One' => 'One', 'Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+<div class="mb-3">
+    <x-form.radio name="inlineradio2[]" inline label="Inline Radio" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+</div>
+<div class="mb-3">    
+    <x-form.radio name="inlineradio3[]" inline label="Inline Radio" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']"/>
+</div>
+```
+
+@endverbatim
