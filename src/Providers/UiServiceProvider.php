@@ -9,6 +9,7 @@ class UiServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->bootProviders();
+        $this->publish();
     }
 
     public function register(): void
@@ -21,5 +22,12 @@ class UiServiceProvider extends ServiceProvider
         $this->app->register(BladeServiceProvider::class);
         $this->app->register(CommandServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+    }
+
+    private function publish(): void
+    {
+        $this->publishes([
+            __DIR__ . '/../../tabler' => public_path('vendor/admix-ui/tabler'),
+        ], 'admix-ui:assets');
     }
 }
