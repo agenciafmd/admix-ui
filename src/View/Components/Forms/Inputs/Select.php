@@ -13,7 +13,7 @@ class Select extends Component
         public string $name = '',
         public string $label = '',
         public string $hint = '',
-        public array $values = [],
+        public array $options = [],
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -38,11 +38,10 @@ class Select extends Component
                             ])
                         }}
                     >
-                    <option value="">-</option>
-                    @foreach($values as $key => $value)
-                        <option value="{{ $key }}">{{ $value }}</option>
-                    @endforeach
-                    </select>
+                @foreach($options as $option)
+                    <option value="{{ $option['value'] }}" @disabled(isset($option['disabled']))>{{ $option['label'] }}</option>
+                @endforeach
+            </select>
             <x-form.error field="{{ $name }}"/>
             <x-form.hint message="{{ $hint }}"/>
         HTML;

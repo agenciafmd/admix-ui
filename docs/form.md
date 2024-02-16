@@ -11,7 +11,24 @@
         <x-form.textarea name="message" label="Mensagem" required/>
     </div>
     <div class="mb-3">
-        <x-form.select name="select" label="Select" :values="['' => '-', 'One' => 'One', 'Two' => 'Two', 'Three' => 'Three']" hint="Selecione uma opção" required/>
+        @php
+            $options = [
+                [
+                    'value' => '',
+                    'label' => '-'
+                ],
+                [
+                    'value' => 1,
+                    'label' => 'Item01'
+                ],
+                [
+                    'value' => 2,
+                    'label' => 'Item02 (desabilitada)',
+                    'disabled' => true
+                ]
+            ];
+        @endphp
+        <x-form.select name="select" label="Select" :options="$options" required/>
     </div>
     <div class="mb-3"> 
         <x-form.radio name="radio[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One', 'Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
@@ -85,28 +102,62 @@
 ## Select
 
 @demo
+@php
+    $options = [
+        [
+            'value' => '',
+            'label' => '-'
+        ],
+        [
+            'value' => 1,
+            'label' => 'Item01'
+        ],
+        [
+            'value' => 2,
+            'label' => 'Item02 (desabilitada)',
+            'disabled' => true
+        ]
+    ];
+@endphp
 <div class="mb-3">
-    <x-form.select name="select" :values="['' => '-', 'One' => 'One','Two' => 'Two', 'Three' => 'Three']"/>
+    <x-form.select name="select01" :options="$options"/>
 </div>
 <div class="mb-3">
-    <x-form.select label="select" name="select" :values="['' => '-', 'One' => 'One','Two' => 'Two', 'Three' => 'Three']" required/>
+    <x-form.select label="Cidade" name="select02" :options="$options" required/>
 </div>
 <div class="mb-3">
-    <x-form.select label="select" name="select" hint="Selecione uma opção" :values="['' => '-', 'One' => 'One','Two' => 'Two', 'Three' => 'Three']"/>
+    <x-form.select label="Cidade" name="select03" :options="$options" hint="Selecione uma opção"/>
 </div>
 @enddemo
 
 @verbatim
 
 ```blade
+@php
+    $options = [
+        [
+            'value' => '',
+            'label' => '-'
+        ],
+        [
+            'value' => 1,
+            'label' => 'Item01'
+        ],
+        [
+            'value' => 2,
+            'label' => 'Item02 (desabilitada)',
+            'disabled' => true
+        ]
+    ];
+@endphp
 <div class="mb-3">
-    <x-form.select name="select" :values="['' => '-', One' => 'One', 'Two' => 'Two', 'Three' => 'Three']"/>
+    <x-form.select name="select01" :options="$options"/>
 </div>
 <div class="mb-3">
-    <x-form.select label="select" name="select" :values="['' => '-', 'One' => 'One','Two' => 'Two', 'Three' => 'Three']" required/>
+    <x-form.select label="Cidade" name="select02" :options="$options" required/>
 </div>
 <div class="mb-3">
-    <x-form.select label="select" name="select" hint="Selecione uma opção" :values="['' => '-', 'One' => 'One','Two' => 'Two', 'Three' => 'Three']"/>
+    <x-form.select label="Cidade" name="select03" :options="$options" hint="Selecione uma opção"/>
 </div>
 ```
 
