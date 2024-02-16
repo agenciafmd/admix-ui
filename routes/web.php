@@ -26,10 +26,11 @@ if (!app()->environment(['production'])) {
             $lines[$key] = $trim ? trim($line) : $line;
         }
         $content = implode("\n", $lines);
-        // solução provisória para skipar a quebra da tag textarea ocorrida no markdown
-        $view['markdown'] = str_replace('fmdtextarea', 'textarea', str($content)
+        $view['markdown'] = str($content)
             ->markdown()
-            ->toString());
+            ->replace('&lt;textarea', '<textarea')
+            ->replace('&lt;/textarea>', '</textarea>')
+            ->toString();
 
         return view('admix-ui::docs', $view);
     })

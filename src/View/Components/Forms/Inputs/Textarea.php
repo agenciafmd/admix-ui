@@ -23,7 +23,6 @@ class Textarea extends Component
             ->toString();
     }
 
-    // solução provisória para skipar a quebra da tag textarea ocorrida no markdown
     public function render(): string|View
     {
         return <<<'HTML'
@@ -32,7 +31,7 @@ class Textarea extends Component
                     {{ str($label)->lower()->ucfirst() }}
                 </x-form.label>
             @endif
-            <fmdtextarea wire:model="{{ $name }}" {{ $attributes->merge([
+            <textarea wire:model="{{ $name }}" {{ $attributes->merge([
                                     'id' => $name . $uuid,
                                     'rows' => $rows,
                                     'cols' => $cols,
@@ -42,7 +41,8 @@ class Textarea extends Component
                                     'form-control',
                                     'is-invalid' => $errors->has($name),
                             ])
-                        }} required></fmdtextarea>
+                        }}
+                    ></textarea>
             <x-form.error field="{{ $name }}"/>
             <x-form.hint message="{{ $hint }}"/>
         HTML;

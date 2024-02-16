@@ -10,14 +10,14 @@
     <div class="mb-3">
         <x-form.textarea name="message" label="Mensagem" hint="Max 1000 chars" rows="15" cols="50" maxlength="1000" placeholder="Mensagem..." required/>
     </div>
-    <div class="mb-3">    
-        <x-form.select name="select" label="Select" :values="['' => '-', 'One' => 'One','Two' => 'Two', 'Three' => 'Three']" hint="Selecione uma opção" required/>
+    <div class="mb-3">
+        <x-form.select name="select" label="Select" :values="['' => '-', 'One' => 'One', 'Two' => 'Two', 'Three' => 'Three']" hint="Selecione uma opção" required/>
     </div>
-    <div class="mb-3">    
-        <x-form.radio name="radio[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+    <div class="mb-3"> 
+        <x-form.radio name="radio[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One', 'Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
     </div>
-    <div class="mb-3">    
-        <x-form.radio name="radio[]" label="Radio Button" inline hint="Selecione uma opção" :values="['One' => 'One','Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
+    <div class="mb-3"> 
+        <x-form.radio name="radio[]" label="Radio Button" inline hint="Selecione uma opção" :values="['One' => 'One', 'Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
     </div>
 </x-form>
 @enddemo
