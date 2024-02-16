@@ -8,7 +8,7 @@
         <x-form.input name="name" label="Nome" required/>
     </div>
     <div class="mb-3">
-        <x-form.textarea name="message" label="Mensagem" hint="Max 1000 chars" rows="15" cols="50" maxlength="1000" placeholder="Mensagem..." required/>
+        <x-form.textarea name="message" label="Mensagem" required/>
     </div>
     <div class="mb-3">
         <x-form.select name="select" label="Select" :values="['' => '-', 'One' => 'One', 'Two' => 'Two', 'Three' => 'Three']" hint="Selecione uma opção" required/>
@@ -56,14 +56,13 @@
 
 @demo
 <div class="mb-3">
-    <x-form.textarea name="message" rows="15" cols="50" maxlength="1000" placeholder="Mensagem..."/>
+    <x-form.textarea name="message" placeholder="Mensagem..."/>
 </div>
 <div class="mb-3">
-    <x-form.textarea label="mensagem" name="message" rows="15" cols="50" required maxlength="1000" placeholder="Mensagem..."/>
+    <x-form.textarea label="mensagem" name="message" placeholder="Mensagem..." required/>
 </div>
 <div class="mb-3">
-    <x-form.textarea label="mensagem" name="message" hint="Max 1000 chars" rows="15" cols="50" maxlength="1000"
-    placeholder="Mensagem..."/>
+    <x-form.textarea label="mensagem" name="message" hint="Max 1000 chars" maxlength="1000" placeholder="Mensagem..."/>
 </div>
 @enddemo
 
@@ -71,13 +70,13 @@
 
 ```blade
 <div class="mb-3">
-    <x-form.textarea name="message" cols="50" rows="15" maxlength="1000" placeholder="Mensagem..."/>
+    <x-form.textarea name="message" placeholder="Mensagem..."/>
 </div>
 <div class="mb-3">
-    <x-form.textarea label="mensagem" name="message" cols="50" rows="15" maxlength="1000" required placeholder="Mensagem..."/>
+    <x-form.textarea label="mensagem" name="message" placeholder="Mensagem..." required/>
 </div>
 <div class="mb-3">
-    <x-form.textarea label="mensagem" name="message" hint="Max 1000 chars" cols="50" rows="15" maxlength="1000" placeholder="Mensagem..."/>
+    <x-form.textarea label="mensagem" name="message" hint="Max 1000 chars" maxlength="1000" placeholder="Mensagem..."/>
 </div>
 ```
 

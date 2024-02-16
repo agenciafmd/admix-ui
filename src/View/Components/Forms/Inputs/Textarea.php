@@ -13,9 +13,7 @@ class Textarea extends Component
         public string $name = '',
         public string $label = '',
         public string $hint = '',
-        public int $rows = 5,
-        public int $cols = 100,
-        public int $maxlength = 1000,
+        public int $rows = 10,
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -34,9 +32,6 @@ class Textarea extends Component
             <textarea wire:model="{{ $name }}" {{ $attributes->merge([
                                     'id' => $name . $uuid,
                                     'rows' => $rows,
-                                    'cols' => $cols,
-                                    'maxlength' => $maxlength,
-                                    'placeholder' => 'teste',
                                 ])->class([
                                     'form-control',
                                     'is-invalid' => $errors->has($name),
