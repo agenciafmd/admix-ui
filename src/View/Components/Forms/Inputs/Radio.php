@@ -12,9 +12,7 @@ class Radio extends Component
     public function __construct(
         public string $name = '',
         public string $label = '',
-        public string $hint = '',
-        public string $inline = '',
-        public array $values = [],
+        public bool $inline = false,
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -25,29 +23,25 @@ class Radio extends Component
     public function render(): string|View
     {
         return <<<'HTML'
-            @if($label)
-                <x-form.label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                    {{ str($label)->lower()->ucfirst() }}
-                </x-form.label>
-            @endif
-            @foreach($values as $key => $value)
-                <label class="form-check @if($inline) form-check-inline @endif">
-                    <input type="radio" @if($loop->first) checked @endif @if($loop->last) disabled @endif name="{{ $name }}" wire:model="{{ $name }}" {{ $attributes->merge([
+            <label @class([
+                    'form-check',
+                    'required' => $attributes->has('required'),
+                    'form-check-inline' => $inline
+                ])>
+                <input wire:model="{{ $name }}" {{ $attributes->merge([
+                                    'type' => 'radio',
+                                    'name' => $name,
                                     'id' => $name . $uuid,
-                                    'value' => $key,
                                 ])->class([
                                     'form-check-input',
                                     'is-invalid' => $errors->has($name),
                             ])
                         }}
                     />
-                    <span class="form-check-label" for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                        {{ str($value)->lower()->ucfirst() }}
-                    </span>
-                </label>
-            @endforeach
-            <x-form.error field="{{ $name }}"/>
-            <x-form.hint message="{{ $hint }}"/>
+                @if($label)
+                    <span class="form-check-label">{{ str($label)->lower()->ucfirst() }}</span>
+                @endif
+            </label>
         HTML;
     }
 }

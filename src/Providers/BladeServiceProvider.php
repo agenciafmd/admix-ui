@@ -71,17 +71,18 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'btn.primary', Components\Buttons\Primary::class);
         Blade::component($prefix . 'form.error', Components\Forms\Error::class);
         Blade::component($prefix . 'form', Components\Forms\Form::class);
+        Blade::component($prefix . 'form.group', Components\Forms\Group::class);
         Blade::component($prefix . 'form.hint', Components\Forms\Hint::class);
-        Blade::component($prefix . 'form.plaintext', Components\Forms\Inputs\Plaintext::class);
-        Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
         Blade::component($prefix . 'form.label', Components\Forms\Label::class);
-        Blade::component($prefix . 'page.form', Components\Pages\Form::class);
-        Blade::component($prefix . 'page.header', Components\Pages\Header::class);
-        Blade::component($prefix . 'form.textarea', Components\Forms\Inputs\Textarea::class);
-        Blade::component($prefix . 'form.select', Components\Forms\Inputs\Select::class);
-        Blade::component($prefix . 'form.radio', Components\Forms\Inputs\Radio::class);
         Blade::component($prefix . 'form.checkbox', Components\Forms\Inputs\Checkbox::class);
+        Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
+        Blade::component($prefix . 'form.plaintext', Components\Forms\Inputs\Plaintext::class);
+        Blade::component($prefix . 'form.radio', Components\Forms\Inputs\Radio::class);
+        Blade::component($prefix . 'form.select', Components\Forms\Inputs\Select::class);
+        Blade::component($prefix . 'form.textarea', Components\Forms\Inputs\Textarea::class);
         Blade::component($prefix . 'form.toggle', Components\Forms\Inputs\Toggle::class);
         Blade::component($prefix . 'form.toggle-notification', Components\Forms\Inputs\ToggleNotification::class);
+        Blade::component($prefix . 'page.form', Components\Pages\Form::class);
+        Blade::component($prefix . 'page.header', Components\Pages\Header::class);
     }
 }
