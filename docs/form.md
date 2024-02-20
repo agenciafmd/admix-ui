@@ -23,19 +23,17 @@
                 ],
                 [
                     'value' => 2,
-                    'label' => 'Item02 (desabilitada)',
+                    'label' => 'Item02'
+                ],
+                [
+                    'value' => 3,
+                    'label' => 'Item03 (desabilitada)',
                     'disabled' => true
                 ]
             ];
         @endphp
         <x-form.select name="select" label="Select" :options="$options" required/>
     </div>
-    {{--<div class="mb-3"> 
-        <x-form.radio name="radio[]" label="Radio Button" hint="Selecione uma opção" :values="['One' => 'One', 'Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
-    </div>
-    <div class="mb-3"> 
-        <x-form.radio name="radio[]" label="Radio Button" inline hint="Selecione uma opção" :values="['One' => 'One', 'Two' => 'Two', 'Three' => 'Three', 'Four' => 'Four']" required/>
-    </div>--}}
 </x-form>
 @enddemo
 
@@ -43,65 +41,14 @@
 
 @demo
 <div class="mb-3">
-    <x-form.input name="name"/>
+    <x-form.input name="name" label="Input" required/>
 </div>
 <div class="mb-3">
-    <x-form.input name="name" label="Nome" required/>
+    <x-form.input name="name" label="Input com hint" hint="Preencha com seu nome completo"/>
 </div>
 <div class="mb-3">
-    <x-form.input name="name" label="Nome" hint="Preencha com seu nome completo"/>
+    <x-form.password name="password" label="Senha"/>
 </div>
-@enddemo
-
-@verbatim
-
-```blade
-<div class="mb-3">
-    <x-form.input name="name"/>
-</div>
-<div class="mb-3">
-    <x-form.input name="name" label="Nome" required/>
-</div>
-<div class="mb-3">
-    <x-form.input name="name" label="Nome" hint="Preencha com seu nome completo"/>
-</div>
-```
-
-@endverbatim
-
-## Textarea
-
-@demo
-<div class="mb-3">
-    <x-form.textarea name="message" placeholder="Mensagem..."/>
-</div>
-<div class="mb-3">
-    <x-form.textarea label="Mensagem" name="message" placeholder="Mensagem..." required/>
-</div>
-<div class="mb-3">
-    <x-form.textarea label="Mensagem" name="message" hint="Máx. 1000 caracteres" maxlength="1000" placeholder="Mensagem..."/>
-</div>
-@enddemo
-
-@verbatim
-
-```blade
-<div class="mb-3">
-    <x-form.textarea name="message" placeholder="Mensagem..."/>
-</div>
-<div class="mb-3">
-    <x-form.textarea label="Mensagem" name="message" placeholder="Mensagem..." required/>
-</div>
-<div class="mb-3">
-    <x-form.textarea label="Mensagem" name="message" hint="Máx. 1000 caracteres" maxlength="1000" placeholder="Mensagem..."/>
-</div>
-```
-
-@endverbatim
-
-## Select
-
-@demo
 @php
     $options = [
         [
@@ -120,66 +67,20 @@
     ];
 @endphp
 <div class="mb-3">
-    <x-form.select name="select01" :options="$options"/>
+    <x-form.select label="Select" name="select02" :options="$options"/>
 </div>
 <div class="mb-3">
-    <x-form.select label="Cidade" name="select02" :options="$options" required/>
+    <x-form.textarea label="Textarea" name="message" hint="Máx. 1000 caracteres" maxlength="1000" placeholder="Mensagem..."/>
 </div>
 <div class="mb-3">
-    <x-form.select label="Cidade" name="select03" :options="$options" hint="Selecione uma opção"/>
-</div>
-@enddemo
-
-@verbatim
-
-```blade
-@php
-    $options = [
-        [
-            'value' => '',
-            'label' => '-'
-        ],
-        [
-            'value' => 1,
-            'label' => 'Item01'
-        ],
-        [
-            'value' => 2,
-            'label' => 'Item02 (desabilitada)',
-            'disabled' => true
-        ]
-    ];
-@endphp
-<div class="mb-3">
-    <x-form.select name="select01" :options="$options"/>
-</div>
-<div class="mb-3">
-    <x-form.select label="Cidade" name="select02" :options="$options" required/>
-</div>
-<div class="mb-3">
-    <x-form.select label="Cidade" name="select03" :options="$options" hint="Selecione uma opção"/>
-</div>
-```
-
-@endverbatim
-
-## Radios
-
-@demo
-<div class="mb-3">
-    <x-form.radio name="radio1" label="Option 01" value="option01"/>
-    <x-form.radio name="radio1" label="Option 02" value="option02"/>
-    <x-form.radio name="radio1" label="Option 03" value="option03" disabled/>
-</div>
-<div class="mb-3">
-    <x-form.group label="Escolha uma opção" hint="Somente um item é permitido" required>
+    <x-form.group label="Radios">
         <x-form.radio name="radio2" label="Option 01" value="option01"/>
         <x-form.radio name="radio2" label="Option 02" value="option02"/>
         <x-form.radio name="radio2" label="Option 03" value="option03" disabled/>
     </x-form.group>
 </div>
 <div class="mb-3">
-    <x-form.group label="Escolha uma opção" hint="Estes radios estão no formato inline" required>
+    <x-form.group label="Radios inline">
         <x-form.radio name="radio3" label="Option 01" value="option01" inline/>
         <x-form.radio name="radio3" label="Option 02" value="option02" inline/>
         <x-form.radio name="radio3" label="Option 03" value="option03" inline disabled/>
@@ -191,19 +92,46 @@
 
 ```blade
 <div class="mb-3">
-    <x-form.radio name="radio1" label="Option 01" value="option01"/>
-    <x-form.radio name="radio1" label="Option 02" value="option02"/>
-    <x-form.radio name="radio1" label="Option 03" value="option03" disabled/>
+    <x-form.input name="name" label="Input" required/>
 </div>
 <div class="mb-3">
-    <x-form.group label="Escolha uma opção" hint="Somente um item é permitido" required>
+    <x-form.input name="name" label="Input com hint" hint="Preencha com seu nome completo"/>
+</div>
+<div class="mb-3">
+    <x-form.password name="password" label="Senha"/>
+</div>
+@php
+    $options = [
+        [
+            'value' => '',
+            'label' => '-'
+        ],
+        [
+            'value' => 1,
+            'label' => 'Item01'
+        ],
+        [
+            'value' => 2,
+            'label' => 'Item02 (desabilitada)',
+            'disabled' => true
+        ]
+    ];
+@endphp
+<div class="mb-3">
+    <x-form.select label="Select" name="select02" :options="$options"/>
+</div>
+<div class="mb-3">
+    <x-form.textarea label="Textarea" name="message" hint="Máx. 1000 caracteres" maxlength="1000" placeholder="Mensagem..."/>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios">
         <x-form.radio name="radio2" label="Option 01" value="option01"/>
         <x-form.radio name="radio2" label="Option 02" value="option02"/>
         <x-form.radio name="radio2" label="Option 03" value="option03" disabled/>
     </x-form.group>
 </div>
 <div class="mb-3">
-    <x-form.group label="Escolha uma opção" hint="Estes radios estão no formato inline" required>
+    <x-form.group label="Radios inline">
         <x-form.radio name="radio3" label="Option 01" value="option01" inline/>
         <x-form.radio name="radio3" label="Option 02" value="option02" inline/>
         <x-form.radio name="radio3" label="Option 03" value="option03" inline disabled/>

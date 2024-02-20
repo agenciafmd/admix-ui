@@ -39,6 +39,7 @@
     </style>
 
     @stack('styles')
+    @livewireStyles
 </head>
 <body>
 <script>
@@ -333,5 +334,6 @@
 <script>hljs.highlightAll();</script>
 
 @stack('scripts')
+@livewireScripts
 </body>
 </html>

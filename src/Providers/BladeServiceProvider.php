@@ -76,6 +76,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.label', Components\Forms\Label::class);
         Blade::component($prefix . 'form.checkbox', Components\Forms\Inputs\Checkbox::class);
         Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
+        Blade::component($prefix . 'form.password', Components\Forms\Inputs\Password::class);
         Blade::component($prefix . 'form.plaintext', Components\Forms\Inputs\Plaintext::class);
         Blade::component($prefix . 'form.radio', Components\Forms\Inputs\Radio::class);
         Blade::component($prefix . 'form.select', Components\Forms\Inputs\Select::class);
