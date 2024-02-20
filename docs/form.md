@@ -150,6 +150,114 @@
 
 @endverbatim
 
+## Radios
+
+@demo
+<div class="mb-3">
+    <x-form.group label="Radios">
+        <x-form.radio name="radio2" label="Option 01" value="option01"/>
+        <x-form.radio name="radio2" label="Option 02" value="option02"/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" disabled/>
+    </x-form.group>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios">
+    <x-form.radio name="radio2" label="Option 01" value="option01" required/>
+    <x-form.radio name="radio2" label="Option 02" value="option02" required/>
+    <x-form.radio name="radio2" label="Option 03" value="option03" required/>
+ </x-form.group>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios">
+        <x-form.radio name="radio2" label="Option 01" value="option01"/>
+        <x-form.radio name="radio2" label="Option 02" value="option02"/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" hint="Selecione uma opção"/>
+ </x-form.group>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">
+    <x-form.group label="Radios">
+        <x-form.radio name="radio2" label="Option 01" value="option01"/>
+        <x-form.radio name="radio2" label="Option 02" value="option02"/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" disabled/>
+    </x-form.group>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios">
+        <x-form.radio name="radio2" label="Option 01" value="option01" required/>
+        <x-form.radio name="radio2" label="Option 02" value="option02" required/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" required/>
+    </x-form.group>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios">
+        <x-form.radio name="radio2" label="Option 01" value="option01"/>
+        <x-form.radio name="radio2" label="Option 02" value="option02"/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" hint="Selecione uma opção"/>
+    </x-form.group>
+</div>
+```
+
+@endverbatim
+
+## Inline Radios
+
+@demo
+<div class="mb-3">
+    <x-form.group label="Radios inline">
+        <x-form.radio name="radio2" label="Option 01" value="option01" inline/>
+        <x-form.radio name="radio2" label="Option 02" value="option02" inline/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" inline disabled/>
+    </x-form.group>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios inline">
+        <x-form.radio name="radio2" label="Option 01" value="option01" inline required/>
+        <x-form.radio name="radio2" label="Option 02" value="option02" inline required/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" inline required/>
+    </x-form.group>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios inline">
+        <x-form.radio name="radio2" label="Option 01" value="option01" inline/>
+        <x-form.radio name="radio2" label="Option 02" value="option02" inline/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" hint="Selecione uma opção" inline/>
+    </x-form.group>
+</div>
+@enddemo
+
+@verbatim
+
+```blade
+<div class="mb-3">
+    <x-form.group label="Radios inline">
+        <x-form.radio name="radio2" label="Option 01" value="option01" inline/>
+        <x-form.radio name="radio2" label="Option 02" value="option02" inline/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" inline disabled/>
+    </x-form.group>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios inline">
+        <x-form.radio name="radio2" label="Option 01" value="option01" inline required/>
+        <x-form.radio name="radio2" label="Option 02" value="option02" inline required/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" inline required/>
+    </x-form.group>
+</div>
+<div class="mb-3">
+    <x-form.group label="Radios inline">
+        <x-form.radio name="radio2" label="Option 01" value="option01" inline/>
+        <x-form.radio name="radio2" label="Option 02" value="option02" inline/>
+        <x-form.radio name="radio2" label="Option 03" value="option03" hint="Selecione uma opção" inline/>
+    </x-form.group>
+</div>
+```
+
+@endverbatim
+
 ## Checkboxes
 
 @demo

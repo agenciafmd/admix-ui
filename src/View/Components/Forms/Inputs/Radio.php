@@ -12,6 +12,7 @@ class Radio extends Component
     public function __construct(
         public string $name = '',
         public string $label = '',
+        public string $hint = '',
         public bool $inline = false,
     ) {
         $this->uuid = '-' . str(serialize($this))
@@ -42,6 +43,8 @@ class Radio extends Component
                     <span class="form-check-label">{{ str($label)->lower()->ucfirst() }}</span>
                 @endif
             </label>
+            <x-form.error field="{{ $name }}"/>
+            <x-form.hint message="{{ $hint }}"/>
         HTML;
     }
 }
