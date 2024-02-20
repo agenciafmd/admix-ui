@@ -8,7 +8,7 @@
         <x-form.input name="name" label="Nome" required/>
     </div>
     <div class="mb-3">
-        <x-form.textarea name="message" label="Mensagem" required/>
+        <x-form.textarea name="message" label="Mensagem" maxlength=100 required/>
     </div>
     <div class="mb-3">
         @php

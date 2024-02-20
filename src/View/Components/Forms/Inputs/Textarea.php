@@ -24,22 +24,29 @@ class Textarea extends Component
     public function render(): string|View
     {
         return <<<'HTML'
-            @if($label)
-                <x-form.label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                    {{ str($label)->lower()->ucfirst() }}
-                </x-form.label>
-            @endif
-            <textarea wire:model="{{ $name }}" {{ $attributes->merge([
-                                    'id' => $name . $uuid,
-                                    'rows' => $rows,
-                                ])->class([
-                                    'form-control',
-                                    'is-invalid' => $errors->has($name),
-                            ])
-                        }}
-                    ></textarea>
-            <x-form.error field="{{ $name }}"/>
-            <x-form.hint message="{{ $hint }}"/>
+            <div x-data="{ count: 0 }" x-init="count = $refs.fieldToCount.value.length">
+                @if($label)
+                    <x-form.label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
+                        {{ str($label)->lower()->ucfirst() }}
+                        @if($attributes->has('maxlength'))
+                            <span class="form-label-description">
+                            <span x-html="count"></span>/<span x-html="$refs.fieldToCount.maxLength"></span></span>
+                        @endif
+                    </x-form.label>
+                @endif
+                <textarea wire:model="{{ $name }}" {{ $attributes->merge([
+                                        'id' => $name . $uuid,
+                                        'rows' => $rows,
+                                    ])->class([
+                                        'form-control',
+                                        'is-invalid' => $errors->has($name),
+                                ])
+                            }}
+                            x-ref="fieldToCount" x-on:keyup="count = $refs.fieldToCount.value.length"
+                        ></textarea>
+                <x-form.error field="{{ $name }}"/>
+                <x-form.hint message="{{ $hint }}"/>
+            </div>
         HTML;
     }
 }
