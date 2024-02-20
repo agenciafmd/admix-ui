@@ -47,6 +47,15 @@
     <x-form.input name="name" label="Input com hint" hint="Preencha com seu nome completo"/>
 </div>
 <div class="mb-3">
+    <x-form.datetime name="published_at" label="Data e hora de publicação"/>
+</div>
+<div class="mb-3">
+    <x-form.date name="published_at" label="Data de publicação"/>
+</div>
+<div class="mb-3">
+    <x-form.time name="published_at" label="Hora de publicação"/>
+</div>
+<div class="mb-3">
     <x-form.password name="password" label="Senha"/>
 </div>
 @php

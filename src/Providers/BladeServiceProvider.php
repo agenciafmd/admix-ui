@@ -82,12 +82,15 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.hint', Components\Forms\Hint::class);
         Blade::component($prefix . 'form.label', Components\Forms\Label::class);
         Blade::component($prefix . 'form.checkbox', Components\Forms\Inputs\Checkbox::class);
+        Blade::component($prefix . 'form.date', Components\Forms\Inputs\Date::class);
+        Blade::component($prefix . 'form.datetime', Components\Forms\Inputs\Datetime::class);
         Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
         Blade::component($prefix . 'form.password', Components\Forms\Inputs\Password::class);
         Blade::component($prefix . 'form.plaintext', Components\Forms\Inputs\Plaintext::class);
         Blade::component($prefix . 'form.radio', Components\Forms\Inputs\Radio::class);
         Blade::component($prefix . 'form.select', Components\Forms\Inputs\Select::class);
         Blade::component($prefix . 'form.textarea', Components\Forms\Inputs\Textarea::class);
+        Blade::component($prefix . 'form.time', Components\Forms\Inputs\Time::class);
         Blade::component($prefix . 'form.toggle', Components\Forms\Inputs\Toggle::class);
         Blade::component($prefix . 'form.toggle-notification', Components\Forms\Inputs\ToggleNotification::class);
         Blade::component($prefix . 'page.body', Components\Pages\Body::class);

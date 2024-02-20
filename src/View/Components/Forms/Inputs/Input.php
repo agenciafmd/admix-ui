@@ -13,6 +13,7 @@ class Input extends Component
         public string $name = '',
         public string $label = '',
         public string $hint = '',
+        public string $type = 'text',
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -29,7 +30,7 @@ class Input extends Component
                 </x-form.label>
             @endif
             <input wire:model="{{ $name }}" {{ $attributes->merge([
-                                    'type' => 'text',
+                                    'type' => $type,
                                     'id' => $name . $uuid,
                                 ])->class([
                                     'form-control',
