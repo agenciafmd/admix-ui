@@ -68,7 +68,14 @@ class BladeServiceProvider extends ServiceProvider
         $prefix = config('admix-ui.prefix');
 
         Blade::component($prefix . 'btn', Components\Buttons\Button::class);
+        Blade::component($prefix . 'btn.link', Components\Buttons\Link::class);
         Blade::component($prefix . 'btn.primary', Components\Buttons\Primary::class);
+        Blade::component($prefix . 'card.body', Components\Card\Body::class);
+        Blade::component($prefix . 'card', Components\Card\Card::class);
+        Blade::component($prefix . 'card.footer', Components\Card\Footer::class);
+        Blade::component($prefix . 'card.header', Components\Card\Header::class);
+        Blade::component($prefix . 'card.subtitle', Components\Card\Subtitle::class);
+        Blade::component($prefix . 'card.title', Components\Card\Title::class);
         Blade::component($prefix . 'form.error', Components\Forms\Error::class);
         Blade::component($prefix . 'form', Components\Forms\Form::class);
         Blade::component($prefix . 'form.group', Components\Forms\Group::class);
@@ -83,6 +90,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.textarea', Components\Forms\Inputs\Textarea::class);
         Blade::component($prefix . 'form.toggle', Components\Forms\Inputs\Toggle::class);
         Blade::component($prefix . 'form.toggle-notification', Components\Forms\Inputs\ToggleNotification::class);
+        Blade::component($prefix . 'page.body', Components\Pages\Body::class);
         Blade::component($prefix . 'page.form', Components\Pages\Form::class);
         Blade::component($prefix . 'page.header', Components\Pages\Header::class);
     }
