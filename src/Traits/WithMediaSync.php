@@ -12,17 +12,17 @@ trait WithMediaSync
     public function removeMedia(string $uuid, string $filesModelName, string $library, string $url): void
     {
         // Updates library
-        $this->{$library} = $this->{$library}->filter(fn($image) => $image['uuid'] != $uuid);
+        $this->{$library} = $this->{$library}->filter(static fn ($image) => $image['uuid'] != $uuid);
 
         // Remove file
         $name = str($url)->after('preview-file/')->before('?expires')->toString();
-        $this->{$filesModelName} = collect($this->{$filesModelName})->filter(fn($file) => $file->getFilename() != $name)->all();
+        $this->{$filesModelName} = collect($this->{$filesModelName})->filter(static fn ($file) => $file->getFilename() != $name)->all();
     }
 
     // Set order
     public function refreshMediaOrder(array $order, string $library): void
     {
-        $this->{$library} = $this->{$library}->sortBy(function ($item) use ($order) {
+        $this->{$library} = $this->{$library}->sortBy(static function ($item) use ($order) {
             return array_search($item['uuid'], $order);
         });
     }
@@ -71,13 +71,13 @@ trait WithMediaSync
             $url = Storage::disk($disk)->url($file);
 
             // Update library
-            $media['url'] = $url . "?updated_at=" . time();
+            $media['url'] = $url . '?updated_at=' . time();
             $media['path'] = str($storage_subpath)->finish('/')->append($name)->toString();
             $this->{$library} = $this->{$library}->replace([$index => $media]);
         }
 
         // Delete removed files from library
-        $diffs = $model->{$model_field}?->filter(fn($item) => $this->{$library}->doesntContain('uuid', $item['uuid'])) ?? [];
+        $diffs = $model->{$model_field}?->filter(fn ($item) => $this->{$library}->doesntContain('uuid', $item['uuid'])) ?? [];
 
         foreach ($diffs as $diff) {
             Storage::disk($disk)->delete($diff['path']);
@@ -95,6 +95,6 @@ trait WithMediaSync
         $name = $media['uuid'] ?? null;
         $extension = str($media['url'] ?? null)->afterLast('.')->before('?expires')->toString();
 
-        return "$name.$extension";
+        return "{$name}.{$extension}";
     }
 }
