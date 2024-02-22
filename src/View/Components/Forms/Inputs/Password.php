@@ -29,7 +29,7 @@ class Password extends Component
                 </x-form.label>
             @endif
             <div class="input-group input-group-flat" x-data="{ isPassword: true }">
-                <input wire:model="{{ $name }}" :type="isPassword ? 'password' : 'text'" {{ $attributes->merge([
+                <input wire:model.blur="{{ $name }}" :type="isPassword ? 'password' : 'text'" {{ $attributes->merge([
                                     'id' => $name . $uuid,
                                     'autocomplete' => 'off',
                                 ])->class([

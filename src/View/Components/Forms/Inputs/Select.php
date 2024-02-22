@@ -29,7 +29,7 @@ class Select extends Component
                     {{ str($label)->lower()->ucfirst() }}
                 </x-form.label>
             @endif
-            <select wire:model="{{ $name }}" {{ $attributes->merge([
+            <select wire:model.change="{{ $name }}" {{ $attributes->merge([
                                     'type' => 'text',
                                     'id' => $name . $uuid,
                                 ])->class([

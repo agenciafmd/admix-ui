@@ -29,7 +29,7 @@ class Radio extends Component
                     'required' => $attributes->has('required'),
                     'form-check-inline' => $inline
                 ])>
-                <input wire:model="{{ $name }}" {{ $attributes->merge([
+                <input wire:model.change="{{ $name }}" {{ $attributes->merge([
                                     'type' => 'radio',
                                     'name' => $name,
                                     'id' => $name . $uuid,

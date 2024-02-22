@@ -29,7 +29,7 @@ class Input extends Component
                     {{ str($label)->lower()->ucfirst() }}
                 </x-form.label>
             @endif
-            <input wire:model="{{ $name }}" {{ $attributes->merge([
+            <input wire:model.blur="{{ $name }}" {{ $attributes->merge([
                                     'type' => $type,
                                     'id' => $name . $uuid,
                                 ])->class([
