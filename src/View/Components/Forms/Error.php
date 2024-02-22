@@ -3,7 +3,6 @@
 namespace Agenciafmd\Ui\View\Components\Forms;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\ViewErrorBag;
 use Illuminate\View\Component;
 
 class Error extends Component
@@ -19,17 +18,9 @@ class Error extends Component
         return <<<'HTML'
             @error($field, $bag)
                 <div {{ $attributes->class(['invalid-feedback']) }}>
-                    {{ ($slot->isEmpty()) ? $fallback : $slot }}
+                    {{ $message }}
                 </div>
             @enderror
         HTML;
-    }
-
-    // validar se isso está certo
-    public function messages(ViewErrorBag $errors): array
-    {
-        $bag = $errors->getBag($this->bag);
-
-        return $bag->has($this->field) ? $bag->get($this->field) : [];
     }
 }
