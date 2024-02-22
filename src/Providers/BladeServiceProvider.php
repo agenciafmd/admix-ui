@@ -93,6 +93,12 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.time', Components\Forms\Inputs\Time::class);
         Blade::component($prefix . 'form.toggle', Components\Forms\Inputs\Toggle::class);
         Blade::component($prefix . 'form.toggle-notification', Components\Forms\Inputs\ToggleNotification::class);
+        Blade::component($prefix . 'modal.body', Components\Modal\Body::class);
+        Blade::component($prefix . 'modal.close', Components\Modal\Close::class);
+        Blade::component($prefix . 'modal.footer', Components\Modal\Footer::class);
+        Blade::component($prefix . 'modal.header', Components\Modal\Header::class);
+        Blade::component($prefix . 'modal', Components\Modal\Modal::class);
+        Blade::component($prefix . 'modal.title', Components\Modal\Title::class);
         Blade::component($prefix . 'page.body', Components\Pages\Body::class);
         Blade::component($prefix . 'page.form', Components\Pages\Form::class);
         Blade::component($prefix . 'page.header', Components\Pages\Header::class);
