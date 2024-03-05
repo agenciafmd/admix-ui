@@ -13,8 +13,7 @@ class Checkbox extends Component
         public string $name = '',
         public string $label = '',
         public string $hint = '',
-        public string $inline = '',
-        public array $values = [],
+        public bool $inline = false,
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -25,32 +24,25 @@ class Checkbox extends Component
     public function render(): string|View
     {
         return <<<'HTML'
-            @if($label)
-                <x-form.label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                    {{ str($label)->lower()->ucfirst() }}
-                </x-form.label>
-            @endif
-            @foreach($values as $key => $value)
-                <label class="form-check @if($inline) form-check-inline @endif">
-                    <input type="checkbox" @if($value['value'] == 'Disabled checkbox') disabled @endif @if($value['value'] == 'Checked checkbox') checked @endif name="{{ $name }}" wire:model="{{ $name }}" {{ $attributes->merge([
+            <label @class([
+                    'form-check',
+                    'required' => $attributes->has('required'),
+                    'form-check-inline' => $inline
+                ])>
+                <input wire:model.change="{{ $name }}" {{ $attributes->merge([
+                                    'type' => 'checkbox',
+                                    'name' => $name,
                                     'id' => $name . $uuid,
-                                    'value' => $value['value'],
                                 ])->class([
                                     'form-check-input',
                                     'is-invalid' => $errors->has($name),
                             ])
                         }}
                     />
-                    <span class="form-check-label" for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                        {{ str($value['value'])->lower()->ucfirst() }}
-                    </span>
-                    @if(array_key_exists('description',$value))
-                        <span class="form-check-description">
-                            {{ str($value['description'])->lower()->ucfirst() }}
-                        </span>
-                    @endif
-                </label>
-            @endforeach
+                @if($label)
+                    <span class="form-check-label">{{ str($label)->lower()->ucfirst() }}</span>
+                @endif
+            </label>
             <x-form.error field="{{ $name }}"/>
             <x-form.hint message="{{ $hint }}"/>
         HTML;
