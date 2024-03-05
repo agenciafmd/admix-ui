@@ -11,8 +11,7 @@ class Submit extends Component
         public string $label = '',
         public string $action = '',
         public string $method = 'POST',
-    )
-    {
+    ) {
         $this->label = $label ?: __('Send');
         $this->method = strtoupper($method);
     }
