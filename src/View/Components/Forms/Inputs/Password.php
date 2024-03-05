@@ -28,7 +28,11 @@ class Password extends Component
                     {{ str($label)->lower()->ucfirst() }}
                 </x-form.label>
             @endif
-            <div class="input-group input-group-flat" x-data="{ isPassword: true }">
+            <div @class([
+                    'input-group', 
+                    'input-group-flat',
+                    'is-invalid' => $errors->has($name),
+                ]) x-data="{ isPassword: true }">
                 <input wire:model.blur="{{ $name }}" :type="isPassword ? 'password' : 'text'" {{ $attributes->merge([
                                     'id' => $name . $uuid,
                                     'autocomplete' => 'off',
@@ -68,8 +72,8 @@ class Password extends Component
                         </svg>
                     </a>
                 </span>
+                <x-form.error field="{{ $name }}"/>
             </div>
-            <x-form.error field="{{ $name }}"/>
             <x-form.hint message="{{ $hint }}"/>
         HTML;
     }
