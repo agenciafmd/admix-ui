@@ -70,6 +70,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'btn', Components\Buttons\Button::class);
         Blade::component($prefix . 'btn.link', Components\Buttons\Link::class);
         Blade::component($prefix . 'btn.primary', Components\Buttons\Primary::class);
+        Blade::component($prefix . 'btn.submit', Components\Buttons\Submit::class);
         Blade::component($prefix . 'card.body', Components\Card\Body::class);
         Blade::component($prefix . 'card', Components\Card\Card::class);
         Blade::component($prefix . 'card.footer', Components\Card\Footer::class);
