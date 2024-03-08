@@ -3,7 +3,6 @@
 namespace Agenciafmd\Ui\View\Components\Card;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 class Subtitle extends Component
@@ -36,7 +35,7 @@ class Subtitle extends Component
 
     public function fallback(): string
     {
-        return Str::of($this->subtitle)
+        return str($this->subtitle)
             ->stripTags()
             ->squish()
             ->lower()
