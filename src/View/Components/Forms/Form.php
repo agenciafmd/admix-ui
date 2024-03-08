@@ -10,7 +10,7 @@ class Form extends Component
     public function render(): string|View
     {
         return <<<'HTML'
-            <form {{ $attributes->merge(['wire:submit.prevent' => 'save']) }}>
+            <form {{ $attributes->merge(['wire:submit.prevent' => 'submit']) }}>
                 {{ $slot }}
             </form>
         HTML;
