@@ -9,6 +9,7 @@ class Primary extends Component
 {
     public function __construct(
         public string $label = '',
+        public bool $spinner = true,
     ) {
         $this->label = $label ?: __('Save');
     }
@@ -16,7 +17,14 @@ class Primary extends Component
     public function render(): string|View
     {
         return <<<'HTML'
-            <button {{ $attributes->merge(['type' => 'submit'])->class(['btn btn-primary']) }}>
+            <button {{ $attributes->merge([
+                        'wire:loading.attr' => 'disabled',
+                        'wire:target' => 'submit',
+                        'type' => 'submit',
+                    ])->class(['btn btn-primary']) }}>
+                @if($spinner)
+                    <span wire:loading wire:target="submit" class="spinner-border spinner-border-sm me-2"></span>
+                @endif
                 {{ ($slot->isEmpty()) ? $fallback : $slot }}
             </button>
         HTML;
