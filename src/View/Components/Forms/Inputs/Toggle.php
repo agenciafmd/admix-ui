@@ -15,6 +15,8 @@ class Toggle extends Component
         public string $hint = '',
         public string $labelOn = '',
         public string $labelOff = '',
+        public bool $large = false,
+        public bool $single = false,
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -24,44 +26,56 @@ class Toggle extends Component
 
     public function render(): string|View
     {
-        //        $classCollection = Str::of($attributes->get('class'))->explode(' ');
-        //        $labelClass = $classCollection->filter(function (string $value, string $key) {
-        //            return Str::of($value)->startsWith('form-switch');
-        //        })->values();
-        //        $inputClass = $classCollection->filter(function (string $value, string $key) {
-        //            return !Str::of($value)->startsWith('form-switch');
-        //        })->values();
-        //        <label class="form-check form-switch">
-        //            <input class="form-check-input" type="checkbox" checked="">
-        //            <span class="form-check-label">Option 1</span>
-        //        </label>
-
         return <<<'HTML'
-            <label @class([
-                    'form-check',
-                    'form-switch',
-                    'required' => $attributes->has('required'),
-                ])>
-                <input wire:model.change="{{ $name }}" {{ $attributes->merge([
-                                    'type' => 'checkbox',
-                                    'name' => $name,
-                                    'id' => $name . $uuid,
-                                ])->class([
-                                    'form-check-input',
-                                    'is-invalid' => $errors->has($name),
-                            ])
-                        }}
-                    />
-                @if($label)
-                    <span class="form-check-label">{{ str($label)->lower()->ucfirst() }}</span>
-                @endif
-                @if($labelOn)
-                    <span class="form-check-label form-check-label-on">{{ str($labelOn)->lower()->ucfirst() }}</span>
-                @endif
-                @if($labelOff)
-                    <span class="form-check-label form-check-label-off">{{ str($labelOff)->lower()->ucfirst() }}</span>
-                @endif
-            </label>
+            @if($single)
+                <label @class([
+                        'row',
+                        'required' => $attributes->has('required'),
+                    ])>
+                    <span class="col">{{ str($label)->lower()->ucfirst() }}</span>
+                        <span class="col-auto">
+                        <label class="form-check form-check-single form-switch">
+                            <input wire:model.change="{{ $name }}" {{ $attributes->merge([
+                                                'type' => 'checkbox',
+                                                'name' => $name,
+                                                'id' => $name . $uuid,
+                                            ])->class([
+                                                'form-check-input',
+                                                'is-invalid' => $errors->has($name),
+                                        ])
+                                    }}
+                                />
+                        </label>
+                    </span>
+                </label>
+            @else
+                <label @class([
+                        'form-check',
+                        'form-switch',
+                        'form-switch-lg' => $large,
+                        'required' => $attributes->has('required'),
+                    ])>
+                    <input wire:model.change="{{ $name }}" {{ $attributes->merge([
+                                        'type' => 'checkbox',
+                                        'name' => $name,
+                                        'id' => $name . $uuid,
+                                    ])->class([
+                                        'form-check-input',
+                                        'is-invalid' => $errors->has($name),
+                                ])
+                            }}
+                        />
+                    @if($label)
+                        <span class="form-check-label">{{ str($label)->lower()->ucfirst() }}</span>
+                    @endif
+                    @if($labelOn)
+                        <span class="form-check-label form-check-label-on">{{ str($labelOn)->lower()->ucfirst() }}</span>
+                    @endif
+                    @if($labelOff)
+                        <span class="form-check-label form-check-label-off">{{ str($labelOff)->lower()->ucfirst() }}</span>
+                    @endif
+                </label>
+            @endif
             <x-form.error field="{{ $name }}"/>
             <x-form.hint message="{{ $hint }}"/>
         HTML;
