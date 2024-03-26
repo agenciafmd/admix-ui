@@ -15,12 +15,11 @@ class Toggle extends Component
         public string $hint = '',
         public string $inline = '',
         public array $values = [],
-    )
-    {
+    ) {
         $this->uuid = '-' . str(serialize($this))
-                ->pipe('md5')
-                ->limit(5, '')
-                ->toString();
+            ->pipe('md5')
+            ->limit(5, '')
+            ->toString();
     }
 
     public function render(): string|View

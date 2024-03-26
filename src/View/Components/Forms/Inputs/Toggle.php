@@ -24,18 +24,17 @@ class Toggle extends Component
 
     public function render(): string|View
     {
-//        $classCollection = Str::of($attributes->get('class'))->explode(' ');
-//        $labelClass = $classCollection->filter(function (string $value, string $key) {
-//            return Str::of($value)->startsWith('form-switch');
-//        })->values();
-//        $inputClass = $classCollection->filter(function (string $value, string $key) {
-//            return !Str::of($value)->startsWith('form-switch');
-//        })->values();
-//        <label class="form-check form-switch">
-//            <input class="form-check-input" type="checkbox" checked="">
-//            <span class="form-check-label">Option 1</span>
-//        </label>
-
+        //        $classCollection = Str::of($attributes->get('class'))->explode(' ');
+        //        $labelClass = $classCollection->filter(function (string $value, string $key) {
+        //            return Str::of($value)->startsWith('form-switch');
+        //        })->values();
+        //        $inputClass = $classCollection->filter(function (string $value, string $key) {
+        //            return !Str::of($value)->startsWith('form-switch');
+        //        })->values();
+        //        <label class="form-check form-switch">
+        //            <input class="form-check-input" type="checkbox" checked="">
+        //            <span class="form-check-label">Option 1</span>
+        //        </label>
 
         return <<<'HTML'
             <label @class([
