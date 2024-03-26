@@ -13,8 +13,8 @@ class Toggle extends Component
         public string $name = '',
         public string $label = '',
         public string $hint = '',
-        public string $inline = '',
-        public array $values = [],
+        public string $labelOn = '',
+        public string $labelOff = '',
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -24,33 +24,45 @@ class Toggle extends Component
 
     public function render(): string|View
     {
+//        $classCollection = Str::of($attributes->get('class'))->explode(' ');
+//        $labelClass = $classCollection->filter(function (string $value, string $key) {
+//            return Str::of($value)->startsWith('form-switch');
+//        })->values();
+//        $inputClass = $classCollection->filter(function (string $value, string $key) {
+//            return !Str::of($value)->startsWith('form-switch');
+//        })->values();
+//        <label class="form-check form-switch">
+//            <input class="form-check-input" type="checkbox" checked="">
+//            <span class="form-check-label">Option 1</span>
+//        </label>
+
+
         return <<<'HTML'
-            @if($label)
-                <x-form.label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                    {{ str($label)->lower()->ucfirst() }}
-                </x-form.label>
-            @endif
-            @foreach($values as $key => $value)
-                <label class="form-check @if($inline) form-check-inline @endif form-switch">
-                    <input type="checkbox" @if($value['value'] == 'Disabled toggle') disabled @endif @if($value['value'] == 'Checked toggle') checked @endif name="{{ $name }}" wire:model="{{ $name }}" {{ $attributes->merge([
+            <label @class([
+                    'form-check',
+                    'form-switch',
+                    'required' => $attributes->has('required'),
+                ])>
+                <input wire:model.change="{{ $name }}" {{ $attributes->merge([
+                                    'type' => 'checkbox',
+                                    'name' => $name,
                                     'id' => $name . $uuid,
-                                    'value' => $value['value'],
                                 ])->class([
                                     'form-check-input',
                                     'is-invalid' => $errors->has($name),
                             ])
                         }}
                     />
-                    <span class="form-check-label" for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
-                        {{ str($value['value'])->lower()->ucfirst() }}
-                    </span>
-                    @if(array_key_exists('description',$value))
-                        <span class="form-check-description">
-                            {{ str($value['description'])->lower()->ucfirst() }}
-                        </span>
-                    @endif
-                </label>
-            @endforeach
+                @if($label)
+                    <span class="form-check-label">{{ str($label)->lower()->ucfirst() }}</span>
+                @endif
+                @if($labelOn)
+                    <span class="form-check-label form-check-label-on">{{ str($labelOn)->lower()->ucfirst() }}</span>
+                @endif
+                @if($labelOff)
+                    <span class="form-check-label form-check-label-off">{{ str($labelOff)->lower()->ucfirst() }}</span>
+                @endif
+            </label>
             <x-form.error field="{{ $name }}"/>
             <x-form.hint message="{{ $hint }}"/>
         HTML;
