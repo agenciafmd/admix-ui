@@ -3,3 +3,4 @@ tabler/*
 /.idea
 composer.lock
 vendor
+!resources/views/livewire-tables/vendor
