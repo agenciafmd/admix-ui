@@ -35,7 +35,7 @@
                                        wire:model="selectedColumns" wire:target="selectedColumns"
                                        wire:loading.attr="disabled" class="form-check-input m-0 me-2"
                                        value="{{ $column->getSlug() }}"/>
-                                {{ Str::of($column->getTitle())->ucfirst() }}
+                                {{ str($column->getTitle())->ucfirst() }}
                             </label>
                         </div>
                     @endif

@@ -3,7 +3,6 @@
 namespace Agenciafmd\Ui\View\Components\Buttons;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 class Create extends Component
@@ -49,7 +48,7 @@ class Create extends Component
 
     public function fallback(): string
     {
-        return Str::of($this->label)
+        return str($this->label)
             ->stripTags()
             ->squish()
             ->lower()

@@ -8,5 +8,5 @@
 
 <label for="{{ $tableName }}-filter-{{ $filter->getKey() }}"
        class="form-label">
-    {{ Str::of($filter->getName())->ucfirst() }}
+    {{ str($filter->getName())->ucfirst() }}
 </label>
