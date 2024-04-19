@@ -4,20 +4,23 @@ namespace Agenciafmd\Ui\Livewire\Modals;
 
 use Illuminate\Contracts\View\View;
 
-class Html extends Modal
+class Confirm extends Modal
 {
     public string $title = '';
     public string $message = '';
+    public string $action = '';
 
     protected $listeners = [
-        'showHtml' => 'showHtml',
+        'showConfirmationToDelete' => 'showConfirmationToDelete',
     ];
 
-    public function showHtml(string $message): void
+    public function showConfirmationToDelete(int $id): void
     {
         $this->show = true;
-        $this->title = __('Information');
-        $this->message = $message;
+        $this->type = 'danger';
+        $this->title = __('Attention!');
+        $this->message = __('Are you sure you want to delete this record?');
+        $this->action = "\$dispatch('bulkDelete', { id: $id });";
     }
 
     public function render(): string|View
@@ -32,8 +35,13 @@ class Html extends Modal
                              x-on:click="show = false"
                              x-bind:class="{'show': show}"
                              x-bind:aria-hidden="show ? false : true"
-                             x-bind:style="{'display': show ? 'block' : 'none'}"> <!-- type="info" -->
+                             x-bind:style="{'display': show ? 'block' : 'none'}">
                         {!! $message !!}
+                        
+                        <x-slot name="footer">
+                            <button x-on:click="show = false" class="btn me-auto">{{ __('No') }}</button>
+                            <button wire:click="{{ $action }}" class="btn btn-{{ $type }}">{{ __('Yes') }}</button>
+                        </x-slot>
                     </x-modal>
                 </div>
             </div>
