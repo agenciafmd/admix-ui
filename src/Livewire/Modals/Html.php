@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\View;
 class Html extends Modal
 {
     public string $title = '';
+
     public string $message = '';
 
     protected $listeners = [

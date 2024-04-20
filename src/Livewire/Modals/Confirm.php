@@ -7,7 +7,9 @@ use Illuminate\Contracts\View\View;
 class Confirm extends Modal
 {
     public string $title = '';
+
     public string $message = '';
+
     public string $action = '';
 
     protected $listeners = [
@@ -20,7 +22,7 @@ class Confirm extends Modal
         $this->type = 'danger';
         $this->title = __('Attention!');
         $this->message = __('Are you sure you want to delete this record?');
-        $this->action = "\$dispatch('bulkDelete', { id: $id });";
+        $this->action = "\$dispatch('bulkDelete', { id: {$id} });";
     }
 
     public function render(): string|View

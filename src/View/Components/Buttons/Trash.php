@@ -8,9 +8,10 @@ use Illuminate\View\Component;
 class Trash extends Component
 {
     public string $label;
+
     public string $href;
 
-    public function __construct(string $label = null, string $href = null)
+    public function __construct(?string $label = null, ?string $href = null)
     {
         $this->label = __('Trash :name', ['name' => $label]);
         $this->href = $href;
