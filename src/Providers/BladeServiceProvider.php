@@ -90,6 +90,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.email', Components\Forms\Inputs\Email::class);
         Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
         Blade::component($prefix . 'form.image-library', Components\Forms\Inputs\ImageLibrary::class);
+        Blade::component($prefix . 'form.number', Components\Forms\Inputs\Number::class);
         Blade::component($prefix . 'form.password', Components\Forms\Inputs\Password::class);
         Blade::component($prefix . 'form.plaintext', Components\Forms\Inputs\Plaintext::class);
         Blade::component($prefix . 'form.radio', Components\Forms\Inputs\Radio::class);
@@ -97,7 +98,6 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.textarea', Components\Forms\Inputs\Textarea::class);
         Blade::component($prefix . 'form.time', Components\Forms\Inputs\Time::class);
         Blade::component($prefix . 'form.toggle', Components\Forms\Inputs\Toggle::class);
-        Blade::component($prefix . 'form.toggle-notification', Components\Forms\Inputs\ToggleNotification::class);
         Blade::component($prefix . 'modal.body', Components\Modal\Body::class);
         Blade::component($prefix . 'modal.close', Components\Modal\Close::class);
         Blade::component($prefix . 'modal.footer', Components\Modal\Footer::class);
