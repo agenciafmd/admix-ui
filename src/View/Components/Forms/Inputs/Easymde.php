@@ -16,9 +16,9 @@ class Easymde extends Component
         public array $options = [],
     ) {
         $this->uuid = '-' . str(serialize($this))
-                ->pipe('md5')
-                ->limit(5, '')
-                ->toString();
+            ->pipe('md5')
+            ->limit(5, '')
+            ->toString();
     }
 
     public function options(): array
@@ -32,9 +32,9 @@ class Easymde extends Component
                 'italic',
                 'strikethrough',
                 '|',
-//                'heading',
-//                'heading-smaller',
-//                'heading-bigger',
+                //                'heading',
+                //                'heading-smaller',
+                //                'heading-bigger',
                 'heading-1',
                 'heading-2',
                 'heading-3',
@@ -45,7 +45,7 @@ class Easymde extends Component
                 '|',
                 'link',
                 'image',
-//                'upload-image',
+                //                'upload-image',
                 'table',
                 'horizontal-rule',
                 '|',
@@ -54,7 +54,7 @@ class Easymde extends Component
                 'fullscreen',
                 '|',
                 'guide',
-            ]
+            ],
         ], $this->options);
     }
 
