@@ -18,7 +18,7 @@ class ImageLibrary extends Component
         public ?string $hint = null,
         public ?bool $hideErrors = false,
         public ?bool $hideProgress = false,
-        public ?string $changeText = 'Change',
+        public ?string $changeText = 'Move',
         public ?string $cropText = 'Crop',
         public ?string $removeText = 'Remove',
         public ?string $cropTitleText = 'Crop image',
@@ -187,7 +187,7 @@ class ImageLibrary extends Component
                         >
                             @foreach($preview as $key => $image)
                                 <div class="list-group-item" data-id="{{ $image['uuid'] }}">
-                                    <div wire:key="preview-{{ $image['uuid'] }}" class="row g-2 align-items-center" title="{{ $changeText }}">
+                                    <div wire:key="preview-{{ $image['uuid'] }}" class="row g-2 align-items-center" title="{{ __($changeText) }}">
                                         <div class="col-auto">
                                             <img src="{{ $image['url'] }}" class="rounded" alt="{{ $image['url'] }}" width="40" height="40"
                                                 @click="document.getElementById('file-{{ $uuid}}-{{ $key }}').click()"
@@ -215,8 +215,8 @@ class ImageLibrary extends Component
                                         <div class="col-auto">
                                             <!-- ACTIONS -->
                                             <div class="absolute flex flex-col gap-2 top-3 left-3 cursor-pointer  p-2 rounded-lg">
-                                                <a class="link-muted" @click="removeMedia('{{ $image['uuid'] }}', '{{ $image['url'] }}')" title="{{ $removeText }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></a>
-                                                <a class="link-muted" @click="crop('image-{{ $modelName().'.'.$key  }}-{{ $uuid }}')" title="{{ $cropText }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-scissors" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.6 8.6l10.4 10.4" /><path d="M8.6 15.4l10.4 -10.4" /></svg></a>
+                                                <a class="link-muted" @click="removeMedia('{{ $image['uuid'] }}', '{{ $image['url'] }}')" title="{{ __($removeText) }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></a>
+                                                <a class="link-muted" @click="crop('image-{{ $modelName().'.'.$key  }}-{{ $uuid }}')" title="{{ __($cropText) }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-scissors" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.6 8.6l10.4 10.4" /><path d="M8.6 15.4l10.4 -10.4" /></svg></a>
                                             </div>
                                         </div>
                                     </div>
@@ -231,11 +231,11 @@ class ImageLibrary extends Component
 
                     <!-- CROP MODAL -->
                     <div @click.prevent="" x-ref="crop" wire:ignore>
-                        <x-modal id="cropModal{{ $uuid }}" x-ref="cropModal" title="{{ $cropTitleText }}">
+                        <x-modal id="cropModal{{ $uuid }}" x-ref="cropModal" title="{{ __($cropTitleText) }}">
                             <img src="#" crossOrigin="Anonymous" />
                             <x-slot:footer>
-                                <x-btn label="{{ $cropCancelText }}" class="me-auto" data-bs-dismiss="modal"/>
-                                <x-btn label="{{ $cropSaveText }}" class="btn-primary" @click="save()"/>
+                                <x-btn label="{{ __($cropCancelText) }}" class="me-auto" data-bs-dismiss="modal"/>
+                                <x-btn label="{{ __($cropSaveText) }}" class="btn-primary" @click="save()"/>
                             </x-slot:footer>
                         </x-modal>
                     </div>
@@ -250,7 +250,7 @@ class ImageLibrary extends Component
                     <!-- ADD FILES -->
                     <a @click="$refs.files.click()" class="btn btn-info w-100 mb-1" :class="(processing || indeterminate) && 'disabled'">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 9l5 -5l5 5" /><path d="M12 4l0 12" /></svg>
-                        Adicionar arquivos
+                        {{ __($addFilesText) }}
                     </a>
 
                     <!-- MAIN FILE INPUT -->
