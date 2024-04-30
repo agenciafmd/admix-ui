@@ -16,7 +16,7 @@ trait WithMediaSync
             ->toString();
 
         // Updates library
-        $this->form->{$library} = $this->form->{$library}->filter(static fn($image) => $image['uuid'] != $uuid);
+        $this->form->{$library} = $this->form->{$library}->filter(static fn ($image) => $image['uuid'] != $uuid);
 
         // Remove file
         $name = str($url)
@@ -24,7 +24,7 @@ trait WithMediaSync
             ->before('?expires')
             ->toString();
         $this->form->{$filesModelName} = collect($this->form->{$filesModelName})
-            ->filter(static fn($file) => $file->getFilename() != $name)
+            ->filter(static fn ($file) => $file->getFilename() != $name)
             ->all();
     }
 
@@ -47,7 +47,7 @@ trait WithMediaSync
         foreach ($this->form->{$filesModelName}['*'] ?? [] as $key => $file) {
             $this->form->{$library} = $this->form->{$library}->add([
                 'uuid' => Str::uuid()
-                    ->toString(), 'url' => $file->temporaryUrl()
+                    ->toString(), 'url' => $file->temporaryUrl(),
             ]);
 
             $key = $this->form->{$library}->keys()
@@ -99,7 +99,7 @@ trait WithMediaSync
         }
 
         // Delete removed files from library
-        $diffs = $model->{$model_field}?->filter(fn($item) => $this->{$library}->doesntContain('uuid',
+        $diffs = $model->{$model_field}?->filter(fn ($item) => $this->{$library}->doesntContain('uuid',
             $item['uuid'])) ?? [];
 
         foreach ($diffs as $diff) {
