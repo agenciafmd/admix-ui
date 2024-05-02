@@ -13,7 +13,9 @@ class ImageLibrary extends Component
 
     public string $mimes = 'image/png, image/jpeg';
 
+    /* simplificar, removendo os textos */
     public function __construct(
+        public string $name = '',
         public ?string $label = null,
         public ?string $hint = null,
         public ?bool $hideErrors = false,
@@ -29,16 +31,21 @@ class ImageLibrary extends Component
         public Collection $preview = new Collection(),
 
     ) {
-        $this->uuid = 'mary' . md5(serialize($this));
+        /* source: https://mary-ui.com/docs/components/image-library */
+        $this->uuid = '-mary-' . str(serialize($this))
+                ->pipe('md5')
+                ->limit(5, '')
+                ->toString();
     }
 
     public function modelName(): ?string
     {
-        return $this->attributes->wire('model');
+        return $this->name;
     }
 
     public function libraryName(): ?string
     {
+        /* WIP: convencionar esse nome */
         return $this->attributes->wire('library');
     }
 
@@ -52,6 +59,7 @@ class ImageLibrary extends Component
         return json_encode(array_merge([
             'autoCropArea' => 1,
             'viewMode' => 2,
+            'guides' => false,
             'dragMode' => 'move',
             'checkCrossOrigin' => false,
             'aspectRatio' => 16 / 9,
@@ -77,7 +85,7 @@ class ImageLibrary extends Component
                             this.bsCropModal = bootstrap.Modal.getOrCreateInstance($refs.cropModal);
                             $refs.cropModal.addEventListener('hidden.bs.modal', event => {
                                 this.cropper?.destroy();
-                                console.log('destroy');
+                                /*console.log('destroy');*/
                             });
 
                             this.$watch('progress', value => {
