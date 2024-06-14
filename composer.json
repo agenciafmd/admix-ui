@@ -13,7 +13,8 @@
     ],
     "require": {
         "laravel/framework": "^11.0",
-        "livewire/livewire": "^3.4"
+        "livewire/livewire": "^3.4",
+        "spatie/laravel-medialibrary": "^11.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0"

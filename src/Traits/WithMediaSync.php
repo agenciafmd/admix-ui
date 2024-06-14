@@ -3,8 +3,8 @@
 namespace Agenciafmd\Ui\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 trait WithMediaSync
 {
@@ -16,7 +16,7 @@ trait WithMediaSync
             ->toString();
 
         // Updates library
-        $this->form->{$library} = $this->form->{$library}->filter(static fn ($image) => $image['uuid'] != $uuid);
+        $this->form->{$library} = $this->form->{$library}->filter(static fn($image) => $image['uuid'] != $uuid);
 
         // Remove file
         $name = str($url)
@@ -24,7 +24,7 @@ trait WithMediaSync
             ->before('?expires')
             ->toString();
         $this->form->{$filesModelName} = collect($this->form->{$filesModelName})
-            ->filter(static fn ($file) => $file->getFilename() != $name)
+            ->filter(static fn($file) => $file->getFilename() != $name)
             ->all();
     }
 
@@ -37,7 +37,7 @@ trait WithMediaSync
     }
 
     // Bind temporary files with respective previews and replace existing ones, if necessary
-    public function refreshMediaSources(string $filesModelName, string $library)
+    public function refreshMediaSources(string $filesModelName, string $library): void
     {
         $filesModelName = str($filesModelName)
             ->afterLast('.')
@@ -47,7 +47,8 @@ trait WithMediaSync
         foreach ($this->form->{$filesModelName}['*'] ?? [] as $key => $file) {
             $this->form->{$library} = $this->form->{$library}->add([
                 'uuid' => Str::uuid()
-                    ->toString(), 'url' => $file->temporaryUrl(),
+                    ->toString(),
+                'url' => $file->temporaryUrl(),
             ]);
 
             $key = $this->form->{$library}->keys()
@@ -74,54 +75,51 @@ trait WithMediaSync
         Model $model,
         string $library = 'library',
         string $files = 'files',
-        string $storage_subpath = '',
-        $model_field = 'library',
-        string $visibility = 'public',
-        string $disk = 'public'
     ): void {
-        // Store files
         foreach ($this->{$files} as $index => $file) {
-            $media = $this->{$library}->get($index);
-            $name = $this->getFileName($media);
+            $name = str($model->name . '-' . date('YmdHisv'))
+                ->slug()
+                ->__toString();
+            $extension = str($file->getFilename())
+                ->afterLast('.')
+                ->lower()
+                ->__toString();
+            $fileName = "{$name}.{$extension}";
 
-            $file = Storage::disk($disk)
-                ->putFileAs($storage_subpath, $file, $name, $visibility);
-            $url = Storage::disk($disk)
-                ->url($file);
+            $customProperties = [];
+            $media = $model->addMedia($file)
+                ->usingName($name)
+                ->usingFileName($fileName)
+                // esse uuid não é necessário
+                ->withCustomProperties(array_merge(['uuid' => Str::uuid()], $customProperties))
+                ->withResponsiveImages()
+                ->toMediaCollection($library);
 
-            // Update library
-            $media['url'] = $url . '?updated_at=' . time();
-            $media['path'] = str($storage_subpath)
-                ->finish('/')
-                ->append($name)
-                ->toString();
-            $this->{$library} = $this->{$library}->replace([$index => $media]);
+            $this->{$library} = $this->{$library}->replace([
+                $index => [
+                    'uuid' => $media->uuid,
+                    'url' => $media->getUrl(),
+                    'path' => $media->file_name,
+                ]
+            ]);
         }
 
-        // Delete removed files from library
-        $diffs = $model->{$model_field}?->filter(fn ($item) => $this->{$library}->doesntContain('uuid',
-            $item['uuid'])) ?? [];
+        $presentMedias = $model->media()
+            ->whereIn('uuid', $this->{$library}->pluck('uuid')
+                ->toArray())
+            ->get();
+        $model->clearMediaCollectionExcept($library, $presentMedias);
 
-        foreach ($diffs as $diff) {
-            Storage::disk($disk)
-                ->delete($diff['path']);
+        $startAt = 1;
+        foreach ($this->library as $media) {
+            $media = Media::query()
+                ->where('uuid', $media['uuid'])
+                ->first();
+            $media->order_column = $startAt++;
+            $media->save();
         }
-
-        // Updates model
-        $model->update([$model_field => $this->{$library}]);
 
         // Resets files
         $this->{$files} = [];
-    }
-
-    private function getFileName(?array $media): ?string
-    {
-        $name = $media['uuid'] ?? null;
-        $extension = str($media['url'] ?? null)
-            ->afterLast('.')
-            ->before('?expires')
-            ->toString();
-
-        return "{$name}.{$extension}";
     }
 }
