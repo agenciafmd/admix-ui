@@ -38,7 +38,6 @@ class ImageLibrary extends Component
 
     public function libraryName(): ?string
     {
-        /* WIP: convencionar esse nome */
         return $this->attributes->wire('library');
     }
 
@@ -267,8 +266,8 @@ class ImageLibrary extends Component
 
                     <!-- ERROR -->
                     @if (! $hideErrors)
-                        @error($libraryName())
-                            <div class="invalid-feedback">{{ $message }}</div>
+                        @error('form.' . $libraryName())
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
                         @enderror
                     @endif
 

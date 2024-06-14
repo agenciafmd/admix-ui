@@ -9,14 +9,16 @@ class AsMediaLibrary implements CastsAttributes
 {
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        return $model->getMedia($key)
-            ->map(function ($media) {
-                return [
-                    'uuid' => $media->uuid,
-                    'url' => $media->getUrl(),
-                    'path' => $media->file_name,
-                ];
-            });
+        return ($model->hasMedia($key))
+            ? $model->getMedia($key)
+                ->map(function ($media) {
+                    return [
+                        'uuid' => $media->uuid,
+                        'url' => $media->getUrl(),
+                        'path' => $media->file_name,
+                    ];
+                })
+            : collect();
     }
 
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
