@@ -22,7 +22,7 @@ trait WithMediaSync
         $name = str($url)
             ->after('preview-file/')
             ->before('?expires')
-            ->toString();
+            ->__toString();
         $this->form->{$filesModelName} = collect($this->form->{$filesModelName})
             ->filter(static fn($file) => $file->getFilename() != $name)
             ->all();
@@ -41,13 +41,13 @@ trait WithMediaSync
     {
         $filesModelName = str($filesModelName)
             ->afterLast('.')
-            ->toString();
+            ->__toString();
 
         // New files area
         foreach ($this->form->{$filesModelName}['*'] ?? [] as $key => $file) {
             $this->form->{$library} = $this->form->{$library}->add([
                 'uuid' => Str::uuid()
-                    ->toString(),
+                    ->__toString(),
                 'url' => $file->temporaryUrl(),
             ]);
 
