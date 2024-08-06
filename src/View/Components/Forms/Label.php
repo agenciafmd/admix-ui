@@ -9,8 +9,7 @@ class Label extends Component
 {
     public function __construct(
         public string $for = '',
-    ) {
-    }
+    ) {}
 
     public function render(): string|View
     {

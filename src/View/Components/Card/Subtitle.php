@@ -9,8 +9,7 @@ class Subtitle extends Component
 {
     public function __construct(
         public string $subtitle = '',
-    ) {
-    }
+    ) {}
 
     public function render(): string|View
     {

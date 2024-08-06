@@ -11,8 +11,7 @@ class Group extends Component
         public string $name = '',
         public string $label = '',
         public string $hint = '',
-    ) {
-    }
+    ) {}
 
     public function render(): string|View
     {

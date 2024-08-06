@@ -16,7 +16,7 @@ trait WithMediaSync
             ->toString();
 
         // Updates library
-        $this->form->{$library} = $this->form->{$library}->filter(static fn($image) => $image['uuid'] != $uuid);
+        $this->form->{$library} = $this->form->{$library}->filter(static fn ($image) => $image['uuid'] != $uuid);
 
         // Remove file
         $name = str($url)
@@ -24,7 +24,7 @@ trait WithMediaSync
             ->before('?expires')
             ->__toString();
         $this->form->{$filesModelName} = collect($this->form->{$filesModelName})
-            ->filter(static fn($file) => $file->getFilename() != $name)
+            ->filter(static fn ($file) => $file->getFilename() != $name)
             ->all();
     }
 
@@ -100,7 +100,7 @@ trait WithMediaSync
                     'uuid' => $media->uuid,
                     'url' => $media->getUrl(),
                     'path' => $media->file_name,
-                ]
+                ],
             ]);
         }
 

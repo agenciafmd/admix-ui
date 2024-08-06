@@ -10,8 +10,7 @@ class Header extends Component
     public function __construct(
         public string $title = '',
         public string $actions = '',
-    ) {
-    }
+    ) {}
 
     public function render(): string|View
     {

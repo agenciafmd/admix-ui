@@ -9,8 +9,7 @@ class Title extends Component
 {
     public function __construct(
         public string $title = '',
-    ) {
-    }
+    ) {}
 
     public function render(): string|View
     {

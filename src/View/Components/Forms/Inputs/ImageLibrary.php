@@ -23,7 +23,7 @@ class ImageLibrary extends Component
         public ?bool $hideProgress = false,
         public ?string $addFilesText = 'Add images',
         public ?array $cropConfig = [],
-        public Collection $preview = new Collection(),
+        public Collection $preview = new Collection,
 
     ) {
         /* source: https://mary-ui.com/docs/components/image-library */

@@ -12,8 +12,7 @@ class Form extends Component
         public string $headerActions = '',
         public string $complement = '',
         public string $actions = '',
-    ) {
-    }
+    ) {}
 
     public function render(): string|View
     {

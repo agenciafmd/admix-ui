@@ -11,8 +11,7 @@ class Modal extends Component
         public string $title = '',
         public string $header = '',
         public string $footer = '',
-    ) {
-    }
+    ) {}
 
     public function render(): string|View
     {
