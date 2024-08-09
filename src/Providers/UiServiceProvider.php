@@ -28,11 +28,17 @@ class UiServiceProvider extends ServiceProvider
     private function publish(): void
     {
         $this->publishes([
-            __DIR__ . '/../../resources/views/livewire-tables/vendor/components' => base_path('resources/views/vendor/livewire-tables/components'),
-        ], ['admix-ui:views-livewire-tables']);
+            __DIR__ . '/../../tabler' => public_path('vendor/admix-ui/tabler'),
+            __DIR__ . '/../../resources/dist/libs' => public_path('vendor/admix-ui/vendor/libs'),
+        ], ['admix-ui:assets']);
 
         $this->publishes([
-            __DIR__ . '/../../tabler' => public_path('vendor/admix-ui/tabler'),
-        ], 'admix-ui:assets');
+            __DIR__ . '/../../config/livewire-tables.php' => base_path('config/livewire-tables.php'),
+            __DIR__ . '/../../config/media-library.php' => base_path('config/media-library.php'),
+        ], ['admix-ui:config']);
+
+        $this->publishes([
+            __DIR__ . '/../../resources/views/livewire-tables/vendor/components' => base_path('resources/views/vendor/livewire-tables/components'),
+        ], ['admix-ui:views']);
     }
 }

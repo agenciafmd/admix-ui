@@ -16,6 +16,8 @@ class UiPublishCommand extends Command
         $this->components->info('Publicando os arquivos do admix');
 
         $this->callSilent('vendor:publish', ['--tag' => 'admix-ui:assets', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'admix-ui:config', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'admix-ui:views', '--force' => true]);
 
         $this->components->info('Arquivos publicados com sucesso.');
 
