@@ -1,6 +1,6 @@
 <?php
 
-namespace Agenciafmd\Ui\Console\Commands;
+namespace Agenciafmd\Ui\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Process\Pipe;

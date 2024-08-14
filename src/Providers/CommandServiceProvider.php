@@ -2,8 +2,8 @@
 
 namespace Agenciafmd\Ui\Providers;
 
-use Agenciafmd\Ui\Console\Commands\UiPublishCommand;
-use Agenciafmd\Ui\Console\Commands\UiUpdateCommand;
+use Agenciafmd\Ui\Commands\UiPublishCommand;
+use Agenciafmd\Ui\Commands\UiUpdateCommand;
 use Illuminate\Support\ServiceProvider;
 
 class CommandServiceProvider extends ServiceProvider
