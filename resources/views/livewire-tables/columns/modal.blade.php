@@ -13,7 +13,7 @@
          stroke-linecap="round"
          stroke-linejoin="round"
     >
-        <use xlink:href="{{ asset('vendor/admix/images/tabler-sprite.svg') }}#tabler-zoom-in"/>
+        <use xlink:href="{{ asset('vendor/admix-ui/images/tabler-sprite.svg') }}#tabler-zoom-in"/>
     </svg>
     <span class="d-none d-sm-block">
         {{ $title }}
