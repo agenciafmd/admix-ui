@@ -29,6 +29,7 @@ class UiServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../../tabler' => public_path('vendor/admix-ui/tabler'),
+            __DIR__ . '/../../resources/dist/images' => public_path('vendor/admix-ui/images'),
             __DIR__ . '/../../resources/dist/libs' => public_path('vendor/admix-ui/vendor/libs'),
         ], ['admix-ui:assets']);
 
