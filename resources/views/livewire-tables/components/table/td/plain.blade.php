@@ -15,7 +15,7 @@
 @elseif ($component->isBootstrap())
     <td {{ $attributes
         ->merge($customAttributes)
-        ->class(['ps-4' => $customAttributes['default'] ?? true])
+        ->class(['w-1 pe-0' => $customAttributes['default'] ?? true])
         ->class(['d-none' => $column && $column->shouldCollapseAlways()])
         ->class(['d-none d-md-table-cell' => $column && $column->shouldCollapseOnMobile()])
         ->class(['d-none d-lg-table-cell' => $column && $column->shouldCollapseOnTablet()])
