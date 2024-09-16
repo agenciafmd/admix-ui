@@ -39,7 +39,7 @@ class UiServiceProvider extends ServiceProvider
         ], ['admix-ui:config']);
 
         $this->publishes([
-            __DIR__ . '/../../resources/views/livewire-tables/vendor/components' => base_path('resources/views/vendor/livewire-tables/components'),
+            __DIR__ . '/../../resources/views/livewire-tables/vendor' => base_path('resources/views/vendor/livewire-tables'),
         ], ['admix-ui:views']);
     }
 }
