@@ -12,6 +12,7 @@
 - [Formulário](#formulário)
     - [Input](#input)
     - [Password](#password)
+    - [Datetime / Date / Time](#datetime--date--time)
     - [Select](#select)
     - [Textarea](#textarea)
     - [Radio](#radio)
