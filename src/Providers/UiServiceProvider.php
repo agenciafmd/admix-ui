@@ -9,6 +9,7 @@ class UiServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->bootProviders();
+        $this->loadTranslations();
         $this->publish();
     }
 
@@ -41,5 +42,15 @@ class UiServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../resources/views/livewire-tables/vendor' => base_path('resources/views/vendor/livewire-tables'),
         ], ['admix-ui:views']);
+
+        $this->publishes([
+            __DIR__ . '/../../lang/pt_BR' => lang_path('pt_BR'),
+        ], ['admix-ui:translations', 'admix-translations']);
+    }
+
+    private function loadTranslations(): void
+    {
+        $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'admix-ui');
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../../lang');
     }
 }

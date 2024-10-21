@@ -90,6 +90,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.easymde', Components\Forms\Inputs\Easymde::class);
         Blade::component($prefix . 'form.email', Components\Forms\Inputs\Email::class);
         Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
+        Blade::component($prefix . 'form.key-value', Components\Forms\Inputs\KeyValue::class);
         Blade::component($prefix . 'form.image', Components\Forms\Inputs\Image::class);
         Blade::component($prefix . 'form.image-library', Components\Forms\Inputs\ImageLibrary::class);
         Blade::component($prefix . 'form.number', Components\Forms\Inputs\Number::class);
