@@ -6,7 +6,7 @@
 <a href="https://packagist.org/packages/agenciafmd/admix-ui"><img src="https://img.shields.io/packagist/l/agenciafmd/admix-ui" alt="License"></a>
 </p>
 
-## Quick access
+## Acesso rápido
 
 - [Instalação](#instalação)
 - [Formulário](#formulário)
@@ -32,7 +32,43 @@ composer install agenciafmd/admix-ui:v11.x-dev
 
 ## Formulário
 
-<!-- print do formulário -->
+![print do form](docs/forms/form.png "print do form")
+
+```html
+
+<x-form>
+    <div class="mb-3">
+        <x-form.input name="name" label="Nome" required/>
+    </div>
+    <div class="mb-3">
+        <x-form.textarea name="message" label="Mensagem" maxlength=100 required/>
+    </div>
+    <div class="mb-3">
+        @php
+        $options = [
+        [
+        'value' => '',
+        'label' => '-'
+        ],
+        [
+        'value' => 1,
+        'label' => 'Item01'
+        ],
+        [
+        'value' => 2,
+        'label' => 'Item02'
+        ],
+        [
+        'value' => 3,
+        'label' => 'Item03 (desabilitada)',
+        'disabled' => true
+        ]
+        ];
+        @endphp
+        <x-form.select name="select" label="Select" :options="$options" required/>
+    </div>
+</x-form>
+```
 
 ### Input
 
@@ -49,6 +85,36 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```
 
 ### Password
+
+![print do password](docs/forms/password.png "print do password")
+
+```html
+
+<div class="mb-3">
+    <x-form.password name="password" label="Senha"/>
+</div>
+<div class="mb-3">
+    <x-form.password name="password" label="Senha"
+                     hint="Utilize pelo menos 1 letra maiúscula e caracteres especiais"/>
+</div>
+```
+
+### Datetime / Date / Time
+
+![print do datetime-date-time](docs/forms/datetime-date-time.png "print do datetime-date-time")
+
+```html
+
+<div class="mb-3">
+    <x-form.datetime name="published_at" label="Data e hora de publicação"/>
+</div>
+<div class="mb-3">
+    <x-form.date name="published_at" label="Data de publicação"/>
+</div>
+<div class="mb-3">
+    <x-form.time name="published_at" label="Hora de publicação"/>
+</div>
+```
 
 ### Select
 
