@@ -7,6 +7,7 @@ composer install agenciafmd/admix-ui
 ```
 
 ---
+
 ## Desenvolvimento
 
 Para rodar o projeto localmente e contribuir com o desenvolvimento:
@@ -27,20 +28,20 @@ Adicione o pacote no composer.json do projeto
 
 ```json
     ...
-    "license": "MIT",
-    "repositories": { <!-- adicione este nó
-        "agenciafmd/admixui": {
-            "type": "path",
-            "url": "packages/agenciafmd/admix-ui",
-            "options": {
-                "symlink": true
-            }
-        }
-    },
-    "require": {
-        "php": "^8.2",
-        "agenciafmd/admix-ui": "*", <!-- adicione esta linha
-    ...
+"license": "MIT",
+"repositories": {<!-- adicione este nó
+"agenciafmd/admixui": {
+"type": "path",
+"url": "packages/agenciafmd/admix-ui",
+"options": {
+"symlink": true
+}
+}
+},
+"require": {
+"php": "^8.3",
+"agenciafmd/admix-ui": "*", <!-- adicione esta linha
+...
 ```
 
 Agora, fazemos um update no composer para que ele reconheça o pacote
