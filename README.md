@@ -39,10 +39,10 @@ composer install agenciafmd/admix-ui:v11.x-dev
 
 <x-form>
     <div class="mb-3">
-        <x-form.input name="name" label="Nome" required/>
+        <x-form.input name="form.name" label="Nome" required/>
     </div>
     <div class="mb-3">
-        <x-form.textarea name="message" label="Mensagem" maxlength=100 required/>
+        <x-form.textarea name="form.message" label="Mensagem" maxlength=100 required/>
     </div>
     <div class="mb-3">
         @php
@@ -66,7 +66,7 @@ composer install agenciafmd/admix-ui:v11.x-dev
         ]
         ];
         @endphp
-        <x-form.select name="select" label="Select" :options="$options" required/>
+        <x-form.select name="form.select" label="Select" :options="$options" required/>
     </div>
 </x-form>
 ```
@@ -78,10 +78,10 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.input name="name" label="Nome" required/>
+    <x-form.input name="form.name" label="Nome" required/>
 </div>
 <div class="mb-3">
-    <x-form.input name="name" label="Nome" hint="Preencha com seu nome completo"/>
+    <x-form.input name="form.name" label="Nome" hint="Preencha com seu nome completo"/>
 </div>
 ```
 
@@ -92,10 +92,10 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.password name="password" label="Senha"/>
+    <x-form.password name="form.password" label="Senha"/>
 </div>
 <div class="mb-3">
-    <x-form.password name="password" label="Senha"
+    <x-form.password name="form.password" label="Senha"
                      hint="Utilize pelo menos 1 letra maiúscula e caracteres especiais"/>
 </div>
 ```
@@ -107,17 +107,43 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.datetime name="published_at" label="Data e hora de publicação"/>
+    <x-form.datetime name="form.published_at" label="Data e hora de publicação"/>
 </div>
 <div class="mb-3">
-    <x-form.date name="published_at" label="Data de publicação"/>
+    <x-form.date name="form.published_at" label="Data de publicação"/>
 </div>
 <div class="mb-3">
-    <x-form.time name="published_at" label="Hora de publicação"/>
+    <x-form.time name="form.published_at" label="Hora de publicação"/>
 </div>
 ```
 
 ### Select
+
+![print do select](docs/forms/select.png "print do select")
+
+```html
+
+<div class="mb-3">
+    @php
+    $options = [
+    [
+    'value' => '',
+    'label' => '-'
+    ],
+    [
+    'value' => 1,
+    'label' => 'São Paulo'
+    ],
+    [
+    'value' => 2,
+    'label' => 'Rio de Janeiro',
+    'disabled' => true
+    ]
+    ];
+    @endphp
+    <x-form.select label="Estados" name="form.state" :options="$options"/>
+</div>
+```
 
 ### Textarea
 
