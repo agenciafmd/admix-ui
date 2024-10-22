@@ -148,12 +148,32 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ### Textarea
 
 ![print do textarea](docs/forms/textarea.png "print do textarea")
+
 ```html
 <div class="mb-3">
     <x-form.textarea name="form.message" label="Mensagem" maxlength=100 required/>
 </div>
 ```
 ### Radio
+
+![print do radio](docs/forms/radio.png "print do radio")
+
+```html
+<div class="mb-3">
+  <x-form.group label="Escolha o Tipo de Imóvel:">
+    <x-form.radio name="propertyType" label="Apartamento" value="apartamento"/>
+    <x-form.radio name="propertyType" label="Casa" value="casa"/>
+    <x-form.radio name="propertyType" label="Imóvel Comercial" value="imovel-comercial" hint="Selecione uma opção"/>
+  </x-form.group>
+</div>
+<div class="mb-3">
+  <x-form.group label="Escolha o Tipo de Imóvel:">
+    <x-form.radio name="propertyType" label="Apartamento" value="apartamento"  inline/>
+    <x-form.radio name="propertyType" label="Casa" value="casa"  inline/>
+    <x-form.radio name="propertyType" label="Imóvel Comercial" value="imovel-comercial" hint="Selecione uma opção" inline disabled/>
+  </x-form.group>
+</div>
+```
 
 ### Checkbox
 
