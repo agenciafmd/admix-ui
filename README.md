@@ -147,6 +147,12 @@ composer install agenciafmd/admix-ui:v11.x-dev
 
 ### Textarea
 
+![print do textarea](docs/forms/textarea.png "print do textarea")
+```html
+<div class="mb-3">
+    <x-form.textarea name="form.message" label="Mensagem" maxlength=100 required/>
+</div>
+```
 ### Radio
 
 ### Checkbox
