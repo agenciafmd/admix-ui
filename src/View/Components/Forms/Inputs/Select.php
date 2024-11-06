@@ -16,9 +16,9 @@ class Select extends Component
         public array $options = [],
     ) {
         $this->uuid = '-' . str(serialize($this))
-            ->pipe('md5')
-            ->limit(5, '')
-            ->toString();
+                ->pipe('md5')
+                ->limit(5, '')
+                ->toString();
     }
 
     public function render(): string|View
@@ -39,7 +39,7 @@ class Select extends Component
                         }}
                     >
                 @foreach($options as $option)
-                    <option value="{{ $option['value'] }}" @disabled(isset($option['disabled']))>{{ $option['label'] }}</option>
+                    <option value="{{ $option['value'] }}" @disabled(isset($option['disabled']) && ($option['disabled']))>{{ $option['label'] }}</option>
                 @endforeach
             </select>
             <x-form.error field="{{ $name }}"/>
