@@ -14,11 +14,12 @@
     - [Number](#number)
     - [Email](#email)
     - [Password](#password)
+    - [KeyValue](#keyvalue)
     - [Datetime / Date / Time](#datetime--date--time)
     - [Select](#select)
     - [Textarea](#textarea)
-    - [Radio](#radio)
     - [Easymde](#easymde)
+    - [Radio](#radio)
     - [Checkbox](#checkbox)
 - [Página](#página)
     - [Form](#form)
@@ -119,7 +120,17 @@ composer install agenciafmd/admix-ui:v11.x-dev
                      hint="Utilize pelo menos 1 letra maiúscula e caracteres especiais"/>
 </div>
 ```
-
+### KeyValue
+![print do keyvalue](docs/forms/keyvalue.png "print do keyvalue")
+```html
+<div class="col-md-12 mb-3">
+    <x-form.key-value name="form.additional"
+        :label="__('local-lines::fields.additional')"
+        key-placeholder="Ex. Carburador"
+        value-placeholder="Ex. 32-PDSI-2/3"
+    />
+</div>
+```
 ### Datetime / Date / Time
 
 ![print do datetime-date-time](docs/forms/datetime-date-time.png "print do datetime-date-time")
