@@ -11,6 +11,8 @@
 - [Instalação](#instalação)
 - [Formulário](#formulário)
     - [Input](#input)
+    - [Number](#number)
+    - [Email](#email)
     - [Password](#password)
     - [Datetime / Date / Time](#datetime--date--time)
     - [Select](#select)
@@ -85,7 +87,24 @@ composer install agenciafmd/admix-ui:v11.x-dev
     <x-form.input name="form.name" label="Nome" hint="Preencha com seu nome completo"/>
 </div>
 ```
+### Number
 
+![print do number](docs/forms/number.png "print do number")
+
+```html
+<div class="col-md-12 mb-3">
+    <x-form.number name="form.number" label="Quantidade" hint="de 0 a 100"/>
+</div>
+```
+### Email
+
+![print do email](docs/forms/email.png "print do email")
+
+```html
+<div class="col-md-12 mb-3">
+    <x-form.email name="form.email" label="E-mail"/>
+</div>
+```
 ### Password
 
 ![print do password](docs/forms/password.png "print do password")
