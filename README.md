@@ -16,6 +16,7 @@
     - [Select](#select)
     - [Textarea](#textarea)
     - [Radio](#radio)
+    - [Easymde](#easymde)
     - [Checkbox](#checkbox)
 - [Página](#página)
     - [Form](#form)
@@ -154,6 +155,14 @@ composer install agenciafmd/admix-ui:v11.x-dev
     <x-form.textarea name="form.message" label="Mensagem" maxlength=100 required/>
 </div>
 ```
+### Easymde
+![print do easymde](docs/forms/easymde.png "print do easymde")
+```html
+<div class="col-md-12 mb-3">
+  <x-form.easymde name="form.description" label="Descrição"/>
+</div>
+```
+
 ### Radio
 
 ![print do radio](docs/forms/radio.png "print do radio")
