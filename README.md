@@ -19,6 +19,7 @@
     - [Select](#select)
     - [Textarea](#textarea)
     - [Easymde](#easymde)
+    - [Toggle](#toggle)
     - [Radio](#radio)
     - [Checkbox](#checkbox)
 - [Página](#página)
@@ -192,7 +193,21 @@ composer install agenciafmd/admix-ui:v11.x-dev
   <x-form.easymde name="form.description" label="Descrição"/>
 </div>
 ```
-
+### Toggle
+![print do toggle](docs/forms/toggle.png "print do toggle")
+```html
+<div class="col-md-6 mb-3">
+    <x-form.label for="form.is_available">
+        {{ __('Available') }}
+    </x-form.label>
+    <x-form.toggle 
+        name="form.is_available"
+        :large="true"
+        :label-on="__('Yes')"
+        :label-off="__('No')"
+    />
+</div>
+```
 ### Radio
 
 ![print do radio](docs/forms/radio.png "print do radio")
