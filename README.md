@@ -19,7 +19,7 @@
     - [Select](#select)
     - [Textarea](#textarea)
     - [Easymde](#easymde)
-    - [Toggle](#toggle)
+    - [Toggle / Multi Toggle](#toggle)
     - [Radio](#radio)
     - [Checkbox](#checkbox)
 - [Página](#página)
@@ -206,6 +206,34 @@ composer install agenciafmd/admix-ui:v11.x-dev
         :label-on="__('Yes')"
         :label-off="__('No')"
     />
+</div>
+```
+### Multi Toggle
+![print do multi-toggle](docs/forms/multi-toggle.png "print do multi-toggle")
+```html
+<div class="col-md-12 mb-3">
+    <div class="col-md-12 mb-3">
+       <x-form.label for="business.payment_methods">
+        Modalidades de Pagamento
+       </x-form.label>
+       <div class="row col-md-12">
+        @php
+            $paymentMethods = [
+                ['name' => 'Cartão de Crédito', 'value' => 'credit_card'],
+                ['name' => 'Boleto Bancário', 'value' => 'boleto'],
+                ['name' => 'PIX', 'value' => 'pix'],
+                ['name' => 'Transferência Bancária', 'value' => 'bank_transfer'],
+            ];
+        @endphp
+        <div class="col-md-3">
+            @foreach($paymentMethods as $method)
+                <x-form.toggle name="form.payment_methods"
+                    :label="$method['name']"
+                    :value="$method['value']"/>
+            @endforeach
+        </div>
+       </div>
+    </div>
 </div>
 ```
 ### Radio
