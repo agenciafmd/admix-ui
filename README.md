@@ -19,6 +19,7 @@
     - [Select](#select)
     - [Textarea](#textarea)
     - [Easymde](#easymde)
+    - [Plain Text](#plain-text)
     - [Toggle / Multi Toggle](#toggle)
     - [Radio](#radio)
     - [Checkbox](#checkbox)
@@ -191,6 +192,19 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 <div class="col-md-12 mb-3">
   <x-form.easymde name="form.description" label="Descrição"/>
+</div>
+```
+
+### Plain Text
+![print do plain-text](docs/forms/plain-text.png "print do plain-text")
+```html
+<div class="col-md-12 mb-3">
+    <x-form.plaintext label="Status"
+                      value="Em processamento" />
+</div>
+<div class="col-md-12 mb-3">
+    <x-form.plaintext :label="__('admix::fields.created_at')"
+                      :value="$product->created_at->format(config('admix.timestamp.format'))"/>
 </div>
 ```
 ### Toggle
