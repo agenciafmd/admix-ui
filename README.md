@@ -258,7 +258,42 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```
 
 ### Checkbox
-
+![print do checbox](docs/forms/checkbox.png "print do checkbox")
+```html
+<x-form.checkbox name="form.terms" label="Concordo com os Termos de Uso"/>
+```
+### Multi Checkbox
+![print do multi-checkbox](docs/forms/multi-checkbox.png "print do multi-checkbox")
+```html
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <x-form.label for="role.differentials">
+            Diferenciais
+        </x-form.label>
+        <div class="row col-md-12">
+            @php
+                $checkbox = [
+                    ['name' => 'Playground', 'value' => 'playground'],
+                    ['name' => 'Área Gourmet', 'value' => 'gourmet_area'],
+                    ['name' => 'Espaço Pet', 'value' => 'pet_area'],
+                    ['name' => 'Academia', 'value' => 'gym'],
+                    ['name' => 'Portaria 24h', 'value' => 'concierge_24h'],
+                    ['name' => 'Alarme Monitorado', 'value' => 'monitored_alarm'],
+                    ['name' => 'Quadra Poliesportiva', 'value' => 'sports_court'],
+                ];
+            @endphp
+            <div class="col-md-3">
+                @foreach($checkbox as $item)
+                    <x-form.checkbox name="form.differentials"
+                                    :label="$item['name']"
+                                    :value="$item['value']"
+                    />
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+```
 ## Página
 
 ### Form
