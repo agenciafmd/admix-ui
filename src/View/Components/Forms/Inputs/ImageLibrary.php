@@ -11,7 +11,7 @@ class ImageLibrary extends Component
 {
     public string $uuid;
 
-    public string $mimes = 'image/png, image/jpeg';
+    public string $accept = 'image/png, image/jpeg';
 
     public bool $isSingle = false;
 
@@ -28,9 +28,9 @@ class ImageLibrary extends Component
     ) {
         /* source: https://mary-ui.com/docs/components/image-library */
         $this->uuid = '-mary-' . str(serialize($this))
-            ->pipe('md5')
-            ->limit(5, '')
-            ->toString();
+                ->pipe('md5')
+                ->limit(5, '')
+                ->toString();
     }
 
     public function modelName(): ?string
@@ -57,6 +57,8 @@ class ImageLibrary extends Component
             'dragMode' => 'move',
             'checkCrossOrigin' => false,
             'aspectRatio' => 16 / 9,
+            'minContainerWidth' => 670,
+            'minContainerHeight' => 505,
         ], $this->cropConfig), JSON_THROW_ON_ERROR);
     }
 
@@ -167,7 +169,6 @@ class ImageLibrary extends Component
                     x-on:livewire-upload-progress="progress = $event.detail.progress;"
                     x-on:livewire-upload-finish="refreshMediaSources()"
 
-
                     {{ $attributes->whereStartsWith('class') }}
                 >
                     <!-- STANDARD LABEL -->
@@ -191,7 +192,18 @@ class ImageLibrary extends Component
                                 <div class="list-group-item" data-id="{{ $image['uuid'] }}">
                                     <div wire:key="preview-{{ $image['uuid'] }}" class="row g-2 align-items-center" title="{{ __('Move') }}">
                                         <div class="col-auto">
-                                            <img src="{{ $image['url'] }}" class="rounded" alt="{{ $image['url'] }}" width="40" height="40"
+                                            <div class="d-block mb-2">
+                                                <a class="btn btn-icon link-muted" @click="removeMedia('{{ $image['uuid'] }}', '{{ $image['url'] }}')" title="{{ __('Remove') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></a>
+                                            </div>
+                                            <div class="d-block mb-2">
+                                                <a class="btn btn-icon link-muted" @click="crop('image-{{ $modelName().'.'.$key  }}-{{ $uuid }}')" title="{{ __('Crop') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-scissors" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.6 8.6l10.4 10.4" /><path d="M8.6 15.4l10.4 -10.4" /></svg></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <img src="{{ $image['url'] }}" 
+                                                class="rounded ratio-1x1" 
+                                                alt="{{ $image['url'] }}" 
+                                                width="160" 
                                                 @click="document.getElementById('file-{{ $uuid}}-{{ $key }}').click()"
                                                 id="image-{{ $modelName().'.'.$key  }}-{{ $uuid }}">
 
@@ -200,11 +212,22 @@ class ImageLibrary extends Component
                                                 type="file"
                                                 id="file-{{ $uuid}}-{{ $key }}"
                                                 wire:model="{{ $modelName().'.'.$key  }}"
-                                                accept="{{ $attributes->get('accept') ?? $mimes }}"
+                                                accept="{{ $attributes->get('accept') ?? $accept }}"
                                                 class="d-none"
                                                 @change="progress = 1"
                                                 />
                                         </div>
+                                        <div class="col">
+                                            {{--
+                                            <div class="mb-3">
+                                                <x-form.input label="Nome"/>
+                                            </div>
+                                            <div class="-mb-3">
+                                                <x-form.input label="Descrição"/>
+                                            </div>
+                                            --}}
+                                        </div>
+                                        
                                         <!-- TODO colocaremos aqui os inputs de meta -->
                                         <!--div class="col">
                                             Górą ty
@@ -214,13 +237,6 @@ class ImageLibrary extends Component
                                                 Bedoes
                                             </div>
                                         </div-->
-                                        <div class="col-auto">
-                                            <!-- ACTIONS -->
-                                            <div class="absolute flex flex-col gap-2 top-3 left-3 cursor-pointer  p-2 rounded-lg">
-                                                <a class="link-muted" @click="removeMedia('{{ $image['uuid'] }}', '{{ $image['url'] }}')" title="{{ __('Remove') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></a>
-                                                <a class="link-muted" @click="crop('image-{{ $modelName().'.'.$key  }}-{{ $uuid }}')" title="{{ __('Crop') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-scissors" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.6 8.6l10.4 10.4" /><path d="M8.6 15.4l10.4 -10.4" /></svg></a>
-                                            </div>
-                                        </div>
                                     </div>
                                     <!-- VALIDATION -->
                                      @error($modelName().'.'.$key)
@@ -264,7 +280,7 @@ class ImageLibrary extends Component
                         x-ref="files"
                         class="d-none"
                         wire:model="{{ $modelName() }}.*"
-                        accept="{{ $attributes->get('accept') ?? $mimes }}"
+                        accept="{{ $attributes->get('accept') ?? $accept }}"
                         @change="progress = 1"
                         @if(!$isSingle) multiple @endif />
 
