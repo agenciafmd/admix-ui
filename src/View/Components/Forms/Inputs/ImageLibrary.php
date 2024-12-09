@@ -17,14 +17,13 @@ class ImageLibrary extends Component
 
     public function __construct(
         public string $name = '',
+        public string $collection = '',
         public ?string $label = null,
         public ?string $hint = null,
         public ?bool $hideErrors = false,
         public ?bool $hideProgress = false,
         public ?string $addFilesText = 'Add images',
         public ?array $cropConfig = [],
-        public Collection $preview = new Collection,
-
     ) {
         /* source: https://mary-ui.com/docs/components/image-library */
         $this->uuid = '-mary-' . str(serialize($this))
@@ -36,11 +35,6 @@ class ImageLibrary extends Component
     public function modelName(): ?string
     {
         return $this->name;
-    }
-
-    public function libraryName(): ?string
-    {
-        return $this->attributes->wire('library');
     }
 
     public function validationMessage(string $message): string
@@ -130,14 +124,14 @@ class ImageLibrary extends Component
                         },
                         removeMedia(uuid, url){
                             this.indeterminate = true
-                            $wire.removeMedia(uuid, '{{ $modelName() }}', '{{ $libraryName() }}', url).then(() => this.indeterminate = false)
+                            $wire.removeMedia(uuid, '{{ $modelName() }}', '{{ $collection }}', url).then(() => this.indeterminate = false)
                         },
                         refreshMediaOrder(order){
-                            $wire.refreshMediaOrder(order, '{{ $libraryName() }}')
+                            $wire.refreshMediaOrder(order, '{{ $collection }}')
                         },
                         refreshMediaSources(){
                             this.indeterminate = true
-                            $wire.refreshMediaSources('{{ $modelName() }}', '{{ $libraryName() }}').then(() => this.indeterminate = false)
+                            $wire.refreshMediaSources('{{ $modelName() }}', '{{ $collection }}').then(() => this.indeterminate = false)
                         },
                         async save() {
                             this.bsCropModal.hide();
@@ -181,14 +175,14 @@ class ImageLibrary extends Component
                     <!-- PREVIEW AREA -->
                     <div
                         :class="(processing || indeterminate) && 'opacity-50 pe-none'"
-                        @class(["card mb-2", "d-none" => $preview->count() == 0])
+                        @class(["card mb-2", "d-none" => $this->form->{$collection}->count() == 0])
                     >
                         <div
                             x-data="{ sortable: null }"
                             x-init="sortable = new Sortable($el, { animation: 150, ghostClass: 'bg-gray-300', onEnd: (ev) => refreshMediaOrder(sortable.toArray()) })"
                             class="list-group card-list-group cursor-move"
                         >
-                            @foreach($preview as $key => $image)
+                            @foreach($this->form->{$collection} as $key => $image)
                                 <div class="list-group-item" data-id="{{ $image['uuid'] }}">
                                     <div wire:key="preview-{{ $image['uuid'] }}" class="row g-2 align-items-center" title="{{ __('Move') }}">
                                         <div class="col-auto">
@@ -266,7 +260,7 @@ class ImageLibrary extends Component
                     @endif
 
                     <!-- ADD FILES -->
-                    @if($isSingle && $preview->count() <= 0)
+                    @if(($isSingle && $this->form->{$collection}->count() <= 0) || (!$isSingle))
                     <a @click="$refs.files.click()" class="btn btn-info w-100 mb-1" :class="(processing || indeterminate) && 'disabled'">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 9l5 -5l5 5" /><path d="M12 4l0 12" /></svg>
                         {{ __($addFilesText) }}
@@ -286,7 +280,7 @@ class ImageLibrary extends Component
 
                     <!-- ERROR -->
                     @if (! $hideErrors)
-                        @error('form.' . $libraryName())
+                        @error('form.' . $collection)
                             <div class="invalid-feedback d-block">{{ $message }}</div>
                         @enderror
                     @endif
