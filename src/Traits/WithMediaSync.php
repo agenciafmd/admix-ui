@@ -9,14 +9,14 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 trait WithMediaSync
 {
     // Remove media
-    public function removeMedia(string $uuid, string $filesModelName, string $library, string $url): void
+    public function removeMedia(string $uuid, string $filesModelName, string $collection, string $url): void
     {
         $filesModelName = str($filesModelName)
             ->afterLast('.')
             ->toString();
 
         // Updates library
-        $this->form->{$library} = $this->form->{$library}->filter(static fn($image) => $image['uuid'] != $uuid);
+        $this->form->{$collection} = $this->form->{$collection}->filter(static fn($image) => $image['uuid'] != $uuid);
 
         // Remove file
         $name = str($url)
@@ -29,15 +29,15 @@ trait WithMediaSync
     }
 
     // Set order
-    public function refreshMediaOrder(array $order, string $library): void
+    public function refreshMediaOrder(array $order, string $collection): void
     {
-        $this->form->{$library} = $this->form->{$library}->sortBy(static function ($item) use ($order) {
+        $this->form->{$collection} = $this->form->{$collection}->sortBy(static function ($item) use ($order) {
             return array_search($item['uuid'], $order);
         });
     }
 
     // Bind temporary files with respective previews and replace existing ones, if necessary
-    public function refreshMediaSources(string $filesModelName, string $library): void
+    public function refreshMediaSources(string $filesModelName, string $collection): void
     {
         $filesModelName = str($filesModelName)
             ->afterLast('.')
@@ -45,13 +45,13 @@ trait WithMediaSync
 
         // New files area
         foreach ($this->form->{$filesModelName}['*'] ?? [] as $key => $file) {
-            $this->form->{$library} = $this->form->{$library}->add([
+            $this->form->{$collection} = $this->form->{$collection}->add([
                 'uuid' => Str::uuid()
                     ->__toString(),
                 'url' => $file->temporaryUrl(),
             ]);
 
-            $key = $this->form->{$library}->keys()
+            $key = $this->form->{$collection}->keys()
                 ->last();
             $this->form->{$filesModelName}[$key] = $file;
         }
@@ -61,10 +61,10 @@ trait WithMediaSync
 
         //Replace existing files
         foreach ($this->form->{$filesModelName} as $key => $file) {
-            $media = $this->form->{$library}->get($key);
+            $media = $this->form->{$collection}->get($key);
             $media['url'] = $file->temporaryUrl();
 
-            $this->form->{$library} = $this->form->{$library}->replace([$key => $media]);
+            $this->form->{$collection} = $this->form->{$collection}->replace([$key => $media]);
         }
 
         $this->validateOnly($filesModelName . '.*');
@@ -73,9 +73,10 @@ trait WithMediaSync
     // Storage files into permanent area and updates the model with fresh sources
     public function syncMedia(
         Model $model,
-        string $library = 'library',
-        string $files = 'files',
+        string $collection = 'collection',
+        string $files = '',
     ): void {
+        $files = $files ?: $collection . '_files';
         foreach ($this->{$files} as $index => $file) {
             $name = str($model->name . '-' . date('YmdHisv'))
                 ->slug()
@@ -93,9 +94,9 @@ trait WithMediaSync
                 // esse uuid não é necessário
                 ->withCustomProperties(array_merge(['uuid' => Str::uuid()], $customProperties))
                 ->withResponsiveImages()
-                ->toMediaCollection($library);
+                ->toMediaCollection($collection);
 
-            $this->{$library} = $this->{$library}->replace([
+            $this->{$collection} = $this->{$collection}->replace([
                 $index => [
                     'uuid' => $media->uuid,
                     'url' => $media->getUrl(),
@@ -105,13 +106,13 @@ trait WithMediaSync
         }
 
         $presentMedias = $model->media()
-            ->whereIn('uuid', $this->{$library}->pluck('uuid')
+            ->whereIn('uuid', $this->{$collection}->pluck('uuid')
                 ->toArray())
             ->get();
-        $model->clearMediaCollectionExcept($library, $presentMedias);
+        $model->clearMediaCollectionExcept($collection, $presentMedias);
 
         $startAt = 1;
-        foreach ($this->{$library} as $media) {
+        foreach ($this->{$collection} as $media) {
             $media = Media::query()
                 ->where('uuid', $media['uuid'])
                 ->first();

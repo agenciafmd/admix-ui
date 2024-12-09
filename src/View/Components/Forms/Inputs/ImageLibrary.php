@@ -4,7 +4,6 @@ namespace Agenciafmd\Ui\View\Components\Forms\Inputs;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 class ImageLibrary extends Component
@@ -17,7 +16,7 @@ class ImageLibrary extends Component
 
     public function __construct(
         public string $name = '',
-        public string $collection = '',
+        public ?string $collection = '',
         public ?string $label = null,
         public ?string $hint = null,
         public ?bool $hideErrors = false,
@@ -25,6 +24,10 @@ class ImageLibrary extends Component
         public ?string $addFilesText = 'Add images',
         public ?array $cropConfig = [],
     ) {
+        $this->collection = $this->collection ?: str($this->name)
+            ->after('.')
+            ->toString();
+
         /* source: https://mary-ui.com/docs/components/image-library */
         $this->uuid = '-mary-' . str(serialize($this))
                 ->pipe('md5')
@@ -34,7 +37,7 @@ class ImageLibrary extends Component
 
     public function modelName(): ?string
     {
-        return $this->name;
+        return $this->name . '_files';
     }
 
     public function validationMessage(string $message): string
@@ -178,9 +181,15 @@ class ImageLibrary extends Component
                         @class(["card mb-2", "d-none" => $this->form->{$collection}->count() == 0])
                     >
                         <div
-                            x-data="{ sortable: null }"
-                            x-init="sortable = new Sortable($el, { animation: 150, ghostClass: 'bg-gray-300', onEnd: (ev) => refreshMediaOrder(sortable.toArray()) })"
-                            class="list-group card-list-group cursor-move"
+                            @if(!$isSingle)
+                                x-data="{ sortable: null }"
+                                x-init="sortable = new Sortable($el, { animation: 150, ghostClass: 'bg-gray-300', onEnd: (ev) => refreshMediaOrder(sortable.toArray()) })"
+                            @endif
+                            @class([
+                                'list-group',
+                                'card-list-group',
+                                'cursor-move' => !$isSingle,
+                            ])
                         >
                             @foreach($this->form->{$collection} as $key => $image)
                                 <div class="list-group-item" data-id="{{ $image['uuid'] }}">
@@ -286,6 +295,7 @@ class ImageLibrary extends Component
                     @endif
 
                     <!-- HINT -->
+                    {{-- TODO: usar esse fluxo para alimentar o hint quando ele estiver vazio $this->form->rules()['avatar_files.*'][2]->__toString()) --}}
                     <x-form.hint message="{{ $hint }}"/>
                 </div>
             HTML;
