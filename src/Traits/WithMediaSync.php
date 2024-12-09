@@ -83,7 +83,7 @@ trait WithMediaSync
             $extension = str($file->getFilename())
                 ->afterLast('.')
                 ->lower()
-                ->__toString();
+                ->__toString() ?: 'jpg';
             $fileName = "{$name}.{$extension}";
 
             $customProperties = [];
