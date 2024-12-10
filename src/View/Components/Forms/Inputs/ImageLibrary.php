@@ -30,9 +30,9 @@ class ImageLibrary extends Component
 
         /* source: https://mary-ui.com/docs/components/image-library */
         $this->uuid = '-mary-' . str(serialize($this))
-                ->pipe('md5')
-                ->limit(5, '')
-                ->toString();
+            ->pipe('md5')
+            ->limit(5, '')
+            ->toString();
     }
 
     public function modelName(): ?string
