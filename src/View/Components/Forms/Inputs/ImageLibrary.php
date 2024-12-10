@@ -40,6 +40,11 @@ class ImageLibrary extends Component
         return $this->name . '_files';
     }
 
+    public function metaName(): ?string
+    {
+        return $this->name . '_meta';
+    }
+
     public function validationMessage(string $message): string
     {
         return str($message)->after('field');
@@ -170,7 +175,12 @@ class ImageLibrary extends Component
                 >
                     <!-- STANDARD LABEL -->
                     @if($label)
-                        <x-form.label for="{{ $modelName() . $uuid }}" @class(['required' => $attributes->has('required')])>
+                        <x-form.label 
+                            for="{{ $modelName() . $uuid }}" 
+                            @class([
+                                'required' => $attributes->has('required')
+                            ])
+                        >
                             {{ str($label)->lower()->ucfirst() }}
                         </x-form.label>
                     @endif
@@ -178,7 +188,10 @@ class ImageLibrary extends Component
                     <!-- PREVIEW AREA -->
                     <div
                         :class="(processing || indeterminate) && 'opacity-50 pe-none'"
-                        @class(["card mb-2", "d-none" => $this->form->{$collection}->count() == 0])
+                        @class([
+                            'card mb-2', 
+                            'd-none' => $this->form->{$collection}->count() === 0
+                        ])
                     >
                         <div
                             @if(!$isSingle)
@@ -199,7 +212,7 @@ class ImageLibrary extends Component
                                                 <a class="btn btn-icon link-muted" @click="removeMedia('{{ $image['uuid'] }}', '{{ $image['url'] }}')" title="{{ __('Remove') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></a>
                                             </div>
                                             <div class="d-block mb-2">
-                                                <a class="btn btn-icon link-muted" @click="crop('image-{{ $modelName().'.'.$key  }}-{{ $uuid }}')" title="{{ __('Crop') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-scissors" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.6 8.6l10.4 10.4" /><path d="M8.6 15.4l10.4 -10.4" /></svg></a>
+                                                <a class="btn btn-icon link-muted" @click="crop('image-{{ $modelName() . '.' . $key  }}-{{ $uuid }}')" title="{{ __('Crop') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-scissors" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.6 8.6l10.4 10.4" /><path d="M8.6 15.4l10.4 -10.4" /></svg></a>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -208,41 +221,33 @@ class ImageLibrary extends Component
                                                 alt="{{ $image['url'] }}" 
                                                 width="160" 
                                                 @click="document.getElementById('file-{{ $uuid}}-{{ $key }}').click()"
-                                                id="image-{{ $modelName().'.'.$key  }}-{{ $uuid }}">
+                                                id="image-{{ $modelName() . '.' . $key  }}-{{ $uuid }}">
 
                                             <!-- HIDDEN FILE INPUT -->
                                             <input
                                                 type="file"
                                                 id="file-{{ $uuid}}-{{ $key }}"
-                                                wire:model="{{ $modelName().'.'.$key  }}"
+                                                wire:model="{{ $modelName() . '.' . $key }}"
                                                 accept="{{ $attributes->get('accept') ?? $accept }}"
                                                 class="d-none"
                                                 @change="progress = 1"
                                                 />
                                         </div>
+                                        @if($slot->isEmpty())
                                         <div class="col">
-                                            {{--
                                             <div class="mb-3">
-                                                <x-form.input label="Nome"/>
+                                                <x-form.input wire:model="{{ $metaName() . '.' . $key . '.title' }}" id="title-{{ $image['uuid'] }}" placeholder="Nome"/>
                                             </div>
                                             <div class="-mb-3">
-                                                <x-form.input label="Descrição"/>
+                                                <x-form.input wire:model="{{ $metaName() . '.' . $key . '.alt' }}" id="alt-{{ $image['uuid'] }}" placeholder="Descrição"/>
                                             </div>
-                                            --}}
                                         </div>
-                                        
-                                        <!-- TODO colocaremos aqui os inputs de meta -->
-                                        <!--div class="col">
-                                            Górą ty
-                                            <div class="text-secondary">
-                                                GOLEC UORKIESTRA,
-                                                Gromee,
-                                                Bedoes
-                                            </div>
-                                        </div-->
+                                        @else
+                                            {!! str($slot)->replace('{key}', $key) !!}
+                                        @endif
                                     </div>
                                     <!-- VALIDATION -->
-                                     @error($modelName().'.'.$key)
+                                     @error($modelName() . '.' . $key)
                                         <div class="invalid-feedback d-block">{{ $validationMessage($message) }}</div>
                                      @enderror
                                 </div>

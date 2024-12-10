@@ -16,7 +16,7 @@ trait WithMediaSync
             ->toString();
 
         // Updates library
-        $this->form->{$collection} = $this->form->{$collection}->filter(static fn($image) => $image['uuid'] != $uuid);
+        $this->form->{$collection} = $this->form->{$collection}->filter(static fn($image) => $image['uuid'] !== $uuid);
 
         // Remove file
         $name = str($url)
@@ -24,7 +24,7 @@ trait WithMediaSync
             ->before('?expires')
             ->__toString();
         $this->form->{$filesModelName} = collect($this->form->{$filesModelName})
-            ->filter(static fn($file) => $file->getFilename() != $name)
+            ->filter(static fn($file) => $file->getFilename() !== $name)
             ->all();
     }
 
@@ -74,9 +74,10 @@ trait WithMediaSync
     public function syncMedia(
         Model $model,
         string $collection = 'collection',
-        string $files = '',
     ): void {
-        $files = $files ?: $collection . '_files';
+        $files = $collection . '_files';
+        $meta = $collection . '_meta';
+        $arrayMeta = $this->{$meta};
         foreach ($this->{$files} as $index => $file) {
             $name = str($model->name . '-' . date('YmdHisv'))
                 ->slug()
@@ -87,12 +88,13 @@ trait WithMediaSync
                 ->__toString() ?: 'jpg';
             $fileName = "{$name}.{$extension}";
 
-            $customProperties = [];
+            $customProperties = $arrayMeta[$index] ?? [];
             $media = $model->addMedia($file)
                 ->usingName($name)
                 ->usingFileName($fileName)
-                // esse uuid não é necessário
-                ->withCustomProperties(array_merge(['uuid' => Str::uuid()], $customProperties))
+                ->withCustomProperties(array_merge([
+                    //'uuid' => Str::uuid()
+                ], $customProperties))
                 ->withResponsiveImages()
                 ->toMediaCollection($collection);
 
@@ -101,6 +103,7 @@ trait WithMediaSync
                     'uuid' => $media->uuid,
                     'url' => $media->getUrl(),
                     'path' => $media->file_name,
+                    'meta' => $media->custom_properties,
                 ],
             ]);
         }
@@ -112,11 +115,12 @@ trait WithMediaSync
         $model->clearMediaCollectionExcept($collection, $presentMedias);
 
         $startAt = 1;
-        foreach ($this->{$collection} as $media) {
+        foreach ($this->{$collection} as $key => $media) {
             $media = Media::query()
                 ->where('uuid', $media['uuid'])
                 ->first();
             $media->order_column = $startAt++;
+            $media->custom_properties = $arrayMeta[$key];
             $media->save();
         }
 
