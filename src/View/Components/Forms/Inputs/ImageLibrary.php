@@ -189,7 +189,9 @@ class ImageLibrary extends Component
                     <div
                         :class="(processing || indeterminate) && 'opacity-50 pe-none'"
                         @class([
-                            'card mb-2', 
+                            'card',
+                            '-mb-2',
+                            'border-0', 
                             'd-none' => $this->form->{$collection}->count() === 0
                         ])
                     >
@@ -199,30 +201,25 @@ class ImageLibrary extends Component
                                 x-init="sortable = new Sortable($el, { animation: 150, ghostClass: 'bg-gray-300', onEnd: (ev) => refreshMediaOrder(sortable.toArray()) })"
                             @endif
                             @class([
-                                'list-group',
-                                'card-list-group',
-                                'cursor-move' => !$isSingle,
+                                'row',
+                                '-list-group',
+                                '-card-list-group',
+                                '-cursor-move' => !$isSingle,
                             ])
                         >
                             @foreach($this->form->{$collection} as $key => $image)
-                                <div class="list-group-item" data-id="{{ $image['uuid'] }}">
-                                    <div wire:key="preview-{{ $image['uuid'] }}" class="row g-2 align-items-center" title="{{ __('Move') }}">
-                                        <div class="col-auto">
-                                            <div class="d-block mb-2">
-                                                <a class="btn btn-icon link-muted" @click="removeMedia('{{ $image['uuid'] }}', '{{ $image['url'] }}')" title="{{ __('Remove') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></a>
-                                            </div>
-                                            <div class="d-block mb-2">
-                                                <a class="btn btn-icon link-muted" @click="crop('image-{{ $modelName() . '.' . $key  }}-{{ $uuid }}')" title="{{ __('Crop') }}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-scissors" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.6 8.6l10.4 10.4" /><path d="M8.6 15.4l10.4 -10.4" /></svg></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <img src="{{ $image['url'] }}" 
-                                                class="rounded ratio-1x1" 
+                                <div @class([
+                                        'col-md-4',
+                                        'mb-3',
+                                        'cursor-move' => !$isSingle,
+                                     ]) data-id="{{ $image['uuid'] }}">
+                                    <div class="card">
+                                        <img src="{{ $image['url'] }}" 
+                                                class="-img-responsive -img-responsive-4x3 -ratio-4x3"
                                                 alt="{{ $image['url'] }}" 
-                                                width="160" 
+                                                -width="160" 
                                                 @click="document.getElementById('file-{{ $uuid}}-{{ $key }}').click()"
                                                 id="image-{{ $modelName() . '.' . $key  }}-{{ $uuid }}">
-
                                             <!-- HIDDEN FILE INPUT -->
                                             <input
                                                 type="file"
@@ -231,25 +228,46 @@ class ImageLibrary extends Component
                                                 accept="{{ $attributes->get('accept') ?? $accept }}"
                                                 class="d-none"
                                                 @change="progress = 1"
-                                                />
+                                            />
+                                        <div class="card-body">
+                                            @if($slot->isEmpty())
+                                                <div class="mb-3">
+                                                    <x-form.input wire:model="{{ $metaName() . '.' . $key . '.title' }}" id="title-{{ $image['uuid'] }}" placeholder="Nome"/>
+                                                </div>
+                                                <div class="-mb-3">
+                                                    <x-form.input wire:model="{{ $metaName() . '.' . $key . '.alt' }}" id="alt-{{ $image['uuid'] }}" placeholder="Descrição"/>
+                                                </div>
+                                            @else
+                                                {!! str($slot)->replace('{key}', $key) !!}
+                                            @endif
+                                            
+                                            <!-- VALIDATION -->
+                                            @error($modelName() . '.' . $key)
+                                            <div class="invalid-feedback d-block mt-3">{{ $validationMessage($message) }}</div>
+                                            @enderror
                                         </div>
-                                        @if($slot->isEmpty())
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <x-form.input wire:model="{{ $metaName() . '.' . $key . '.title' }}" id="title-{{ $image['uuid'] }}" placeholder="Nome"/>
-                                            </div>
-                                            <div class="-mb-3">
-                                                <x-form.input wire:model="{{ $metaName() . '.' . $key . '.alt' }}" id="alt-{{ $image['uuid'] }}" placeholder="Descrição"/>
+                                        <!-- Card footer -->
+                                        <div class="card-footer">
+                                            <div class="d-flex">
+                                                <a class="btn -btn-icon link-muted" 
+                                                   @click="removeMedia('{{ $image['uuid'] }}', '{{ $image['url'] }}')" 
+                                                   title="{{ __('Remove') }}">
+                                                    <x-tblr-icon name="trash" class="icon d-sm-none d-block m-0"/>
+                                                    <span class="d-none d-sm-block">
+                                                        {{ __('Remove') }}
+                                                    </span>
+                                                </a>
+                                                <a class="btn -btn-icon link-muted ms-auto" 
+                                                   @click="crop('image-{{ $modelName() . '.' . $key  }}-{{ $uuid }}')" 
+                                                   title="{{ __('Crop') }}">
+                                                    <x-tblr-icon name="scissors" class="icon d-sm-none d-block m-0"/>
+                                                    <span class="d-none d-sm-block">
+                                                        {{ __('Crop') }}
+                                                    </span>
+                                                </a>
                                             </div>
                                         </div>
-                                        @else
-                                            {!! str($slot)->replace('{key}', $key) !!}
-                                        @endif
                                     </div>
-                                    <!-- VALIDATION -->
-                                     @error($modelName() . '.' . $key)
-                                        <div class="invalid-feedback d-block">{{ $validationMessage($message) }}</div>
-                                     @enderror
                                 </div>
                             @endforeach
                         </div>
@@ -276,7 +294,7 @@ class ImageLibrary extends Component
                     <!-- ADD FILES -->
                     @if(($isSingle && $this->form->{$collection}->count() <= 0) || (!$isSingle))
                     <a @click="$refs.files.click()" class="btn btn-info w-100 mb-1" :class="(processing || indeterminate) && 'disabled'">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 9l5 -5l5 5" /><path d="M12 4l0 12" /></svg>
+                        <x-tblr-icon name="upload" class="icon"/>
                         {{ __($addFilesText) }}
                     </a>
                     @endif
