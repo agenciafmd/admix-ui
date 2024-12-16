@@ -90,24 +90,29 @@ composer install agenciafmd/admix-ui:v11.x-dev
     <x-form.input name="form.name" label="Nome" hint="Preencha com seu nome completo"/>
 </div>
 ```
+
 ### Number
 
 ![print do number](docs/forms/number.png "print do number")
 
 ```html
-<div class="col-md-12 mb-3">
+
+<div class="mb-3">
     <x-form.number name="form.number" label="Quantidade" hint="de 0 a 100"/>
 </div>
 ```
+
 ### Email
 
 ![print do email](docs/forms/email.png "print do email")
 
 ```html
-<div class="col-md-12 mb-3">
+
+<div class="mb-3">
     <x-form.email name="form.email" label="E-mail"/>
 </div>
 ```
+
 ### Password
 
 ![print do password](docs/forms/password.png "print do password")
@@ -122,17 +127,22 @@ composer install agenciafmd/admix-ui:v11.x-dev
                      hint="Utilize pelo menos 1 letra maiúscula e caracteres especiais"/>
 </div>
 ```
+
 ### KeyValue
-![print do keyvalue](docs/forms/keyvalue.png "print do keyvalue")
+
+![print do key-value](docs/forms/key-value.png "print do key-value")
+
 ```html
-<div class="col-md-12 mb-3">
-    <x-form.key-value name="form.additional"
-        :label="__('local-lines::fields.additional')"
-        key-placeholder="Ex. Carburador"
-        value-placeholder="Ex. 32-PDSI-2/3"
+
+<div class="mb-3">
+    <x-form.key-value name="form.options"
+                      label="Opções"
+                      key-placeholder="Ex. Carburador"
+                      value-placeholder="Ex. 32-PDSI-2/3"
     />
 </div>
 ```
+
 ### Datetime / Date / Time
 
 ![print do datetime-date-time](docs/forms/datetime-date-time.png "print do datetime-date-time")
@@ -183,102 +193,145 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ![print do textarea](docs/forms/textarea.png "print do textarea")
 
 ```html
+
 <div class="mb-3">
     <x-form.textarea name="form.message" label="Mensagem" maxlength=100 required/>
 </div>
 ```
+
 ### Easymde
+
 ![print do easymde](docs/forms/easymde.png "print do easymde")
+
 ```html
-<div class="col-md-12 mb-3">
-  <x-form.easymde name="form.description" label="Descrição"/>
+
+<div class="mb-3">
+    <x-form.easymde name="form.description" label="Descrição"/>
 </div>
 ```
 
 ### Plain Text
+
 ![print do plain-text](docs/forms/plain-text.png "print do plain-text")
+
 ```html
-<div class="col-md-12 mb-3">
+
+<div class="mb-3">
     <x-form.plaintext label="Status"
-                      value="Em processamento" />
+                      value="Em processamento"/>
 </div>
-<div class="col-md-12 mb-3">
-    <x-form.plaintext :label="__('admix::fields.created_at')"
-                      :value="$product->created_at->format(config('admix.timestamp.format'))"/>
+<div class="mb-3">
+    <x-form.plaintext label="Data de criação"
+                      value="18/11/2024 09:11:03"/>
 </div>
 ```
+
 ### Toggle
+
 ![print do toggle](docs/forms/toggle.png "print do toggle")
+
 ```html
-<div class="col-md-6 mb-3">
+
+<div class="mb-3">
     <x-form.label for="form.is_available">
-        {{ __('Available') }}
+        Disponível
     </x-form.label>
-    <x-form.toggle 
-        name="form.is_available"
-        :large="true"
-        :label-on="__('Yes')"
-        :label-off="__('No')"
+    <x-form.toggle
+            name="form.is_available"
+            :large="true"
+            :label-on="__('Yes')"
+            :label-off="__('No')"
     />
 </div>
 ```
+
 ### Multi Toggle
+
 ![print do multi-toggle](docs/forms/multi-toggle.png "print do multi-toggle")
+
 ```html
-<div class="col-md-12 mb-3">
-    <div class="col-md-12 mb-3">
-       <x-form.label for="business.payment_methods">
+
+<div class="mb-3">
+    <x-form.label for="form.payment_methods">
         Modalidades de Pagamento
-       </x-form.label>
-       <div class="row col-md-12">
-        @php
-            $paymentMethods = [
-                ['name' => 'Cartão de Crédito', 'value' => 'credit_card'],
-                ['name' => 'Boleto Bancário', 'value' => 'boleto'],
-                ['name' => 'PIX', 'value' => 'pix'],
-                ['name' => 'Transferência Bancária', 'value' => 'bank_transfer'],
-            ];
-        @endphp
-        <div class="col-md-3">
-            @foreach($paymentMethods as $method)
-                <x-form.toggle name="form.payment_methods"
-                    :label="$method['name']"
-                    :value="$method['value']"/>
-            @endforeach
-        </div>
-       </div>
-    </div>
+    </x-form.label>
+    @php
+    $paymentMethods = [
+    [
+    'label' => 'Cartão de Crédito',
+    'value' => 'credit_card',
+    ],
+    [
+    'label' => 'Boleto Bancário',
+    'value' => 'boleto',
+    ],
+    [
+    'label' => 'PIX',
+    'value' => 'pix',
+    ],
+    [
+    'label' => 'Transferência Bancária',
+    'value' => 'bank_transfer',
+    ],
+    ];
+    @endphp
+    @foreach($paymentMethods as $method)
+    <x-form.toggle name="form.payment_methods"
+                   :label="$method['label']"
+                   :value="$method['value']"/>
+    @endforeach
 </div>
 ```
+
 ### Radio
 
 ![print do radio](docs/forms/radio.png "print do radio")
 
 ```html
+
 <div class="mb-3">
-  <x-form.group label="Escolha o Tipo de Imóvel:">
-    <x-form.radio name="propertyType" label="Apartamento" value="apartamento"/>
-    <x-form.radio name="propertyType" label="Casa" value="casa"/>
-    <x-form.radio name="propertyType" label="Imóvel Comercial" value="imovel-comercial" hint="Selecione uma opção"/>
-  </x-form.group>
+    <x-form.group label="Escolha o tipo de Imóvel:">
+        <x-form.radio name="form.propertyType" label="Apartamento" value="apartamento"/>
+        <x-form.radio name="form.propertyType" label="Casa" value="casa"/>
+        <x-form.radio name="form.propertyType" label="Imóvel Comercial" value="imovel-comercial"
+                      hint="Selecione uma opção"/>
+    </x-form.group>
 </div>
+```
+
+### Radio Inline
+
+![print do radio-inline](docs/forms/radio-inline.png "print do radio-inline")
+
+```html
+
 <div class="mb-3">
-  <x-form.group label="Escolha o Tipo de Imóvel:">
-    <x-form.radio name="propertyType" label="Apartamento" value="apartamento"  inline/>
-    <x-form.radio name="propertyType" label="Casa" value="casa"  inline/>
-    <x-form.radio name="propertyType" label="Imóvel Comercial" value="imovel-comercial" hint="Selecione uma opção" inline disabled/>
-  </x-form.group>
+    <x-form.group label="Escolha o tipo de Imóvel:">
+        <x-form.radio name="form.propertyType" label="Apartamento" value="apartamento" inline/>
+        <x-form.radio name="form.propertyType" label="Casa" value="casa" inline/>
+        <x-form.radio name="form.propertyType" label="Imóvel Comercial" value="imovel-comercial"
+                      hint="Selecione uma opção"
+                      inline
+                      disabled/>
+    </x-form.group>
 </div>
 ```
 
 ### Checkbox
+
 ![print do checbox](docs/forms/checkbox.png "print do checkbox")
+
 ```html
+
 <x-form.checkbox name="form.terms" label="Concordo com os Termos de Uso"/>
 ```
+
 ### Multi Checkbox
+
 ![print do multi-checkbox](docs/forms/multi-checkbox.png "print do multi-checkbox")
+
 ```html
+
 <div class="row">
     <div class="col-md-12 mb-3">
         <x-form.label for="role.differentials">
@@ -286,28 +339,50 @@ composer install agenciafmd/admix-ui:v11.x-dev
         </x-form.label>
         <div class="row col-md-12">
             @php
-                $checkbox = [
-                    ['name' => 'Playground', 'value' => 'playground'],
-                    ['name' => 'Área Gourmet', 'value' => 'gourmet_area'],
-                    ['name' => 'Espaço Pet', 'value' => 'pet_area'],
-                    ['name' => 'Academia', 'value' => 'gym'],
-                    ['name' => 'Portaria 24h', 'value' => 'concierge_24h'],
-                    ['name' => 'Alarme Monitorado', 'value' => 'monitored_alarm'],
-                    ['name' => 'Quadra Poliesportiva', 'value' => 'sports_court'],
-                ];
+            $checkbox = [
+            [
+            'label' => 'Playground',
+            'value' => 'playground',
+            ],
+            [
+            'label' => 'Área Gourmet',
+            'value' => 'gourmet_area',
+            ],
+            [
+            'label' => 'Espaço Pet',
+            'value' => 'pet_area',
+            ],
+            [
+            'label' => 'Academia',
+            'value' => 'gym',
+            ],
+            [
+            'label' => 'Portaria 24h',
+            'value' => 'concierge_24h',
+            ],
+            [
+            'label' => 'Alarme Monitorado',
+            'value' => 'monitored_alarm',
+            ],
+            [
+            'label' => 'Quadra Poliesportiva',
+            'value' => 'sports_court',
+            ],
+            ];
             @endphp
             <div class="col-md-3">
                 @foreach($checkbox as $item)
-                    <x-form.checkbox name="form.differentials"
-                                    :label="$item['name']"
-                                    :value="$item['value']"
-                    />
+                <x-form.checkbox name="form.differentials"
+                                 :label="$item['label']"
+                                 :value="$item['value']"
+                />
                 @endforeach
             </div>
         </div>
     </div>
 </div>
 ```
+
 ## Página
 
 ### Form
