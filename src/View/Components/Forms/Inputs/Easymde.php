@@ -69,7 +69,7 @@ class Easymde extends Component
 
     public function render(): string|View
     {
-        /*this.easyMDE = new EasyMDE({ element: $root, ...{&quot;forceSync&quot;:true,&quot;autoDownloadFontAwesome&quot;:true,&quot;placeholder&quot;:&quot;Write something...&quot;} {{ $jsonOptions() }} });*/
+        /* this.easyMDE = new EasyMDE({ element: $root, ...{&quot;forceSync&quot;:true,&quot;autoDownloadFontAwesome&quot;:true,&quot;placeholder&quot;:&quot;Write something...&quot;} {{ $jsonOptions() }} }); */
         return <<<'HTML'
                 @if($label)
                     <x-form.label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>

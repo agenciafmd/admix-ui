@@ -59,7 +59,7 @@ trait WithMediaSync
         // Reset new files area
         unset($this->form->{$filesModelName}['*']);
 
-        //Replace existing files
+        // Replace existing files
         foreach ($this->form->{$filesModelName} as $key => $file) {
             $media = $this->form->{$collection}->get($key);
             $media['url'] = $file->temporaryUrl();
@@ -93,7 +93,7 @@ trait WithMediaSync
                 ->usingName($name)
                 ->usingFileName($fileName)
                 ->withCustomProperties(array_merge([
-                    //'uuid' => Str::uuid()
+                    // 'uuid' => Str::uuid()
                 ], $customProperties))
                 ->withResponsiveImages()
                 ->toMediaCollection($collection);
