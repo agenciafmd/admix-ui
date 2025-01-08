@@ -16,6 +16,7 @@ class AsMediaLibrary implements CastsAttributes
                         'uuid' => $media->uuid,
                         'url' => $media->getUrl(),
                         'path' => $media->file_name,
+                        'meta' => $media->custom_properties,
                     ];
                 })
             : collect();
