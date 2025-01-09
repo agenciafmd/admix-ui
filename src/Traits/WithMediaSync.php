@@ -120,7 +120,7 @@ trait WithMediaSync
                 ->where('uuid', $media['uuid'])
                 ->first();
             $media->order_column = $startAt++;
-            $media->custom_properties = $arrayMeta[$key];
+            $media->custom_properties = $arrayMeta[$key] ?? [];
             $media->save();
         }
 
