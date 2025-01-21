@@ -17,7 +17,9 @@
                                 <span>@lang('to')</span>
                                 <span class="font-medium">{{ $this->getRows->lastItem() }}</span>
                                 <span>@lang('of')</span>
-                                <span class="font-medium"><span x-text="paginationTotalItemCount"></span></span>
+                                <span class="font-medium">
+                                    <span x-text="paginationTotalItemCount"></span>
+                                </span>
                                 <span>@lang('results')</span>
                             @endif
                         </p>
@@ -47,7 +49,7 @@
         @endif
     </div>
 @elseif ($this->isBootstrap4)
-    <div >
+    <div>
         @if ($this->paginationVisibilityIsEnabled())
             @if ($this->paginationIsEnabled() && $this->isPaginationMethod('standard') && $this->getRows->lastPage() > 1)
                 <div class="row mt-3">
@@ -62,7 +64,9 @@
                             <span>@lang('to')</span>
                             <strong>{{ $this->getRows->count() ? $this->getRows->lastItem() : 0 }}</strong>
                             <span>@lang('of')</span>
-                            <strong><span x-text="paginationTotalItemCount"></span></strong>
+                            <strong>
+                                <span x-text="paginationTotalItemCount"></span>
+                            </strong>
                             <span>@lang('results')</span>
                         @endif
                     </div>
@@ -104,21 +108,19 @@
         @if ($this->paginationVisibilityIsEnabled())
             @if ($this->paginationIsEnabled() && ($this->isPaginationMethod('simple') || ($this->isPaginationMethod('standard') && $this->getRows->lastPage() > 1)))
                 <p class="m-0 text-secondary">
-                    @lang('Showing')
-                    <span>{{ $this->getRows->count() ? $this->getRows->firstItem() : 0 }}</span>
-                    @lang('to')
-                    <span>{{ $this->getRows->count() ? $this->getRows->lastItem() : 0 }}</span>
-                    @lang('of')
-                    <span><span x-text="paginationTotalItemCount"></span></span>
-                    @lang('results')
+                    @lang('Showing :from to :to of :total entries', [
+                        'from' => $this->getRows->count() ? $this->getRows->firstItem() : 0,
+                        'to' => $this->getRows->count() ? $this->getRows->lastItem() : 0,
+                        'total' => $this->getRows->total(),
+                    ])
                 </p>
 
                 {{ $this->getRows->links('admix-ui::livewire-tables.includes.pagination-items') }}
             @else
                 <p class="m-0 text-secondary">
-                    @lang('Showing')
-                    <span>{{ $this->getRows->count() }}</span>
-                    @lang('results')
+                    @lang('Showing :total entries', [
+                        'total' => $this->getRows->count(),
+                    ])
                 </p>
             @endif
         @endif
