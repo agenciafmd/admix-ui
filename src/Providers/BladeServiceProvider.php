@@ -110,5 +110,8 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'page.body', Components\Pages\Body::class);
         Blade::component($prefix . 'page.form', Components\Pages\Form::class);
         Blade::component($prefix . 'page.header', Components\Pages\Header::class);
+
+        Blade::component('livewire-tables:styles', Components\LivewireTables\Styles::class);
+        Blade::component('livewire-tables:scripts', Components\LivewireTables\Scripts::class);
     }
 }
