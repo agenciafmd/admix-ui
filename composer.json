@@ -12,7 +12,6 @@
         }
     ],
     "require": {
-        "agenciafmd/admix-icons": "v11.x-dev",
         "laravel/framework": "^11.0",
         "livewire/livewire": "^3.4",
         "rappasoft/laravel-livewire-tables": "^3.2",
