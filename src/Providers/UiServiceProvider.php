@@ -9,8 +9,8 @@ class UiServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->bootProviders();
-        $this->loadTranslations();
-        $this->publish();
+        $this->bootTranslations();
+        $this->bootPublish();
     }
 
     public function register(): void
@@ -26,7 +26,7 @@ class UiServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
     }
 
-    private function publish(): void
+    private function bootPublish(): void
     {
         $this->publishes([
             __DIR__ . '/../../tabler' => public_path('vendor/admix-ui/tabler'),
@@ -48,7 +48,7 @@ class UiServiceProvider extends ServiceProvider
         ], ['admix-ui:translations', 'admix-translations']);
     }
 
-    private function loadTranslations(): void
+    private function bootTranslations(): void
     {
         $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'admix-ui');
         $this->loadJsonTranslationsFrom(__DIR__ . '/../../lang');
