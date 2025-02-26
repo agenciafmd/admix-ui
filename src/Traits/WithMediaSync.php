@@ -79,24 +79,7 @@ trait WithMediaSync
         $meta = $collection . '_meta';
         $arrayMeta = $this->{$meta};
         foreach ($this->{$files} as $index => $file) {
-            $name = str($model->name . '-' . date('YmdHisv'))
-                ->slug()
-                ->__toString();
-            $extension = str($file->getFilename())
-                ->afterLast('.')
-                ->lower()
-                ->__toString() ?: 'jpg';
-            $fileName = "{$name}.{$extension}";
-
-            $customProperties = $arrayMeta[$index] ?? [];
-            $media = $model->addMedia($file)
-                ->usingName($name)
-                ->usingFileName($fileName)
-                ->withCustomProperties(array_merge([
-                    // 'uuid' => Str::uuid()
-                ], $customProperties))
-                ->withResponsiveImages()
-                ->toMediaCollection($collection);
+            $media = $model->doUpload($file, $collection, $arrayMeta[$index] ?? []);
 
             $this->{$collection} = $this->{$collection}->replace([
                 $index => [
