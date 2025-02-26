@@ -53,6 +53,9 @@ class ImageLibrary extends Component
         return str($message)->after('field');
     }
 
+    /*
+     * https://github.com/fengyuanchen/cropperjs/blob/main/README.md#options
+     * */
     public function cropSetup(): string
     {
         return json_encode(array_merge([
