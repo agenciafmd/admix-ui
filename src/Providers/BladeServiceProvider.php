@@ -95,6 +95,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.image-library', Components\Forms\Inputs\ImageLibrary::class);
         Blade::component($prefix . 'form.number', Components\Forms\Inputs\Number::class);
         Blade::component($prefix . 'form.password', Components\Forms\Inputs\Password::class);
+        Blade::component($prefix . 'form.pended-input', Components\Forms\Inputs\PendedInput::class);
         Blade::component($prefix . 'form.plaintext', Components\Forms\Inputs\Plaintext::class);
         Blade::component($prefix . 'form.radio', Components\Forms\Inputs\Radio::class);
         Blade::component($prefix . 'form.select', Components\Forms\Inputs\Select::class);
