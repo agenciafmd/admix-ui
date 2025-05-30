@@ -110,4 +110,11 @@ trait WithMediaSync
         // Resets files
         $this->{$files} = [];
     }
+
+    public function syncMedias(Model $model, array $collections): void
+    {
+        foreach ($collections as $collection) {
+            $this->syncMedia($model, $collection);
+        }
+    }
 }
