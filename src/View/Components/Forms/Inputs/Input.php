@@ -14,6 +14,9 @@ class Input extends Component
         public string $label = '',
         public string $hint = '',
         public string $type = 'text',
+        public array $defaultClass = [
+            'form-control',
+        ],
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -29,15 +32,15 @@ class Input extends Component
                     {{ str($label)->lower()->ucfirst() }}
                 </x-form.label>
             @endif
-            <input wire:model.blur="{{ $name }}" {{ $attributes->merge([
-                                    'type' => $type,
-                                    'id' => $name . $uuid,
-                                ])->class([
-                                    'form-control',
-                                    'is-invalid' => $errors->has($name),
-                            ])
-                        }}
-                    />
+            <input wire:model.blur="{{ $name }}" 
+                {{ $attributes->merge([
+                        'type' => $type,
+                        'id' => $name . $uuid,
+                    ])->class(array_merge($defaultClass, [
+                        'is-invalid' => $errors->has($name),
+                    ]))
+                }}
+            />
             <x-form.error field="{{ $name }}"/>
             <x-form.hint message="{{ $hint }}"/>
         HTML;

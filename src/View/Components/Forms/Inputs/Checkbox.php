@@ -29,16 +29,17 @@ class Checkbox extends Component
                     'required' => $attributes->has('required'),
                     'form-check-inline' => $inline
                 ])>
-                <input wire:model.change="{{ $name }}" {{ $attributes->merge([
-                                    'type' => 'checkbox',
-                                    'name' => $name,
-                                    'id' => $name . $uuid,
-                                ])->class([
-                                    'form-check-input',
-                                    'is-invalid' => $errors->has($name),
-                            ])
-                        }}
-                    />
+                <input wire:model.change="{{ $name }}" 
+                    {{ $attributes->merge([
+                            'type' => 'checkbox',
+                            'name' => $name,
+                            'id' => $name . $uuid,
+                        ])->class([
+                            'form-check-input',
+                            'is-invalid' => $errors->has($name),
+                        ])
+                    }}
+                />
                 @if($label)
                     <span class="form-check-label">{{ str($label)->lower()->ucfirst() }}</span>
                 @endif

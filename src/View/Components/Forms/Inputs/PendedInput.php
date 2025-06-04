@@ -38,17 +38,18 @@ class PendedInput extends Component
                 @if($prepend)
                     <span class="input-group-text">{{ $prepend }}</span>
                 @endif
-                <input wire:model.blur="{{ $name }}" {{ $attributes->merge([
-                                        'type' => 'text',
-                                        'id' => $name . $uuid,
-                                    ])->class([
-                                        'form-control',
-                                        'ps-0' => $prepend,
-                                        'text-end pe-0' => $append,
-                                        'is-invalid' => $errors->has($name),
-                                ])
-                            }}
-                        />
+                <input wire:model.blur="{{ $name }}" 
+                    {{ $attributes->merge([
+                            'type' => 'text',
+                            'id' => $name . $uuid,
+                        ])->class([
+                            'form-control',
+                            'ps-0' => $prepend,
+                            'text-end pe-0' => $append,
+                            'is-invalid' => $errors->has($name),
+                        ])
+                    }}
+                />
                 @if($append)
                     <span class="input-group-text">{{ $append }}</span>
                 @endif

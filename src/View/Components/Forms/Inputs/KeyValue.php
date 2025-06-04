@@ -39,16 +39,17 @@ class KeyValue extends Component
                      class="col-md-12 px-0 form-group">
                     <div class="row">
                         <div class="col-12 col-md-6 mb-3">
-                            <input wire:model.blur="{{ $name }}.{{ $key }}.key" {{ $attributes->merge([
-                                                    'type' => 'text',
-                                                    'id' => "{$name}-{$key}-key-{$uuid}",
-                                                    'placeholder' => $keyPlaceholder,
-                                                ])->class([
-                                                    'form-control',
-                                                    'is-invalid' => $errors->has("{$name}.{$key}.key"),
-                                            ])
-                                        }}
-                                    />
+                            <input wire:model.blur="{{ $name }}.{{ $key }}.key" 
+                                {{ $attributes->merge([
+                                        'type' => 'text',
+                                        'id' => "{$name}-{$key}-key-{$uuid}",
+                                        'placeholder' => $keyPlaceholder,
+                                    ])->class([
+                                        'form-control',
+                                        'is-invalid' => $errors->has("{$name}.{$key}.key"),
+                                    ])
+                                }}
+                            />
                             <x-form.error field="{{ $name }}.{{ $key }}.key"/>
                         </div>
                         <div class="col mb-3">

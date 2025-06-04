@@ -35,16 +35,17 @@ class Toggle extends Component
                     <span class="col">{{ str($label)->lower()->ucfirst() }}</span>
                         <span class="col-auto">
                         <label class="form-check form-check-single form-switch">
-                            <input wire:model.change="{{ $name }}" {{ $attributes->merge([
-                                                'type' => 'checkbox',
-                                                'name' => $name,
-                                                'id' => $name . $uuid,
-                                            ])->class([
-                                                'form-check-input',
-                                                'is-invalid' => $errors->has($name),
-                                        ])
-                                    }}
-                                />
+                            <input wire:model.change="{{ $name }}" 
+                                {{ $attributes->merge([
+                                        'type' => 'checkbox',
+                                        'name' => $name,
+                                        'id' => $name . $uuid,
+                                    ])->class([
+                                        'form-check-input',
+                                        'is-invalid' => $errors->has($name),
+                                    ])
+                                }}
+                            />
                         </label>
                     </span>
                 </label>
@@ -55,16 +56,17 @@ class Toggle extends Component
                         'form-switch-lg' => $large,
                         'required' => $attributes->has('required'),
                     ])>
-                    <input wire:model.change="{{ $name }}" {{ $attributes->merge([
-                                        'type' => 'checkbox',
-                                        'name' => $name,
-                                        'id' => $name . $uuid,
-                                    ])->class([
-                                        'form-check-input',
-                                        'is-invalid' => $errors->has($name),
-                                ])
-                            }}
-                        />
+                    <input wire:model.change="{{ $name }}" 
+                        {{ $attributes->merge([
+                                'type' => 'checkbox',
+                                'name' => $name,
+                                'id' => $name . $uuid,
+                            ])->class([
+                                'form-check-input',
+                                'is-invalid' => $errors->has($name),
+                            ])
+                        }}
+                    />
                     @if($label)
                         <span class="form-check-label">{{ str($label)->lower()->ucfirst() }}</span>
                     @endif

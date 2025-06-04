@@ -33,14 +33,16 @@ class Password extends Component
                     'input-group-flat',
                     'is-invalid' => $errors->has($name),
                 ]) x-data="{ isPassword: true }">
-                <input wire:model.blur="{{ $name }}" :type="isPassword ? 'password' : 'text'" {{ $attributes->merge([
-                                    'id' => $name . $uuid,
-                                    'autocomplete' => 'off',
-                                ])->class([
-                                    'form-control',
-                                    'is-invalid' => $errors->has($name),
-                            ])
-                        }}>
+                <input wire:model.blur="{{ $name }}" :type="isPassword ? 'password' : 'text'" 
+                    {{ $attributes->merge([
+                            'id' => $name . $uuid,
+                            'autocomplete' => 'off',
+                        ])->class([
+                            'form-control',
+                            'is-invalid' => $errors->has($name),
+                        ])
+                    }}
+                >
                 <span class="input-group-text ps-0">
                     <a @click="isPassword = !isPassword"
                        :class="isPassword ? 'd-block' : 'd-none'"

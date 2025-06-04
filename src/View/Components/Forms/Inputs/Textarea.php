@@ -34,16 +34,18 @@ class Textarea extends Component
                         @endif
                     </x-form.label>
                 @endif
-                <textarea wire:model.blur="{{ $name }}" {{ $attributes->merge([
-                                        'id' => $name . $uuid,
-                                        'rows' => $rows,
-                                    ])->class([
-                                        'form-control',
-                                        'is-invalid' => $errors->has($name),
-                                ])
-                            }}
-                            x-ref="fieldToCount" x-on:keyup="count = $refs.fieldToCount.value.length"
-                        ></textarea>
+                <textarea wire:model.blur="{{ $name }}" 
+                    {{ $attributes->merge([
+                            'id' => $name . $uuid,
+                            'rows' => $rows,
+                        ])->class([
+                            'form-control',
+                            'is-invalid' => $errors->has($name),
+                        ])
+                    }}
+                    x-ref="fieldToCount" 
+                    x-on:keyup="count = $refs.fieldToCount.value.length"
+                ></textarea>
                 <x-form.error field="{{ $name }}"/>
                 <x-form.hint message="{{ $hint }}"/>
             </div>

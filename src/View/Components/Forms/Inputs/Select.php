@@ -14,6 +14,9 @@ class Select extends Component
         public string $label = '',
         public string $hint = '',
         public array $options = [],
+        public array $defaultClass = [
+            'form-select',
+        ],
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
@@ -29,18 +32,18 @@ class Select extends Component
                     {{ str($label)->lower()->ucfirst() }}
                 </x-form.label>
             @endif
-            <select wire:model.change="{{ $name }}" {{ $attributes->merge([
-                                    'type' => 'text',
-                                    'id' => $name . $uuid,
-                                ])->class([
-                                    'form-select',
-                                    'is-invalid' => $errors->has($name),
-                            ])
-                        }}
-                    >
-                @foreach($options as $option)
-                    <option value="{{ $option['value'] }}" @disabled(isset($option['disabled']) && ($option['disabled']))>{{ $option['label'] }}</option>
-                @endforeach
+            <select wire:model.change="{{ $name }}" 
+                {{ $attributes->merge([
+                        'type' => 'text',
+                        'id' => $name . $uuid,
+                    ])->class(array_merge($defaultClass, [
+                        'is-invalid' => $errors->has($name),
+                    ]))
+                }}
+            >
+            @foreach($options as $option)
+                <option value="{{ $option['value'] }}" @disabled(isset($option['disabled']) && ($option['disabled']))>{{ $option['label'] }}</option>
+            @endforeach
             </select>
             <x-form.error field="{{ $name }}"/>
             <x-form.hint message="{{ $hint }}"/>
