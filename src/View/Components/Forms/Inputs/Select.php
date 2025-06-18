@@ -34,7 +34,6 @@ class Select extends Component
             @endif
             <select wire:model.change="{{ $name }}" 
                 {{ $attributes->merge([
-                        'type' => 'text',
                         'id' => $name . $uuid,
                     ])->class(array_merge($defaultClass, [
                         'is-invalid' => $errors->has($name),
