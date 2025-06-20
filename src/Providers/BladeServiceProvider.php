@@ -69,6 +69,7 @@ class BladeServiceProvider extends ServiceProvider
 
         Blade::component($prefix . 'btn', Components\Buttons\Button::class);
         Blade::component($prefix . 'btn.create', Components\Buttons\Create::class);
+        Blade::component($prefix . 'btn.create-with-options', Components\Buttons\CreateWithOptions::class);
         Blade::component($prefix . 'btn.link', Components\Buttons\Link::class);
         Blade::component($prefix . 'btn.primary', Components\Buttons\Primary::class);
         Blade::component($prefix . 'btn.submit', Components\Buttons\Submit::class);
