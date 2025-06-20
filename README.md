@@ -17,6 +17,7 @@
     - [KeyValue](#keyvalue)
     - [Datetime / Date / Time](#datetime--date--time)
     - [Select](#select)
+    - [TomSelect](#tomselect)
     - [Textarea](#textarea)
     - [Easymde](#easymde)
     - [Plain Text](#plain-text)
@@ -45,10 +46,17 @@ composer install agenciafmd/admix-ui:v11.x-dev
 
 <x-form>
     <div class="mb-3">
-        <x-form.input name="form.name" label="Nome" required/>
+        <x-form.input
+                name="form.name"
+                label="Nome"
+        />
     </div>
     <div class="mb-3">
-        <x-form.textarea name="form.message" label="Mensagem" maxlength=100 required/>
+        <x-form.textarea
+                name="form.message"
+                label="Mensagem"
+                maxlength=100
+        />
     </div>
     <div class="mb-3">
         @php
@@ -72,7 +80,11 @@ composer install agenciafmd/admix-ui:v11.x-dev
         ]
         ];
         @endphp
-        <x-form.select name="form.select" label="Select" :options="$options" required/>
+        <x-form.select
+                name="form.select"
+                label="Select"
+                :options="$options"
+        />
     </div>
 </x-form>
 ```
@@ -84,10 +96,17 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.input name="form.name" label="Nome" required/>
+    <x-form.input
+            name="form.name"
+            label="Nome"
+    />
 </div>
 <div class="mb-3">
-    <x-form.input name="form.name" label="Nome" hint="Preencha com seu nome completo"/>
+    <x-form.input
+            name="form.name"
+            label="Nome"
+            hint="Preencha com seu nome completo"
+    />
 </div>
 ```
 
@@ -98,7 +117,11 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.number name="form.number" label="Quantidade" hint="de 0 a 100"/>
+    <x-form.number
+            name="form.number"
+            label="Quantidade"
+            hint="de 0 a 100"
+    />
 </div>
 ```
 
@@ -109,7 +132,10 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.email name="form.email" label="E-mail"/>
+    <x-form.email
+            name="form.email"
+            label="E-mail"
+    />
 </div>
 ```
 
@@ -120,11 +146,17 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.password name="form.password" label="Senha"/>
+    <x-form.password
+            name="form.password"
+            label="Senha"
+    />
 </div>
 <div class="mb-3">
-    <x-form.password name="form.password" label="Senha"
-                     hint="Utilize pelo menos 1 letra maiúscula e caracteres especiais"/>
+    <x-form.password
+            name="form.password"
+            label="Senha"
+            hint="Utilize pelo menos 1 letra maiúscula e caracteres especiais"
+    />
 </div>
 ```
 
@@ -135,10 +167,11 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.key-value name="form.options"
-                      label="Opções"
-                      key-placeholder="Ex. Carburador"
-                      value-placeholder="Ex. 32-PDSI-2/3"
+    <x-form.key-value
+            name="form.options"
+            label="Opções"
+            key-placeholder="Ex. Carburador"
+            value-placeholder="Ex. 32-PDSI-2/3"
     />
 </div>
 ```
@@ -150,13 +183,22 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.datetime name="form.published_at" label="Data e hora de publicação"/>
+    <x-form.datetime
+            name="form.published_at"
+            label="Data e hora de publicação"
+    />
 </div>
 <div class="mb-3">
-    <x-form.date name="form.published_at" label="Data de publicação"/>
+    <x-form.date
+            name="form.published_at"
+            label="Data de publicação"
+    />
 </div>
 <div class="mb-3">
-    <x-form.time name="form.published_at" label="Hora de publicação"/>
+    <x-form.time
+            name="form.published_at"
+            label="Hora de publicação"
+    />
 </div>
 ```
 
@@ -184,7 +226,11 @@ composer install agenciafmd/admix-ui:v11.x-dev
     ]
     ];
     @endphp
-    <x-form.select label="Estados" name="form.state" :options="$options"/>
+    <x-form.select
+            label="Estados"
+            name="form.state"
+            :options="$options"
+    />
 </div>
 ```
 
@@ -195,7 +241,11 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.textarea name="form.message" label="Mensagem" maxlength=100 required/>
+    <x-form.textarea
+            name="form.message"
+            label="Mensagem"
+            maxlength=100
+    />
 </div>
 ```
 
@@ -206,7 +256,10 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.easymde name="form.description" label="Descrição"/>
+    <x-form.easymde
+            name="form.description"
+            label="Descrição"
+    />
 </div>
 ```
 
@@ -217,12 +270,16 @@ composer install agenciafmd/admix-ui:v11.x-dev
 ```html
 
 <div class="mb-3">
-    <x-form.plaintext label="Status"
-                      value="Em processamento"/>
+    <x-form.plaintext
+            label="Status"
+            value="Em processamento"
+    />
 </div>
 <div class="mb-3">
-    <x-form.plaintext label="Data de criação"
-                      value="18/11/2024 09:11:03"/>
+    <x-form.plaintext
+            label="Data de criação"
+            value="18/11/2024 09:11:03"
+    />
 </div>
 ```
 
@@ -276,9 +333,10 @@ composer install agenciafmd/admix-ui:v11.x-dev
     ];
     @endphp
     @foreach($paymentMethods as $method)
-    <x-form.toggle name="form.payment_methods"
-                   :label="$method['label']"
-                   :value="$method['value']"/>
+    <x-form.toggle
+            name="form.payment_methods"
+            :label="$method['label']"
+            :value="$method['value']"/>
     @endforeach
 </div>
 ```
@@ -291,10 +349,22 @@ composer install agenciafmd/admix-ui:v11.x-dev
 
 <div class="mb-3">
     <x-form.group label="Escolha o tipo de Imóvel:">
-        <x-form.radio name="form.propertyType" label="Apartamento" value="apartamento"/>
-        <x-form.radio name="form.propertyType" label="Casa" value="casa"/>
-        <x-form.radio name="form.propertyType" label="Imóvel Comercial" value="imovel-comercial"
-                      hint="Selecione uma opção"/>
+        <x-form.radio
+                name="form.propertyType"
+                label="Apartamento"
+                value="apartamento"
+        />
+        <x-form.radio
+                name="form.propertyType"
+                label="Casa"
+                value="casa"
+        />
+        <x-form.radio
+                name="form.propertyType"
+                label="Imóvel Comercial"
+                value="imovel-comercial"
+                hint="Selecione uma opção"
+        />
     </x-form.group>
 </div>
 ```
@@ -307,12 +377,26 @@ composer install agenciafmd/admix-ui:v11.x-dev
 
 <div class="mb-3">
     <x-form.group label="Escolha o tipo de Imóvel:">
-        <x-form.radio name="form.propertyType" label="Apartamento" value="apartamento" inline/>
-        <x-form.radio name="form.propertyType" label="Casa" value="casa" inline/>
-        <x-form.radio name="form.propertyType" label="Imóvel Comercial" value="imovel-comercial"
-                      hint="Selecione uma opção"
-                      inline
-                      disabled/>
+        <x-form.radio
+                name="form.propertyType"
+                label="Apartamento"
+                value="apartamento"
+                inline
+        />
+        <x-form.radio
+                name="form.propertyType"
+                label="Casa"
+                value="casa"
+                inline
+        />
+        <x-form.radio
+                name="form.propertyType"
+                label="Imóvel Comercial"
+                value="imovel-comercial"
+                hint="Selecione uma opção"
+                inline
+                disabled
+        />
     </x-form.group>
 </div>
 ```
@@ -372,9 +456,10 @@ composer install agenciafmd/admix-ui:v11.x-dev
             @endphp
             <div class="col-md-3">
                 @foreach($checkbox as $item)
-                <x-form.checkbox name="form.differentials"
-                                 :label="$item['label']"
-                                 :value="$item['value']"
+                <x-form.checkbox
+                        name="form.differentials"
+                        :label="$item['label']"
+                        :value="$item['value']"
                 />
                 @endforeach
             </div>
