@@ -61,23 +61,23 @@ composer install agenciafmd/admix-ui:v11.x-dev
     <div class="mb-3">
         @php
         $options = [
-        [
-        'value' => '',
-        'label' => '-'
-        ],
-        [
-        'value' => 1,
-        'label' => 'Item01'
-        ],
-        [
-        'value' => 2,
-        'label' => 'Item02'
-        ],
-        [
-        'value' => 3,
-        'label' => 'Item03 (desabilitada)',
-        'disabled' => true
-        ]
+            [
+                'value' => '',
+                'label' => '-'
+            ],
+            [
+                'value' => 1,
+                'label' => 'Item01'
+            ],
+            [
+                'value' => 2,
+                'label' => 'Item02'
+            ],
+            [
+                'value' => 3,
+                'label' => 'Item03 (desabilitada)',
+                'disabled' => true
+            ]
         ];
         @endphp
         <x-form.select
@@ -211,22 +211,61 @@ composer install agenciafmd/admix-ui:v11.x-dev
 <div class="mb-3">
     @php
     $options = [
-    [
-    'value' => '',
-    'label' => '-'
-    ],
-    [
-    'value' => 1,
-    'label' => 'São Paulo'
-    ],
-    [
-    'value' => 2,
-    'label' => 'Rio de Janeiro',
-    'disabled' => true
-    ]
+        [
+            'value' => '',
+            'label' => '-'
+        ],
+        [
+            'value' => 1,
+            'label' => 'São Paulo'
+        ],
+        [
+            'value' => 2,
+            'label' => 'Rio de Janeiro',
+            'disabled' => true
+        ]
     ];
     @endphp
     <x-form.select
+            label="Estados"
+            name="form.state"
+            :options="$options"
+    />
+</div>
+```
+
+### TomSelect
+
+![print do tomselect](docs/forms/tomselect.png "print do tomselect")
+
+```html
+
+<div class="mb-3">
+    @php
+    $options = [
+        [
+            'value' => '',
+            'label' => '-'
+        ],
+        [
+            'value' => 1,
+            'label' => 'Envelope',
+            'custom-property' => '<span><img src=\'/vendor/admix-ui/vendor/libs/bootstrap-icons/envelope.svg\' alt=\'Envelope\' width=\'19\' height=\'19\'></span>',
+        ],
+        [
+            'value' => 2,
+            'label' => 'Cup Hot',
+            'custom-property' => '<span><img src=\'/vendor/admix-ui/vendor/libs/bootstrap-icons/cup-hot.svg\' alt=\'Cup Hot\' width=\'19\' height=\'19\'></span>',
+        ],
+        [
+            'value' => 3,
+            'label' => 'Boombox',
+            'custom-property' => '<span><img src=\'/vendor/admix-ui/vendor/libs/bootstrap-icons/boombox.svg\' alt=\'Boombox\' width=\'19\' height=\'19\'></span>',
+            'disabled' => true
+        ]
+    ];
+    @endphp
+    <x-form.tom-select
             label="Estados"
             name="form.state"
             :options="$options"
@@ -314,22 +353,22 @@ composer install agenciafmd/admix-ui:v11.x-dev
     </x-form.label>
     @php
     $paymentMethods = [
-    [
-    'label' => 'Cartão de Crédito',
-    'value' => 'credit_card',
-    ],
-    [
-    'label' => 'Boleto Bancário',
-    'value' => 'boleto',
-    ],
-    [
-    'label' => 'PIX',
-    'value' => 'pix',
-    ],
-    [
-    'label' => 'Transferência Bancária',
-    'value' => 'bank_transfer',
-    ],
+        [
+            'label' => 'Cartão de Crédito',
+            'value' => 'credit_card',
+        ],
+        [
+            'label' => 'Boleto Bancário',
+            'value' => 'boleto',
+        ],
+        [
+            'label' => 'PIX',
+            'value' => 'pix',
+        ],
+        [
+            'label' => 'Transferência Bancária',
+            'value' => 'bank_transfer',
+        ],
     ];
     @endphp
     @foreach($paymentMethods as $method)
@@ -424,34 +463,34 @@ composer install agenciafmd/admix-ui:v11.x-dev
         <div class="row col-md-12">
             @php
             $checkbox = [
-            [
-            'label' => 'Playground',
-            'value' => 'playground',
-            ],
-            [
-            'label' => 'Área Gourmet',
-            'value' => 'gourmet_area',
-            ],
-            [
-            'label' => 'Espaço Pet',
-            'value' => 'pet_area',
-            ],
-            [
-            'label' => 'Academia',
-            'value' => 'gym',
-            ],
-            [
-            'label' => 'Portaria 24h',
-            'value' => 'concierge_24h',
-            ],
-            [
-            'label' => 'Alarme Monitorado',
-            'value' => 'monitored_alarm',
-            ],
-            [
-            'label' => 'Quadra Poliesportiva',
-            'value' => 'sports_court',
-            ],
+                [
+                    'label' => 'Playground',
+                    'value' => 'playground',
+                ],
+                [
+                    'label' => 'Área Gourmet',
+                    'value' => 'gourmet_area',
+                ],
+                [
+                    'label' => 'Espaço Pet',
+                    'value' => 'pet_area',
+                ],
+                [
+                    'label' => 'Academia',
+                    'value' => 'gym',
+                ],
+                [
+                    'label' => 'Portaria 24h',
+                    'value' => 'concierge_24h',
+                ],
+                [
+                    'label' => 'Alarme Monitorado',
+                    'value' => 'monitored_alarm',
+                ],
+                [
+                    'label' => 'Quadra Poliesportiva',
+                    'value' => 'sports_court',
+                ],
             ];
             @endphp
             <div class="col-md-3">

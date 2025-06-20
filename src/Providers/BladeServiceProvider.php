@@ -103,6 +103,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.textarea', Components\Forms\Inputs\Textarea::class);
         Blade::component($prefix . 'form.time', Components\Forms\Inputs\Time::class);
         Blade::component($prefix . 'form.toggle', Components\Forms\Inputs\Toggle::class);
+        Blade::component($prefix . 'form.tom-select', Components\Forms\Inputs\TomSelect::class);
         Blade::component($prefix . 'modal.body', Components\Modal\Body::class);
         Blade::component($prefix . 'modal.close', Components\Modal\Close::class);
         Blade::component($prefix . 'modal.footer', Components\Modal\Footer::class);
