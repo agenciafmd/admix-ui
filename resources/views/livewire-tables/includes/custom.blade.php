@@ -1,4 +1,5 @@
 <livewire:modal.confirm/>
+<livewire:modal.options/>
 <livewire:modal.html/>
 
 @push('styles')

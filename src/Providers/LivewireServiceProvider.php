@@ -13,6 +13,7 @@ class LivewireServiceProvider extends ServiceProvider
     {
         $this->callAfterResolving(BladeCompiler::class, static function (BladeCompiler $blade) {
             Livewire::component('modal.confirm', Modals\Confirm::class);
+            Livewire::component('modal.options', Modals\Options::class);
             Livewire::component('modal.html', Modals\Html::class);
         });
     }
