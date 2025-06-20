@@ -15,6 +15,7 @@
     - [Email](#email)
     - [Password](#password)
     - [KeyValue](#keyvalue)
+    - [IconValue](#iconvalue)
     - [Datetime / Date / Time](#datetime--date--time)
     - [Select](#select)
     - [TomSelect](#tomselect)
@@ -172,6 +173,21 @@ composer install agenciafmd/admix-ui:v11.x-dev
             label="Opções"
             key-placeholder="Ex. Carburador"
             value-placeholder="Ex. 32-PDSI-2/3"
+    />
+</div>
+```
+
+### IconValue
+
+![print do icon-value](docs/forms/icon-value.png "print do icon-value")
+
+```html
+
+<div class="mb-3">
+    <x-form.icon-value
+            name="form.options"
+            label="Opções"
+            value-placeholder="Ex. Garagem"
     />
 </div>
 ```
