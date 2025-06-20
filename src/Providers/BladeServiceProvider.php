@@ -91,6 +91,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::component($prefix . 'form.datetime', Components\Forms\Inputs\Datetime::class);
         Blade::component($prefix . 'form.easymde', Components\Forms\Inputs\Easymde::class);
         Blade::component($prefix . 'form.email', Components\Forms\Inputs\Email::class);
+        Blade::component($prefix . 'form.icon-value', Components\Forms\Inputs\IconValue::class);
         Blade::component($prefix . 'form.input', Components\Forms\Inputs\Input::class);
         Blade::component($prefix . 'form.key-value', Components\Forms\Inputs\KeyValue::class);
         Blade::component($prefix . 'form.image', Components\Forms\Inputs\Image::class);
