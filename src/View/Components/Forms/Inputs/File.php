@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class File extends Component
 {
     public string $uuid;
+
     public string $accept = 'application/pdf';
+
     public bool $isSingle = true;
 
     public function __construct(
@@ -27,9 +29,9 @@ class File extends Component
             ->toString();
 
         $this->uuid = '-mary-' . str(serialize($this))
-                ->pipe('md5')
-                ->limit(5, '')
-                ->toString();
+            ->pipe('md5')
+            ->limit(5, '')
+            ->toString();
     }
 
     public function modelName(): ?string
