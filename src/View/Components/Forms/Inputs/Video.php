@@ -94,7 +94,6 @@ class Video extends Component
                                 @click="document.getElementById('file-{{ $uuid }}-{{ $key }}').click()">
                                 Your browser does not support the video tag.
                             </video>
-                            <x-form.error field="{{ $name }}" class="d-block"/>
                             @error($modelName() . '.' . $key)
                                 <div class="invalid-feedback d-block mt-3">{{ $validationMessage($message) }}</div>
                             @enderror
