@@ -13,58 +13,11 @@ class Easymde extends Component
         public string $name = '',
         public string $label = '',
         public string $hint = '',
-        public array $options = [],
     ) {
         $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
             ->limit(5, '')
             ->toString();
-    }
-
-    public function options(): array
-    {
-        return array_merge([
-            'forceSync' => true,
-            'autoDownloadFontAwesome' => false,
-            'toolbarButtonClassPrefix' => 'mde',
-            'toolbar' => [
-                'bold',
-                'italic',
-                'strikethrough',
-                '|',
-                //                'heading',
-                //                'heading-smaller',
-                //                'heading-bigger',
-                'heading-1',
-                'heading-2',
-                'heading-3',
-                '|',
-                'quote',
-                'unordered-list',
-                'ordered-list',
-                '|',
-                'link',
-                'image',
-                //                'upload-image',
-                'table',
-                'horizontal-rule',
-                '|',
-                'preview',
-                'side-by-side',
-                'fullscreen',
-                '|',
-                'guide',
-            ],
-        ], $this->options);
-    }
-
-    public function jsonOptions(): string
-    {
-        if (empty($this->options())) {
-            return '';
-        }
-
-        return ', ...' . json_encode((object) $this->options());
     }
 
     public function render(): string|View
@@ -87,7 +40,75 @@ class Easymde extends Component
                             easyMDE: null
                         }"
                         x-init="
-                            this.easyMDE = new EasyMDE({ element: $root {{ $jsonOptions() }} });
+                            document.addEventListener('DOMContentLoaded', () => {
+                                function insertFigcaption(editor) {
+                                    console.log('figcaption', editor);
+                                };
+                            });
+                            this.easyMDE = new EasyMDE({
+                                element: $root,
+                                forceSync: true,
+                                autoDownloadFontAwesome: false,
+                                toolbarButtonClassPrefix: 'mde',
+                                toolbar: [
+                                    'bold',
+                                    'italic',
+                                    'strikethrough',
+                                    '|',
+                                    //                'heading',
+                                    //                'heading-smaller',
+                                    //                'heading-bigger',
+                                    'heading-1',
+                                    'heading-2',
+                                    'heading-3',
+                                    '|',
+                                    'quote',
+                                    'unordered-list',
+                                    'ordered-list',
+                                    '|',
+                                    'link',
+                                    'image',
+                                    {
+                                        name: 'image-caption',
+                                        action: function customFunction(editor){
+                                            console.log(editor);
+                                            var options = editor.options;
+                                            var url = 'https://';
+                                            if (options.promptURLs) {
+                                                var result = prompt(options.promptTexts.image, url);
+                                                if (!result) {
+                                                    return false;
+                                                }
+                                                url = escapePromptURL(result);
+                                            }
+                                            
+                                            var cm = editor.codemirror;
+                                            var output = '';
+                                            var selectedText = cm.getSelection();
+                                            var url = selectedText || '{{ asset('images/placeholder.png') }}';
+                                            
+                                            output = '<figure class=\'mde-figure\'>\n' +
+                                                '\n' +
+                                                '![placeholder](' + url + ')\n' +
+                                                '<figcaption class=\'mde-figure-caption\'>Crédito: John Doe</figcaption>\n' +
+                                                '</figure>';
+                                            /*output = '![](' + url + ')';*/
+                                            cm.replaceSelection(output);
+                                        },
+                                        className: 'fa fa-star',
+                                        title: 'Custom Button',
+                                    },
+                                    //                'upload-image',
+                                    'table',
+                                    'horizontal-rule',
+                                    '|',
+                                    'preview',
+                                    'side-by-side',
+                                    'fullscreen',
+                                    '|',
+                                    'guide',
+                                ]
+                            });
                             this.easyMDE.codemirror.on('change', () => {
                                 $wire.$set('{{ $name }}', this.easyMDE.value(), {{ $isLive ?? false }})
                             });
