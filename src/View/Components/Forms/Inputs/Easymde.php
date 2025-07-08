@@ -41,14 +41,20 @@ class Easymde extends Component
                         }"
                         x-init="
                             document.addEventListener('DOMContentLoaded', () => {
-                                function insertFigcaption(editor) {
-                                    console.log('figcaption', editor);
-                                };
                             });
                             this.easyMDE = new EasyMDE({
                                 element: $root,
                                 forceSync: true,
                                 autoDownloadFontAwesome: false,
+                                placeholder: '{{ __('Write here...') }}',
+                                nativeSpellcheck: true,
+                                spellChecker: false,
+                                uploadImage: true,
+                                imageMaxSize: {{ config('admix-ui.easymde.upload.max_size') }},
+                                imageUploadEndpoint: '{{ route('admix.easymde.upload') }}',
+                                imageCSRFToken: '{{ csrf_token() }}',
+                                imageCSRFName: '_token',
+                                imagePathAbsolute: true,
                                 toolbarButtonClassPrefix: 'mde',
                                 toolbar: [
                                     'bold',
@@ -71,7 +77,6 @@ class Easymde extends Component
                                     {
                                         name: 'image-caption',
                                         action: function customFunction(editor){
-                                            console.log(editor);
                                             var options = editor.options;
                                             var url = 'https://';
                                             if (options.promptURLs) {
@@ -95,10 +100,9 @@ class Easymde extends Component
                                             /*output = '![](' + url + ')';*/
                                             cm.replaceSelection(output);
                                         },
-                                        className: 'fa fa-star',
-                                        title: 'Custom Button',
+                                        title: 'Insert image with caption',
                                     },
-                                    //                'upload-image',
+                                    'upload-image',
                                     'table',
                                     'horizontal-rule',
                                     '|',

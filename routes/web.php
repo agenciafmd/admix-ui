@@ -1,5 +1,7 @@
 <?php
 
+use Agenciafmd\Admix\Http\Middleware\Authenticate;
+use Agenciafmd\Ui\Http\Controllers\EasymdeController;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +38,8 @@ if (!app()->environment(['production'])) {
     })
         ->name('admix-ui.docs');
 }
+
+Route::prefix(config('admix.path'))
+    ->middleware(['web', Authenticate::class . ':admix-web'])
+    ->post('easymde/upload', [EasymdeController::class, 'upload'])
+    ->name('admix.easymde.upload');
