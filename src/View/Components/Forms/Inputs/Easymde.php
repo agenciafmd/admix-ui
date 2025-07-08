@@ -7,6 +7,8 @@ use Illuminate\View\Component;
 
 class Easymde extends Component
 {
+    public string $formField;
+
     public string $uuid;
 
     public function __construct(
@@ -14,15 +16,15 @@ class Easymde extends Component
         public string $label = '',
         public string $hint = '',
     ) {
-        $this->uuid = '-' . str(serialize($this))
+        $this->uuid = str(serialize($this))
             ->pipe('md5')
             ->limit(5, '')
             ->toString();
+        $this->formField = str($this->name)->afterLast('.');
     }
 
     public function render(): string|View
     {
-        /* this.easyMDE = new EasyMDE({ element: $root, ...{&quot;forceSync&quot;:true,&quot;autoDownloadFontAwesome&quot;:true,&quot;placeholder&quot;:&quot;Write something...&quot;} {{ $jsonOptions() }} }); */
         return <<<'HTML'
                 @if($label)
                     <x-form.label for="{{ $name . $uuid }}" @class(['required' => $attributes->has('required')])>
@@ -37,13 +39,13 @@ class Easymde extends Component
                 <div wire:ignore>
                     <textarea
                         x-data="{
-                            easyMDE: null
+                            myEasyMDE: null
                         }"
                         x-init="
                             document.addEventListener('DOMContentLoaded', () => {
                             });
-                            this.easyMDE = new EasyMDE({
-                                element: $root,
+                            myEasyMDE = new EasyMDE({
+                                element: $refs.{{ $formField }},
                                 forceSync: true,
                                 autoDownloadFontAwesome: false,
                                 placeholder: '{{ __('Write here...') }}',
@@ -113,10 +115,12 @@ class Easymde extends Component
                                     'guide',
                                 ]
                             });
-                            this.easyMDE.codemirror.on('change', () => {
-                                $wire.$set('{{ $name }}', this.easyMDE.value(), {{ $isLive ?? false }})
+                            myEasyMDE.codemirror.on('change', () => {
+                                $wire.$set('{{ $name }}', myEasyMDE.value(), {{ $isLive ?? false }})
                             });
                         "
+                        x-ref="{{ $formField }}"
+                        x-cloak    
                         wire:model.blur="{{ $name }}"
                         {{ $attributes->merge([
                                     'id' => $name . $uuid,
