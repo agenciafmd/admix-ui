@@ -4,6 +4,7 @@ namespace Agenciafmd\Ui\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Dimensions;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 trait WithMediaSync
@@ -74,12 +75,33 @@ trait WithMediaSync
     public function syncMedia(
         Model $model,
         string $collection = 'collection',
+        array $optimize = [
+            'type' => 'cover',
+            'format' => 'jpg',
+            'quality' => 95,
+        ]
     ): void {
         $files = $collection . '_files';
         $meta = $collection . '_meta';
         $arrayMeta = $this->{$meta};
+
+        if (!isset($optimize['width']) && !isset($optimize['height'])) {
+            $rules = collect($this->rules()["{$collection}_files.*"]);
+            foreach ($rules as $rule) {
+                if ($rule instanceof Dimensions) {
+                    $dimensionRules = collect($rule)->mapWithKeys(function ($value, $key) {
+                        return $value;
+                    });
+                    if (isset($dimensionRules['max_width']) && isset($dimensionRules['max_height'])) {
+                        $optimize['width'] = $dimensionRules['max_width'];
+                        $optimize['height'] = $dimensionRules['max_height'];
+                    }
+                }
+            }
+        }
+
         foreach ($this->{$files} as $index => $file) {
-            $media = $model->doUpload($file, $collection, $arrayMeta[$index] ?? []);
+            $media = $model->doUpload($file, $collection, $arrayMeta[$index] ?? [], $optimize);
 
             $this->{$collection} = $this->{$collection}->replace([
                 $index => [
@@ -111,10 +133,14 @@ trait WithMediaSync
         $this->{$files} = [];
     }
 
-    public function syncMedias(Model $model, array $collections): void
+    public function syncMedias(Model $model, array $collections, array $optimizes): void
     {
-        foreach ($collections as $collection) {
-            $this->syncMedia($model, $collection);
+        foreach ($collections as $i => $collection) {
+            $this->syncMedia($model, $collection, $optimizes[$i] ?? [
+                'type' => 'cover',
+                'format' => 'jpg',
+                'quality' => 95,
+            ]);
         }
     }
 }
