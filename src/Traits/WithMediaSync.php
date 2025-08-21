@@ -84,8 +84,9 @@ trait WithMediaSync
         $files = $collection . '_files';
         $meta = $collection . '_meta';
         $arrayMeta = $this->{$meta};
+        $image = collect($this->rules()["{$collection}_files.*"])->contains('image');
 
-        if (!isset($optimize['width']) && !isset($optimize['height'])) {
+        if ($image && !isset($optimize['width']) && !isset($optimize['height'])) {
             $rules = collect($this->rules()["{$collection}_files.*"]);
             foreach ($rules as $rule) {
                 if ($rule instanceof Dimensions) {
@@ -101,7 +102,7 @@ trait WithMediaSync
         }
 
         foreach ($this->{$files} as $index => $file) {
-            $media = $model->doUpload($file, $collection, $arrayMeta[$index] ?? [], $optimize);
+            $media = $model->doUpload($file, $collection, $arrayMeta[$index] ?? [], $image ? $optimize : []);
 
             $this->{$collection} = $this->{$collection}->replace([
                 $index => [
