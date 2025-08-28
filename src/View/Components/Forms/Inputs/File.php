@@ -14,13 +14,12 @@ class File extends Component
     public string $accept = 'application/pdf';
 
     public function __construct(
-        public string  $name = '',
-        public string  $label = '',
+        public string $name = '',
+        public string $label = '',
         public ?string $hint = null,
-        public ?bool   $hideContent = false,
+        public ?bool $hideContent = false,
         public ?string $addFilesText = 'Adicionar arquivo'
-    )
-    {
+    ) {
         $this->uuid = str(serialize($this))
             ->pipe('md5')
             ->limit(5, '')
