@@ -104,9 +104,13 @@ class File extends Component
                                                  class="ic-xl w-8 h-8"/>
                                 </span>
                                  @if($fileInfo)
-                                    <small>{{ round($fileInfo?->getSize() / 1000 / 1000, 2) . ' MB' }}</small>
+                                    <small class="text-center">
+                                        {{ round($fileInfo?->getSize() / 1000 / 1000, 2) . ' MB' }}
+                                    </small>
                                  @endif
-                                 <small>{{ $fileInfo?->getClientOriginalName() ?? $file['path'] }}</small>
+                                 <small class="text-center">
+                                    {{ $fileInfo?->getClientOriginalName() ?? $file['path'] }}
+                                 </small>
                             </div>
                             <input
                                 type="file"
