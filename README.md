@@ -25,6 +25,7 @@
     - [Toggle / Multi Toggle](#toggle)
     - [Radio](#radio)
     - [Checkbox](#checkbox)
+  - [File](#file)
 - [Página](#página)
     - [Form](#form)
 - [UI](#ui)
@@ -520,6 +521,20 @@ composer install agenciafmd/admix-ui:v11.x-dev
             </div>
         </div>
     </div>
+</div>
+```
+
+### File
+
+![print do file](docs/forms/file.png "print do file")
+
+```html
+
+<div class="col-md-4 mb-3">
+  <x-form.file
+          name="form.book"
+          :label="e-book"
+  />
 </div>
 ```
 
