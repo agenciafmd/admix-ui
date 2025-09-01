@@ -88,7 +88,7 @@ class File extends Component
                             $defaultHint = implode(" ", $defaultHint);
                         }
                         
-                        $fileInfo = collect($this->form->book_files)->flatten()->first();
+                        $fileInfo = collect($this->form->{$formField . '_files'})->flatten()->first(); 
                      @endphp
                     <x-form.hint
                         message="{{ $hint ?? $defaultHint }}"
