@@ -11,16 +11,15 @@ class File extends Component
 
     public string $uuid;
 
-    public string $accept = 'application/pdf';
-
     public function __construct(
         public string $name = '',
         public string $label = '',
         public ?string $hint = null,
         public ?bool $hideContent = false,
-        public ?string $addFilesText = 'Adicionar arquivo'
+        public ?string $addFilesText = 'Adicionar arquivo',
+        public ?string $accept = 'application/pdf',
     ) {
-        $this->uuid = str(serialize($this))
+        $this->uuid = '-' . str(serialize($this))
             ->pipe('md5')
             ->limit(5, '')
             ->toString();
@@ -167,12 +166,15 @@ class File extends Component
                     @endif
                 
                     <input
-                        id="{{ $uuid }}"
+                        wire:model="{{ $modelName() }}.*"
                         type="file"
                         x-ref="files"
                         class="d-none"
-                        accept="{{ $accept }}"
-                        wire:model="{{ $modelName() }}.*"/>
+                        {{ $attributes->merge([
+                            'accept' => $accept,
+                            'id' => $name . $uuid,
+                            ])
+                        }}/>
                         
                     @error($name)
                         <div class="invalid-feedback d-block">{{ $message }}</div>
